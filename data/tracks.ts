@@ -9,6 +9,7 @@ export type Track = {
   imageSrc: string;
   canvasSrc: string;
   audioSrc: string;
+  cueStartSeconds: number;
   palette: {
     ambient1: string;
     ambient2: string;
@@ -36,6 +37,7 @@ export const tracks: Track[] = [
     imageSrc: "/images/01-heathens.jpg",
     canvasSrc: "/canvas/01-heathens.mp4",
     audioSrc: "/audio/01-heathens.mp3",
+    cueStartSeconds: 52,
     palette: {
       ambient1: "#2E3438",
       ambient2: "#6B7F6A",
@@ -96,6 +98,7 @@ export const tracks: Track[] = [
     imageSrc: "/images/02-creep.jpg",
     canvasSrc: "/canvas/02-creep.mp4",
     audioSrc: "/audio/02-creep.mp3",
+    cueStartSeconds: 58,
     palette: {
       ambient1: "#5E718A",
       ambient2: "#4B3F63",
@@ -156,6 +159,7 @@ export const tracks: Track[] = [
     imageSrc: "/images/03-way-down-we-go.jpg",
     canvasSrc: "/canvas/03-way-down-we-go.mp4",
     audioSrc: "/audio/03-way-down-we-go.mp3",
+    cueStartSeconds: 49,
     palette: {
       ambient1: "#102A43",
       ambient2: "#020A12",
@@ -214,6 +218,7 @@ export const tracks: Track[] = [
     imageSrc: "/images/04-coraline.jpg",
     canvasSrc: "/canvas/04-coraline.mp4",
     audioSrc: "/audio/04-coraline.mp3",
+    cueStartSeconds: 44,
     palette: {
       ambient1: "#111827",
       ambient2: "#7F1D1D",
@@ -274,6 +279,7 @@ export const tracks: Track[] = [
     imageSrc: "/images/05-uprising.jpg",
     canvasSrc: "/canvas/05-uprising.mp4",
     audioSrc: "/audio/05-uprising.mp3",
+    cueStartSeconds: 37,
     palette: {
       ambient1: "#030712",
       ambient2: "#5D8C54",
@@ -333,6 +339,7 @@ export const tracks: Track[] = [
     imageSrc: "/images/06-wait.jpg",
     canvasSrc: "/canvas/06-wait.mp4",
     audioSrc: "/audio/06-wait.mp3",
+    cueStartSeconds: 51,
     palette: {
       ambient1: "#C7D2FE",
       ambient2: "#1E3A5F",

@@ -14,8 +14,25 @@ type SongDialogProps = {
   activeTrack: Track;
 };
 
+type LyricsLine = {
+  timeMs?: number;
+  text: string;
+};
+
+type LyricsResponse = {
+  source: "synced" | "plain" | "none";
+  lines: LyricsLine[];
+  instrumental: boolean;
+};
+
+type LyricsState =
+  | { status: "loading" }
+  | { status: "ready"; data: LyricsResponse }
+  | { status: "error" };
+
 export function SongDialog({ activeTrack }: SongDialogProps) {
   const [videoReady, setVideoReady] = useState(true);
+  const [lyrics, setLyrics] = useState<LyricsState>({ status: "loading" });
   const ambientStyle = useMemo(
     () =>
       ({
@@ -32,6 +49,44 @@ export function SongDialog({ activeTrack }: SongDialogProps) {
   useEffect(() => {
     setVideoReady(true);
   }, [activeTrack.canvasSrc]);
+
+  useEffect(() => {
+    setLyrics({ status: "loading" });
+    const controller = new AbortController();
+
+    async function run() {
+      try {
+        const params = new URLSearchParams({
+          artist: activeTrack.artist,
+          title: activeTrack.title,
+        });
+
+        const response = await fetch(`/api/lyrics?${params.toString()}`, {
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error("lyrics request failed");
+        }
+
+        const data = (await response.json()) as LyricsResponse;
+        setLyrics({ status: "ready", data });
+      } catch (error) {
+        if (
+          error instanceof DOMException &&
+          error.name === "AbortError"
+        ) {
+          return;
+        }
+        setLyrics({ status: "error" });
+      }
+    }
+
+    run();
+    return () => {
+      controller.abort();
+    };
+  }, [activeTrack.artist, activeTrack.title]);
 
   return (
     <WarpDialog>
@@ -130,6 +185,13 @@ export function SongDialog({ activeTrack }: SongDialogProps) {
                     </span>
                   ))}
                 </div>
+
+                <section className="mt-8">
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-white/55">
+                    Lyrics
+                  </h3>
+                  <LyricsBlock lyrics={lyrics} />
+                </section>
               </div>
 
               {/* ── Footer fisso con blur ── */}
@@ -157,6 +219,62 @@ export function SongDialog({ activeTrack }: SongDialogProps) {
       </WarpDialogContent>
     </WarpDialog>
   );
+}
+
+function LyricsBlock({ lyrics }: { lyrics: LyricsState }) {
+  if (lyrics.status === "loading") {
+    return (
+      <p className="mt-3 text-sm text-white/65">Caricamento testo...</p>
+    );
+  }
+
+  if (lyrics.status === "error") {
+    return (
+      <p className="mt-3 text-sm text-white/60">
+        Testo non disponibile al momento.
+      </p>
+    );
+  }
+
+  if (lyrics.data.instrumental) {
+    return (
+      <p className="mt-3 text-sm text-white/60">
+        Brano strumentale: nessun testo disponibile.
+      </p>
+    );
+  }
+
+  if (lyrics.data.lines.length === 0) {
+    return (
+      <p className="mt-3 text-sm text-white/60">
+        Lyrics non trovate per questa traccia.
+      </p>
+    );
+  }
+
+  const visibleLines = lyrics.data.lines.slice(0, 26);
+
+  return (
+    <div className="mt-3 space-y-2">
+      {visibleLines.map((line, index) => (
+        <p key={`${line.timeMs ?? "plain"}-${index}`} className="text-sm leading-relaxed text-white/78">
+          {lyrics.data.source === "synced" && line.timeMs !== undefined ? (
+            <span className="mr-2 inline-block w-16 text-white/45">
+              {formatLyricsTime(line.timeMs)}
+            </span>
+          ) : null}
+          <span>{line.text}</span>
+        </p>
+      ))}
+    </div>
+  );
+}
+
+function formatLyricsTime(timeMs: number) {
+  const totalSeconds = Math.floor(timeMs / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = String(totalSeconds % 60).padStart(2, "0");
+  return `${minutes}:${seconds}`;
 }
 
 function AmbientFallback({ visible }: { visible: boolean }) {

@@ -95,6 +95,8 @@ export function GlassPlayer({
 }: GlassPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const wantsPlaybackRef = useRef(false);
+  const pendingCueSeekRef = useRef(true);
+  const pendingAutoplayRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -136,20 +138,33 @@ export function GlassPlayer({
     setAudioError(false);
     setCurrentTime(0);
     setDuration(0);
+    pendingCueSeekRef.current = true;
+    pendingAutoplayRef.current = enabled && wantsPlaybackRef.current;
+    audio.pause();
     audio.load();
 
-    if (enabled && wantsPlaybackRef.current) {
-      audio
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => {
-          wantsPlaybackRef.current = false;
-          setIsPlaying(false);
-        });
-    } else {
+    if (!pendingAutoplayRef.current) {
       setIsPlaying(false);
     }
   }, [activeTrack.audioSrc, enabled]);
+
+  function getCueStart(durationValue?: number) {
+    const cue = Math.max(0, activeTrack.cueStartSeconds || 0);
+    if (
+      durationValue &&
+      Number.isFinite(durationValue) &&
+      durationValue > 1
+    ) {
+      return Math.min(cue, Math.max(durationValue - 1, 0));
+    }
+    return cue;
+  }
+
+  function applyCuePoint(audio: HTMLAudioElement, durationValue?: number) {
+    const cue = getCueStart(durationValue);
+    audio.currentTime = cue;
+    setCurrentTime(cue);
+  }
 
   async function togglePlayback() {
     const audio = audioRef.current;
@@ -164,6 +179,15 @@ export function GlassPlayer({
 
     setAudioError(false);
     wantsPlaybackRef.current = true;
+
+    if (
+      duration > 0 &&
+      audio.currentTime >= Math.max(duration - 0.2, 0)
+    ) {
+      applyCuePoint(audio, duration);
+    } else if (duration > 0 && audio.currentTime <= 0.2) {
+      applyCuePoint(audio, duration);
+    }
 
     try {
       await audio.play();
@@ -203,7 +227,27 @@ export function GlassPlayer({
         ref={audioRef}
         src={activeTrack.audioSrc}
         preload="metadata"
-        onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+        onLoadedMetadata={(e) => {
+          const audio = e.currentTarget;
+          const audioDuration = audio.duration;
+          setDuration(audioDuration);
+
+          if (pendingCueSeekRef.current) {
+            applyCuePoint(audio, audioDuration);
+            pendingCueSeekRef.current = false;
+          }
+
+          if (pendingAutoplayRef.current) {
+            pendingAutoplayRef.current = false;
+            audio
+              .play()
+              .then(() => setIsPlaying(true))
+              .catch(() => {
+                wantsPlaybackRef.current = false;
+                setIsPlaying(false);
+              });
+          }
+        }}
         onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
         onEnded={() => {
           wantsPlaybackRef.current = false;
