@@ -14,7 +14,7 @@ RUN npm run build
 
 FROM base AS runner
 ENV NODE_ENV=production
-ENV PORT=3000
+ENV PORT=3009
 ENV HOSTNAME=0.0.0.0
 
 RUN addgroup --system --gid 1001 nodejs \
