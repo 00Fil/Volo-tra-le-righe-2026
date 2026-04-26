@@ -16,14 +16,24 @@ type SongSectionProps = {
   track: Track;
   index: number;
   total: number;
+  nextImageSrc?: string;
 };
 
-export function SongSection({ track, index, total }: SongSectionProps) {
+export function SongSection({
+  track,
+  index,
+  total,
+  nextImageSrc,
+}: SongSectionProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const imageLayerRef = useRef<HTMLDivElement | null>(null);
+  const nextImageLayerRef = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
+  const nextImageRef = useRef<HTMLImageElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const detailRefs = useRef<HTMLDivElement[]>([]);
   const [imageMissing, setImageMissing] = useState(false);
+  const [nextImageMissing, setNextImageMissing] = useState(false);
 
   const ambientStyle = useMemo(
     () =>
@@ -45,11 +55,17 @@ export function SongSection({ track, index, total }: SongSectionProps) {
     setImageMissing(false);
   }, [track.imageSrc]);
 
+  useEffect(() => {
+    setNextImageMissing(false);
+  }, [nextImageSrc]);
+
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const section = sectionRef.current;
+    const nextImageLayer = nextImageLayerRef.current;
     const image = imageRef.current;
+    const nextImage = nextImageRef.current;
     const pinnedScene = section?.querySelector(".story-pin");
 
     if (!section) {
@@ -83,6 +99,32 @@ export function SongSection({ track, index, total }: SongSectionProps) {
             },
           },
         );
+      }
+
+      if (nextImage) {
+        gsap.to(nextImage, {
+          scale: 1.08,
+          xPercent: index % 2 === 0 ? 1.6 : -1.6,
+          yPercent: -1.2,
+          duration: 9,
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+      }
+
+      if (nextImageLayer && nextImageSrc && !nextImageMissing) {
+        gsap.set(nextImageLayer, { autoAlpha: 0 });
+        gsap.to(nextImageLayer, {
+          autoAlpha: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.9,
+          },
+        });
       }
 
       gsap.set(panels, { autoAlpha: 0, y: 42, filter: "blur(10px)" });
@@ -131,7 +173,7 @@ export function SongSection({ track, index, total }: SongSectionProps) {
     }, section);
 
     return () => context.revert();
-  }, [index]);
+  }, [index, nextImageSrc, nextImageMissing]);
 
   return (
     <section
@@ -141,19 +183,40 @@ export function SongSection({ track, index, total }: SongSectionProps) {
       style={ambientStyle}
     >
       <div className="story-pin relative h-screen overflow-hidden bg-[linear-gradient(140deg,var(--ambient-dark),#000)]">
-        <StaticImageFallback visible={imageMissing} />
+        <div ref={imageLayerRef} className="absolute inset-0 will-change-transform">
+          <StaticImageFallback visible={imageMissing} />
 
-        {!imageMissing ? (
-          // GSAP needs a direct image element reference for the perpetual drift.
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            ref={imageRef}
-            src={track.imageSrc}
-            alt={`Immagine ispirata a ${track.title}, ${track.chapters}`}
-            loading={index === 0 ? "eager" : "lazy"}
-            onError={() => setImageMissing(true)}
-            className="absolute inset-0 h-full w-full scale-[1.035] object-cover"
-          />
+          {!imageMissing ? (
+            // GSAP needs a direct image element reference for the perpetual drift.
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              ref={imageRef}
+              src={track.imageSrc}
+              alt={`Immagine ispirata a ${track.title}, ${track.chapters}`}
+              loading={index === 0 ? "eager" : "lazy"}
+              onError={() => setImageMissing(true)}
+              className="absolute inset-0 h-full w-full scale-[1.035] object-cover"
+            />
+          ) : null}
+        </div>
+        {nextImageSrc ? (
+          <div
+            ref={nextImageLayerRef}
+            className="absolute inset-0 opacity-0 will-change-[opacity,transform]"
+          >
+            {!nextImageMissing ? (
+              // This second layer creates the real image-to-image crossfade.
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                ref={nextImageRef}
+                src={nextImageSrc}
+                alt=""
+                loading="lazy"
+                onError={() => setNextImageMissing(true)}
+                className="absolute inset-0 h-full w-full scale-[1.035] object-cover"
+              />
+            ) : null}
+          </div>
         ) : null}
 
         <div className="absolute inset-0 bg-black/25" />

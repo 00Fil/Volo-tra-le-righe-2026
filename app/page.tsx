@@ -148,6 +148,7 @@ export default function Home() {
           track={track}
           index={index}
           total={tracks.length}
+          nextImageSrc={tracks[index + 1]?.imageSrc}
         />
       ))}
 
