@@ -69,13 +69,10 @@ export function SongDialog({ activeTrack }: SongDialogProps) {
             onWheelCapture={(event) => event.stopPropagation()}
             onTouchMoveCapture={(event) => event.stopPropagation()}
           >
-            <div className="glass-panel relative flex max-h-[calc(100svh-5rem)] w-full max-w-3xl overflow-hidden text-white shadow-glass sm:max-h-[calc(100svh-7rem)] lg:max-h-[calc(100svh-10rem)]">
-              <div
-                data-lenis-prevent=""
-                className="warp-dialog-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-28 pt-6 md:px-9 md:pb-32 md:pt-9"
-                onWheelCapture={(event) => event.stopPropagation()}
-                onTouchMoveCapture={(event) => event.stopPropagation()}
-              >
+            <div className="glass-panel relative flex max-h-[calc(100svh-5rem)] w-full max-w-3xl flex-col overflow-hidden text-white shadow-glass sm:max-h-[calc(100svh-7rem)] lg:max-h-[calc(100svh-10rem)]">
+              
+              {/* ── Sticky header: parte dall'angolo tondo della card, nessun pt extra ── */}
+              <div className="sticky top-0 z-30 px-6 pb-4 pt-6 md:px-9 md:pb-5 md:pt-8 backdrop-blur-xl bg-white/[0.04] border-b border-white/10">
                 <div className="flex items-start justify-between gap-5">
                   <div className="min-w-0">
                     <p className="text-sm uppercase text-white/60">
@@ -87,12 +84,21 @@ export function SongDialog({ activeTrack }: SongDialogProps) {
                     <p className="mt-2 text-xl text-white/75">
                       {activeTrack.artist}
                     </p>
-                    <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70">
-                      {activeTrack.idea}
-                    </p>
                   </div>
                   <IconCloseButton />
                 </div>
+              </div>
+
+              {/* ── Corpo scrollabile ── */}
+              <div
+                data-lenis-prevent=""
+                className="warp-dialog-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-[4.75rem] pt-5 md:px-9 md:pb-20 md:pt-7"
+                onWheelCapture={(event) => event.stopPropagation()}
+                onTouchMoveCapture={(event) => event.stopPropagation()}
+              >
+                <p className="max-w-xl text-base leading-relaxed text-white/70">
+                  {activeTrack.idea}
+                </p>
 
                 <div className="mt-7 space-y-6">
                   {activeTrack.explanationSections.map((section) => (
@@ -126,9 +132,25 @@ export function SongDialog({ activeTrack }: SongDialogProps) {
                 </div>
               </div>
 
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex justify-end bg-gradient-to-t from-black/50 via-black/25 to-transparent px-6 pb-5 pt-14 backdrop-blur-xl md:px-9 md:pb-7 md:pt-16">
-                <CloseWarpDialogButton />
+              {/* ── Footer fisso con blur ── */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 px-6 pb-4 pt-7 md:px-9 md:pb-5 md:pt-8">
+                <div
+                  aria-hidden="true"
+                  className="absolute -inset-x-6 bottom-36 h-24 md:-inset-x-9 bg-[linear-gradient(180deg,rgba(22,30,46,0)_0%,rgba(22,30,46,.2)_48%,rgba(18,25,40,.44)_100%)] blur-2xl"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute -inset-x-6 bottom-0 h-44 rounded-b-[inherit] bg-[linear-gradient(180deg,rgba(18,25,40,0)_0%,rgba(18,25,40,.42)_30%,rgba(14,20,32,.74)_65%,rgba(12,18,28,.88)_100%)] shadow-[0_-20px_46px_rgba(0,0,0,.34)] backdrop-blur-[26px] backdrop-brightness-95 backdrop-saturate-145 md:-inset-x-9 [mask-image:linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,.16)_18%,rgba(0,0,0,.58)_52%,rgba(0,0,0,.86)_80%,black_100%)]"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute -inset-x-6 bottom-0 h-40 rounded-b-[inherit] bg-[radial-gradient(90%_70%_at_12%_100%,color-mix(in_srgb,var(--ambient-1)_30%,transparent),transparent_72%),radial-gradient(90%_70%_at_88%_100%,color-mix(in_srgb,var(--ambient-2)_28%,transparent),transparent_74%),radial-gradient(70%_58%_at_50%_100%,color-mix(in_srgb,var(--ambient-3)_24%,transparent),transparent_76%)] opacity-90 md:-inset-x-9 [mask-image:linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,.3)_34%,rgba(0,0,0,.74)_70%,black_100%)]"
+                />
+                <div className="relative flex justify-end">
+                  <CloseWarpDialogButton />
+                </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -173,7 +195,7 @@ function CloseWarpDialogButton() {
     <button
       type="button"
       onClick={() => setOpen(false)}
-      className="pointer-events-auto rounded-full border border-white/15 bg-white/14 px-5 py-2 text-white shadow-[0_16px_48px_rgba(0,0,0,.35)] backdrop-blur-2xl transition hover:bg-white/24 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
+      className="pointer-events-auto rounded-full border border-white/20 bg-white/[0.22] px-5 py-2 text-white shadow-[0_16px_48px_rgba(0,0,0,.35)] backdrop-blur-2xl transition hover:bg-white/[0.32] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
     >
       Chiudi
     </button>
