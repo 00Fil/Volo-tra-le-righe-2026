@@ -175,7 +175,35 @@ export default function Home() {
         visible={showPlayer}
         onPlayingChange={setMusicPlaying}
       />
+      <CuteWatermark />
     </main>
+  );
+}
+
+function CuteWatermark() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="fixed right-[calc(env(safe-area-inset-right)+1rem)] top-[calc(env(safe-area-inset-top)+1rem)] z-[70] flex items-center justify-end gap-2 text-white">
+      <div
+        className={`pointer-events-none rounded-full border border-white/12 bg-black/35 px-3 py-2 text-xs font-medium shadow-[0_18px_52px_rgba(0,0,0,.36)] backdrop-blur-2xl transition duration-300 ${
+          open
+            ? "translate-x-0 opacity-100 blur-0"
+            : "translate-x-3 opacity-0 blur-sm"
+        }`}
+      >
+        Developed by FC :)
+      </div>
+      <button
+        type="button"
+        aria-label="Mostra watermark"
+        aria-expanded={open}
+        onClick={() => setOpen((value) => !value)}
+        className="group grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/10 text-sm font-semibold shadow-[0_18px_52px_rgba(0,0,0,.36),inset_0_1px_0_rgba(255,255,255,.16)] backdrop-blur-2xl transition hover:scale-105 hover:bg-white/16 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
+      >
+        <span className="transition group-hover:scale-110">:3</span>
+      </button>
+    </div>
   );
 }
 

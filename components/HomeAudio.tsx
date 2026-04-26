@@ -2,6 +2,7 @@
 
 import { Pause, Play } from "lucide-react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import {
   useEffect,
   useMemo,
@@ -19,10 +20,11 @@ const LyricPlayer = dynamic(
 // ── Constants ──────────────────────────────────────────────────────────────────
 
 const LYRICS_SYNC_DELAY_MS = 900;
-const LYRICS_PANEL_HEIGHT  = 160;
+const LYRICS_PANEL_HEIGHT  = 180;
 const AUDIO_SRC            = "/audio/00-home.mp3";
-const TRACK_ARTIST         = "Artist";   // ← sostituisci
-const TRACK_TITLE          = "Tema";     // ← sostituisci
+const TRACK_ARTIST         = "Cecilia Krull";
+const TRACK_TITLE          = "My Life Is Going On";
+const ALBUM_ART            = "https://t2.genius.com/unsafe/344x344/https%3A%2F%2Fimages.genius.com%2F96b7506d263166706c454aa33fb4bd8d.1000x1000x1.jpg";
 
 const homeAudioStyle = {
   "--ambient-1": "#111827",
@@ -74,44 +76,40 @@ function runSpring(
 // ── Orchestra ──────────────────────────────────────────────────────────────────
 
 interface OrchestraTargets {
-  drawer:  HTMLDivElement    | null;
-  shell:   HTMLDivElement    | null;
-  pill:    HTMLDivElement    | null;
-  btn:     HTMLButtonElement | null;
+  drawer:  HTMLDivElement | null;
+  shell:   HTMLDivElement | null;
+  pill:    HTMLDivElement | null;
+  btn:     HTMLDivElement | null;
 }
 
 function applyOrchestra(v: number, els: OrchestraTargets) {
   const clamped = Math.max(0, Math.min(v, 1));
   const over    = v - clamped;
 
-  // ── Drawer height + opacity ──────────────────────────────────────────────
   if (els.drawer) {
     const h      = Math.max(0, v * LYRICS_PANEL_HEIGHT);
-    const squish = 1 - Math.abs(over) * 0.08;
+    const squish = 1 - Math.abs(over) * 0.06;
     els.drawer.style.height          = `${h}px`;
-    els.drawer.style.opacity         = `${Math.min(1, v * 3)}`;
+    els.drawer.style.opacity         = `${Math.min(1, v * 2.5)}`;
     els.drawer.style.transform       = `scaleY(${squish})`;
     els.drawer.style.transformOrigin =
       over >= 0 ? "bottom center" : "top center";
     els.drawer.style.pointerEvents   = v > 0.08 ? "auto" : "none";
   }
 
-  // ── Shell lift ────────────────────────────────────────────────────────────
   if (els.shell) {
     const lift = clamped * -4 + over * 14;
     els.shell.style.transform = `translateY(${lift}px)`;
   }
 
-  // ── Pill width stretch: si allarga un po' sull'apertura ───────────────────
   if (els.pill) {
-    const scaleX = 1 + clamped * 0.04 + over * -0.06;
+    const scaleX = 1 + clamped * 0.015 + over * -0.04;
     els.pill.style.transform       = `scaleX(${scaleX})`;
     els.pill.style.transformOrigin = "center top";
   }
 
-  // ── Button nudge: leggero push-down ───────────────────────────────────────
   if (els.btn) {
-    const pushY = clamped * 1.5 + over * -6;
+    const pushY = clamped * 1 + over * -4;
     els.btn.style.transform = `translateY(${pushY}px)`;
   }
 }
@@ -119,18 +117,18 @@ function applyOrchestra(v: number, els: OrchestraTargets) {
 interface OrchestraState { pos: number; vel: number }
 
 function useOrchestra(isOpen: boolean) {
-  const drawerRef = useRef<HTMLDivElement    | null>(null);
-  const shellRef  = useRef<HTMLDivElement    | null>(null);
-  const pillRef   = useRef<HTMLDivElement    | null>(null);
-  const btnRef    = useRef<HTMLButtonElement | null>(null);
+  const drawerRef = useRef<HTMLDivElement | null>(null);
+  const shellRef  = useRef<HTMLDivElement | null>(null);
+  const pillRef   = useRef<HTMLDivElement | null>(null);
+  const btnRef    = useRef<HTMLDivElement | null>(null);
 
   const stateRef  = useRef<OrchestraState>({ pos: 0, vel: 0 });
   const cancelRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     cancelRef.current?.();
-    const target        = isOpen ? 1 : 0;
-    const { pos, vel }  = stateRef.current;
+    const target       = isOpen ? 1 : 0;
+    const { pos, vel } = stateRef.current;
     const opts: SpringOpts = isOpen
       ? { stiffness: 280, damping: 18, mass: 1, precision: 0.0005 }
       : { stiffness: 260, damping: 20, mass: 1, precision: 0.0005 };
@@ -277,33 +275,60 @@ function LiveLyricsPanel({
     [lyrics],
   );
 
+  const syncedTimeMs = Math.max(
+    0,
+    Math.floor(currentTimeMs - LYRICS_SYNC_DELAY_MS),
+  );
+
   if (lyrics.status === "loading")
     return (
-      <p className="px-2 py-1 text-xs text-white/55">
-        Caricamento lyrics…
-      </p>
-    );
-  if (lyrics.status === "error")
-    return (
-      <p className="px-2 py-1 text-xs text-white/50">
-        Lyrics non disponibili.
-      </p>
-    );
-  if (lyrics.data.instrumental)
-    return (
-      <p className="px-2 py-1 text-xs text-white/50">Brano strumentale.</p>
-    );
-  if (lyricLines.length === 0)
-    return (
-      <p className="px-2 py-1 text-xs text-white/60">Lyrics non trovate.</p>
+      <div className="flex h-full items-center justify-center">
+        <p className="text-[11px]" style={{ color: "rgba(255,255,255,0.3)" }}>
+          Loading…
+        </p>
+      </div>
     );
 
-  const syncedTimeMs = Math.max(0, Math.floor(currentTimeMs - LYRICS_SYNC_DELAY_MS));
+  if (
+    lyrics.status === "error" ||
+    (lyrics.status === "ready" && lyricLines.length === 0)
+  )
+    return (
+      <div className="flex h-full items-center justify-center">
+        <p className="text-[11px]" style={{ color: "rgba(255,255,255,0.25)" }}>
+          No lyrics available
+        </p>
+      </div>
+    );
+
+  if (lyrics.status === "ready" && lyrics.data.instrumental)
+    return (
+      <div className="flex h-full items-center justify-center">
+        <p className="text-[11px]" style={{ color: "rgba(255,255,255,0.25)" }}>
+          Instrumental
+        </p>
+      </div>
+    );
 
   return (
     <div className="relative h-full overflow-hidden">
+      {/* top fade */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-10"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(14,16,21,0.95), transparent)",
+        }}
+      />
       <LyricPlayer
         className="h-full w-full"
+        style={
+          {
+            "--amll-lyric-player-font-size": "13px",
+            "--amll-lyric-view-color": "rgba(255,255,255,0.85)",
+            "--amll-lyric-view-inactive-color": "rgba(255,255,255,0.28)",
+          } as CSSProperties
+        }
         lyricLines={lyricLines}
         currentTime={syncedTimeMs}
         playing={playing}
@@ -314,6 +339,79 @@ function LiveLyricsPanel({
         enableScale
         wordFadeWidth={0.5}
       />
+      {/* bottom fade */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-10"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(14,16,21,0.95), transparent)",
+        }}
+      />
+    </div>
+  );
+}
+
+// ── Progress bar ───────────────────────────────────────────────────────────────
+
+function ProgressBar({
+  currentTime,
+  duration,
+  onSeek,
+}: {
+  currentTime: number;
+  duration: number;
+  onSeek: (t: number) => void;
+}) {
+  const barRef = useRef<HTMLDivElement>(null);
+  const pct    = duration > 0 ? (currentTime / duration) * 100 : 0;
+
+  function handleClick(e: React.MouseEvent<HTMLDivElement>) {
+    if (!barRef.current || duration === 0) return;
+    const rect  = barRef.current.getBoundingClientRect();
+    const ratio = Math.max(
+      0,
+      Math.min(1, (e.clientX - rect.left) / rect.width),
+    );
+    onSeek(ratio * duration);
+  }
+
+  function fmt(s: number) {
+    if (!isFinite(s)) return "0:00";
+    const m   = Math.floor(s / 60);
+    const sec = Math.floor(s % 60)
+      .toString()
+      .padStart(2, "0");
+    return `${m}:${sec}`;
+  }
+
+  return (
+    <div className="flex flex-col gap-1 px-4 pb-3">
+      <div
+        ref={barRef}
+        onClick={handleClick}
+        className="group relative h-[3px] w-full cursor-pointer rounded-full"
+        style={{ background: "rgba(255,255,255,0.1)" }}
+      >
+        <div
+          className="absolute inset-y-0 left-0 rounded-full"
+          style={{
+            width: `${pct}%`,
+            background: "rgba(255,255,255,0.7)",
+            transition: "width 0.1s linear",
+          }}
+        />
+        <div
+          className="absolute top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-white opacity-0 shadow transition-opacity group-hover:opacity-100"
+          style={{ left: `calc(${pct}% - 5px)` }}
+        />
+      </div>
+      <div
+        className="flex justify-between tabular-nums"
+        style={{ color: "rgba(255,255,255,0.3)", fontSize: 10 }}
+      >
+        <span>{fmt(currentTime)}</span>
+        <span>{fmt(duration)}</span>
+      </div>
     </div>
   );
 }
@@ -326,28 +424,27 @@ type HomeAudioProps = {
 };
 
 export function HomeAudio({ visible, onPlayingChange }: HomeAudioProps) {
-  const audioRef   = useRef<HTMLAudioElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [hasError,  setHasError]  = useState(false);
+  const audioRef      = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying,   setIsPlaying]   = useState(false);
+  const [hasError,    setHasError]    = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
+  const [duration,    setDuration]    = useState(0);
 
-  // Lyrics panel opens when playing
   const lyricsOpen = isPlaying;
   const lyrics     = useTrackLyrics(TRACK_ARTIST, TRACK_TITLE);
 
   const { drawerRef, shellRef, pillRef, btnRef } = useOrchestra(lyricsOpen);
 
-  // Notify parent
-  useEffect(() => { onPlayingChange?.(isPlaying); }, [isPlaying, onPlayingChange]);
+  useEffect(() => {
+    onPlayingChange?.(isPlaying);
+  }, [isPlaying, onPlayingChange]);
 
-  // Pause when hidden
   useEffect(() => {
     if (visible) return;
     audioRef.current?.pause();
     setIsPlaying(false);
   }, [visible]);
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => {
       audioRef.current?.pause();
@@ -358,13 +455,11 @@ export function HomeAudio({ visible, onPlayingChange }: HomeAudioProps) {
   async function togglePlayback() {
     const audio = audioRef.current;
     if (!audio || hasError) return;
-
     if (isPlaying) {
       audio.pause();
       setIsPlaying(false);
       return;
     }
-
     try {
       await audio.play();
       setIsPlaying(true);
@@ -373,104 +468,213 @@ export function HomeAudio({ visible, onPlayingChange }: HomeAudioProps) {
     }
   }
 
+  function handleSeek(t: number) {
+    if (!audioRef.current) return;
+    audioRef.current.currentTime = t;
+    setCurrentTime(t);
+  }
+
   return (
-    <div
-      className={`relative transition duration-500 ${
-        visible
-          ? "translate-y-0 opacity-100"
-          : "pointer-events-none translate-y-3 opacity-0"
-      }`}
-      style={homeAudioStyle}
-      data-playing={isPlaying ? "true" : "false"}
-    >
-      <audio
-        ref={audioRef}
-        src={AUDIO_SRC}
-        preload="metadata"
-        loop
-        onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
-        onError={() => { setHasError(true); setIsPlaying(false); }}
-      />
+    <>
+      <style>{`
+        @keyframes amll-pulse {
+          0%, 100% { opacity: 1;  transform: scale(1);   }
+          50%       { opacity: .4; transform: scale(.65); }
+        }
+        .player-pulse { animation: amll-pulse 1.8s ease-in-out infinite; }
+      `}</style>
 
-      {/* Shell — riceve il lift transform */}
       <div
-        ref={shellRef}
-        className="relative"
-        style={{ willChange: "transform" }}
+        className={`relative transition duration-500 ${
+          visible
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-3 opacity-0"
+        }`}
+        style={
+          {
+            ...homeAudioStyle,
+            width: "100%",
+            maxWidth: 400,
+          } as CSSProperties
+        }
+        data-playing={isPlaying ? "true" : "false"}
       >
-        {/* Pill */}
-        <div
-          ref={pillRef}
-          className="relative overflow-hidden rounded-2xl text-white shadow-[0_18px_60px_rgba(0,0,0,.34)] backdrop-blur-2xl"
-          style={{
-            background:
-              "linear-gradient(145deg, var(--ambient-1) 0%, color-mix(in srgb, var(--ambient-2) 40%, var(--ambient-dark)) 100%)",
-            willChange: "transform",
+        <audio
+          ref={audioRef}
+          src={AUDIO_SRC}
+          preload="metadata"
+          loop
+          onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
+          onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+          onError={() => {
+            setHasError(true);
+            setIsPlaying(false);
           }}
-        >
-          {/* Subtle top-edge highlight */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+        />
 
-          {/* ── Spring lyrics drawer ── */}
+        <div
+          ref={shellRef}
+          className="relative"
+          style={{ willChange: "transform" }}
+        >
+          {/* Card */}
           <div
-            ref={drawerRef}
+            ref={pillRef}
+            className="relative overflow-hidden rounded-[28px] text-white"
             style={{
-              height: 0,
-              opacity: 0,
-              overflow: "hidden",
-              pointerEvents: "none",
-              willChange: "height, opacity, transform",
+              background: "rgba(14,16,21,0.96)",
+              boxShadow: [
+                "0 32px 64px rgba(0,0,0,.6)",
+                "0 0 0 0.5px rgba(255,255,255,0.07) inset",
+              ].join(", "),
+              backdropFilter: "blur(40px)",
+              WebkitBackdropFilter: "blur(40px)",
+              willChange: "transform",
             }}
           >
+            {/* Subtle top gloss */}
             <div
-              className="px-4 pb-2 pt-3"
-              style={{ height: LYRICS_PANEL_HEIGHT }}
+              className="pointer-events-none absolute inset-x-0 top-0 h-px"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.10) 50%, transparent 100%)",
+              }}
+            />
+
+            {/* ── Lyrics drawer ── */}
+            <div
+              ref={drawerRef}
+              style={{
+                height: 0,
+                opacity: 0,
+                overflow: "hidden",
+                pointerEvents: "none",
+                willChange: "height, opacity, transform",
+              }}
             >
-              <LiveLyricsPanel
-                lyrics={lyrics}
-                currentTimeMs={currentTime * 1000}
-                playing={isPlaying}
+              <div
+                style={{ height: LYRICS_PANEL_HEIGHT }}
+                className="px-5 pt-4 pb-1"
+              >
+                <LiveLyricsPanel
+                  lyrics={lyrics}
+                  currentTimeMs={currentTime * 1000}
+                  playing={isPlaying}
+                />
+              </div>
+            </div>
+
+            {/* ── Progress bar ── */}
+            <div
+              style={{
+                maxHeight: isPlaying ? 40 : 0,
+                opacity: isPlaying ? 1 : 0,
+                overflow: "hidden",
+                transition: "max-height 0.4s ease, opacity 0.4s ease",
+              }}
+            >
+              <ProgressBar
+                currentTime={currentTime}
+                duration={duration}
+                onSeek={handleSeek}
               />
             </div>
-          </div>
 
-          {/* ── Button row ── */}
-          <div className="px-2 py-2">
-            <button
+            {/* ── Main row ── */}
+            <div
               ref={btnRef}
-              type="button"
-              onClick={togglePlayback}
-              disabled={hasError}
-              className="relative z-10 inline-flex items-center gap-3 rounded-full px-3 py-2 text-sm font-medium transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
-              aria-label={isPlaying ? "Ferma musica home" : "Avvia musica home"}
+              className="flex items-center gap-3 px-4 py-4"
               style={{ willChange: "transform" }}
             >
-              {/* Icon circle */}
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-white/15 shadow-[0_0_34px_color-mix(in_srgb,var(--ambient-3)_48%,transparent)]">
-                {isPlaying ? (
-                  <Pause className="h-4 w-4" aria-hidden="true" />
+              {/* Album art */}
+              <div
+                className="relative shrink-0 overflow-hidden rounded-xl"
+                style={{
+                  width: 48,
+                  height: 48,
+                  boxShadow: "0 6px 20px rgba(0,0,0,.5)",
+                }}
+              >
+                <Image
+                  src={ALBUM_ART}
+                  alt={`${TRACK_TITLE} cover`}
+                  fill
+                  sizes="48px"
+                  className="object-cover"
+                  unoptimized
+                />
+              </div>
+
+              {/* Track info */}
+              <div className="min-w-0 flex-1">
+                {hasError ? (
+                  <span
+                    className="text-sm"
+                    style={{ color: "rgba(255,255,255,0.4)" }}
+                  >
+                    Audio not found
+                  </span>
                 ) : (
-                  <Play className="ml-0.5 h-4 w-4" aria-hidden="true" />
+                  <>
+                    <p className="truncate text-[14px] font-semibold leading-snug tracking-tight text-white">
+                      {TRACK_TITLE}
+                    </p>
+                    <p
+                      className="truncate text-[12px] leading-snug"
+                      style={{ color: "rgba(255,255,255,0.45)" }}
+                    >
+                      {TRACK_ARTIST}
+                    </p>
+                  </>
                 )}
-              </span>
+              </div>
 
-              {/* Label */}
-              <span className="hidden sm:inline">
-                {hasError ? "Audio non trovato" : isPlaying ? "In ascolto" : "Tema"}
-              </span>
-
-              {/* Pulse dot */}
+              {/* Live indicator dot */}
               <span
-                className={`h-2 w-2 rounded-full transition-opacity ${
-                  isPlaying ? "player-pulse" : "opacity-55"
-                }`}
-                style={{ backgroundColor: "var(--ambient-3)" }}
+                className={isPlaying ? "player-pulse" : ""}
+                style={{
+                  display: "block",
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  background: "var(--ambient-3)",
+                  opacity: isPlaying ? 1 : 0.3,
+                  flexShrink: 0,
+                  transition: "opacity 0.3s",
+                }}
                 aria-hidden="true"
               />
-            </button>
+
+              {/* Play / Pause */}
+              <button
+                type="button"
+                onClick={togglePlayback}
+                disabled={hasError}
+                aria-label={isPlaying ? "Pause" : "Play"}
+                className="relative shrink-0 grid place-items-center rounded-full transition-transform active:scale-90 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none"
+                style={{
+                  width: 36,
+                  height: 36,
+                  background: "rgba(255,255,255,0.12)",
+                  boxShadow: "0 0 0 0.5px rgba(255,255,255,0.08) inset",
+                }}
+              >
+                {isPlaying ? (
+                  <Pause
+                    className="h-[14px] w-[14px] fill-white text-white"
+                    aria-hidden
+                  />
+                ) : (
+                  <Play
+                    className="ml-[2px] h-[14px] w-[14px] fill-white text-white"
+                    aria-hidden
+                  />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
