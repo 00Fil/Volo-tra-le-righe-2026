@@ -37,7 +37,7 @@ export const tracks: Track[] = [
     imageSrc: "/images/01-heathens.jpg",
     canvasSrc: "/canvas/01-heathens.mp4",
     audioSrc: "/audio/01-heathens.mp3",
-    cueStartSeconds: 52,
+    cueStartSeconds: 22,
     palette: {
       ambient1: "#2E3438",
       ambient2: "#6B7F6A",

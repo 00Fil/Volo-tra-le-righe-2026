@@ -1,6 +1,7 @@
 "use client";
 
 import { Pause, Play } from "lucide-react";
+import dynamic from "next/dynamic";
 import {
   useEffect,
   useMemo,
@@ -13,11 +14,53 @@ import type { Track } from "@/data/tracks";
 import { SongDialog } from "./SongDialog";
 import Grainient from "@/components/Grainient";
 
+const LyricPlayer = dynamic(
+  () =>
+    import("@applemusic-like-lyrics/react").then(
+      (mod) => mod.LyricPlayer,
+    ),
+  { ssr: false },
+);
+
+const LYRICS_SYNC_DELAY_MS = 900;
+
 // ── Hook ──────────────────────────────────────────────────────────────────────
 
 type CoverState =
   | { status: "loading" }
   | { status: "ready"; url: string }
+  | { status: "error" };
+
+type LyricsLine = {
+  timeMs?: number;
+  text: string;
+};
+
+type LyricsResponse = {
+  source: "synced" | "plain" | "none";
+  lines: LyricsLine[];
+  instrumental: boolean;
+};
+
+type AmlLyricWord = {
+  startTime: number;
+  endTime: number;
+  word: string;
+};
+
+type AmlLyricLine = {
+  words: AmlLyricWord[];
+  translatedLyric: string;
+  romanLyric: string;
+  startTime: number;
+  endTime: number;
+  isBG: boolean;
+  isDuet: boolean;
+};
+
+type LyricsState =
+  | { status: "loading" }
+  | { status: "ready"; data: LyricsResponse }
   | { status: "error" };
 
 function useCoverArt(
@@ -74,6 +117,44 @@ function useCoverArt(
   return { src: fallbackSrc, loading: false };
 }
 
+function useTrackLyrics(artist: string, title: string) {
+  const [state, setState] = useState<LyricsState>({ status: "loading" });
+
+  useEffect(() => {
+    setState({ status: "loading" });
+    const controller = new AbortController();
+
+    async function run() {
+      try {
+        const params = new URLSearchParams({ artist, title });
+        const response = await fetch(`/api/lyrics?${params.toString()}`, {
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error("lyrics-request-failed");
+        }
+
+        const data = (await response.json()) as LyricsResponse;
+        setState({ status: "ready", data });
+      } catch (error) {
+        if (
+          error instanceof DOMException &&
+          error.name === "AbortError"
+        ) {
+          return;
+        }
+        setState({ status: "error" });
+      }
+    }
+
+    run();
+    return () => controller.abort();
+  }, [artist, title]);
+
+  return state;
+}
+
 // ── Component ─────────────────────────────────────────────────────────────────
 
 type GlassPlayerProps = {
@@ -109,6 +190,7 @@ export function GlassPlayer({
     activeTrack.title,
     activeTrack.imageSrc,
   );
+  const lyrics = useTrackLyrics(activeTrack.artist, activeTrack.title);
 
   const cssVars = useMemo(
     () =>
@@ -214,7 +296,7 @@ export function GlassPlayer({
 
   return (
     <div
-      className={`fixed bottom-4 left-1/2 z-50 w-[calc(100%-24px)] max-w-4xl -translate-x-1/2 transition duration-500 ${
+      className={`group/player fixed bottom-4 left-1/2 z-50 w-[calc(100%-24px)] max-w-4xl -translate-x-1/2 transition duration-500 ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-10 opacity-0"
@@ -298,6 +380,16 @@ export function GlassPlayer({
 
         {/* Top highlight */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+
+        <div className="relative z-10 max-h-0 overflow-hidden opacity-0 transition-[max-height,opacity] duration-300 ease-out pointer-events-none group-hover/player:max-h-56 group-hover/player:opacity-100 group-hover/player:pointer-events-auto group-focus-within/player:max-h-56 group-focus-within/player:opacity-100 group-focus-within/player:pointer-events-auto">
+          <div className="px-3 pb-2 pt-2 sm:px-4 sm:pb-3 sm:pt-3">
+            <LiveLyricsPanel
+              lyrics={lyrics}
+              currentTimeMs={currentTime * 1000}
+              playing={isPlaying}
+            />
+          </div>
+        </div>
 
         {/* Content */}
         <div className="relative flex items-center gap-3 p-3 sm:gap-4 sm:p-4">
@@ -429,6 +521,135 @@ export function GlassPlayer({
       </div>
     </div>
   );
+}
+
+function LiveLyricsPanel({
+  lyrics,
+  currentTimeMs,
+  playing,
+}: {
+  lyrics: LyricsState;
+  currentTimeMs: number;
+  playing: boolean;
+}) {
+  const lyricLines = useMemo(
+    () => (lyrics.status === "ready" ? mapToAmlLyricLines(lyrics.data) : []),
+    [lyrics],
+  );
+
+  if (lyrics.status === "loading") {
+    return (
+      <div className="px-2 py-1 text-sm text-white/65">
+        Caricamento lyrics...
+      </div>
+    );
+  }
+
+  if (lyrics.status === "error") {
+    return (
+      <div className="px-2 py-1 text-sm text-white/60">
+        Lyrics non disponibili al momento.
+      </div>
+    );
+  }
+
+  if (lyrics.data.instrumental) {
+    return (
+      <div className="px-2 py-1 text-sm text-white/60">
+        Brano strumentale.
+      </div>
+    );
+  }
+
+  if (lyricLines.length === 0) {
+    return (
+      <div className="px-2 py-1 text-sm text-white/75">
+        Lyrics non trovate.
+      </div>
+    );
+  }
+
+  const syncedTimeMs = Math.max(
+    0,
+    Math.floor(currentTimeMs - LYRICS_SYNC_DELAY_MS),
+  );
+
+  return (
+    <div className="amll-live-shell relative h-[152px] overflow-hidden">
+      <div className="relative h-full px-1">
+        <LyricPlayer
+          className="h-full w-full"
+          lyricLines={lyricLines}
+          currentTime={syncedTimeMs}
+          playing={playing}
+          alignAnchor="center"
+          alignPosition={0.52}
+          enableSpring
+          enableBlur
+          enableScale
+          wordFadeWidth={0.5}
+        />
+      </div>
+    </div>
+  );
+}
+
+function mapToAmlLyricLines(data: LyricsResponse): AmlLyricLine[] {
+  if (!data.lines.length) {
+    return [];
+  }
+
+  if (data.source === "synced") {
+    const timed = data.lines
+      .filter((line): line is { timeMs: number; text: string } =>
+        typeof line.timeMs === "number" && line.text.trim().length > 0,
+      )
+      .sort((a, b) => a.timeMs - b.timeMs);
+
+    return timed.map((line, index) => {
+      const startTime = Math.max(0, Math.floor(line.timeMs));
+      const nextStart = timed[index + 1]?.timeMs;
+      const fallbackEnd = startTime + 5200;
+      const endTime = Math.max(
+        startTime + 900,
+        Math.floor(nextStart ?? fallbackEnd),
+      );
+
+      return createAmlLine(line.text, startTime, endTime);
+    });
+  }
+
+  return data.lines
+    .map((line) => line.text.trim())
+    .filter(Boolean)
+    .map((text, index) => {
+      const startTime = index * 4200;
+      return createAmlLine(text, startTime, startTime + 4200);
+    });
+}
+
+function createAmlLine(
+  text: string,
+  startTime: number,
+  endTime: number,
+): AmlLyricLine {
+  const safeText = text.trim();
+
+  return {
+    words: [
+      {
+        startTime,
+        endTime,
+        word: safeText,
+      },
+    ],
+    translatedLyric: "",
+    romanLyric: "",
+    startTime,
+    endTime,
+    isBG: false,
+    isDuet: false,
+  };
 }
 
 function formatTime(value: number) {

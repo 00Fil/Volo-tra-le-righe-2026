@@ -1,0 +1,1059 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.2
+2 info using node@v22.16.0
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\filip\OneDrive\Desktop\asdasda\.npmrc
+5 silly config load:file:C:\Users\filip\.npmrc
+6 silly config load:file:C:\Users\filip\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm i @applemusic-like-lyrics/react
+8 verbose argv "i" "@applemusic-like-lyrics/react" "--cache" ".npm-cache"
+9 verbose logfile logs-max:10 dir:C:\Users\filip\OneDrive\Desktop\asdasda\.npm-cache\_logs\2026-04-26T19_54_31_151Z-
+10 verbose logfile C:\Users\filip\OneDrive\Desktop\asdasda\.npm-cache\_logs\2026-04-26T19_54_31_151Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+13 silly idealTree buildDeps
+14 silly fetch manifest @applemusic-like-lyrics/react@*
+15 silly packumentCache full:https://registry.npmjs.org/@applemusic-like-lyrics%2freact cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/@applemusic-like-lyrics%2freact 155ms (cache miss)
+17 silly packumentCache full:https://registry.npmjs.org/@applemusic-like-lyrics%2freact set size:undefined disposed:false
+18 silly fetch manifest @pixi/app@*
+19 silly packumentCache full:https://registry.npmjs.org/@pixi%2fapp cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/npm 357ms
+21 http fetch GET 200 https://registry.npmjs.org/@pixi%2fapp 502ms (cache miss)
+22 silly packumentCache full:https://registry.npmjs.org/@pixi%2fapp set size:undefined disposed:false
+23 silly fetch manifest @pixi/core@7.4.3
+24 silly packumentCache full:https://registry.npmjs.org/@pixi%2fcore cache-miss
+25 http fetch GET 200 https://registry.npmjs.org/@pixi%2fcore 455ms (cache miss)
+26 silly packumentCache full:https://registry.npmjs.org/@pixi%2fcore set size:undefined disposed:false
+27 silly fetch manifest @pixi/display@7.4.3
+28 silly packumentCache full:https://registry.npmjs.org/@pixi%2fdisplay cache-miss
+29 http fetch GET 200 https://registry.npmjs.org/@pixi%2fdisplay 514ms (cache miss)
+30 silly packumentCache full:https://registry.npmjs.org/@pixi%2fdisplay set size:undefined disposed:false
+31 silly fetch manifest @pixi/filter-blur@*
+32 silly packumentCache full:https://registry.npmjs.org/@pixi%2ffilter-blur cache-miss
+33 http fetch GET 200 https://registry.npmjs.org/@pixi%2ffilter-blur 826ms (cache miss)
+34 silly packumentCache full:https://registry.npmjs.org/@pixi%2ffilter-blur set size:undefined disposed:false
+35 silly fetch manifest @pixi/filter-color-matrix@*
+36 silly packumentCache full:https://registry.npmjs.org/@pixi%2ffilter-color-matrix cache-miss
+37 http fetch GET 200 https://registry.npmjs.org/@pixi%2ffilter-color-matrix 461ms (cache miss)
+38 silly packumentCache full:https://registry.npmjs.org/@pixi%2ffilter-color-matrix set size:undefined disposed:false
+39 silly fetch manifest @pixi/sprite@*
+40 silly packumentCache full:https://registry.npmjs.org/@pixi%2fsprite cache-miss
+41 http fetch GET 200 https://registry.npmjs.org/@pixi%2fsprite 457ms (cache miss)
+42 silly packumentCache full:https://registry.npmjs.org/@pixi%2fsprite set size:undefined disposed:false
+43 silly fetch manifest react@^19.0.0
+44 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+45 http fetch GET 200 https://registry.npmjs.org/react 243ms (cache miss)
+46 silly packumentCache full:https://registry.npmjs.org/react set size:undefined disposed:false
+47 silly fetch manifest react-dom@^19.0.0
+48 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+49 http fetch GET 200 https://registry.npmjs.org/react-dom 310ms (cache miss)
+50 silly packumentCache full:https://registry.npmjs.org/react-dom set size:undefined disposed:false
+51 silly placeDep ROOT @applemusic-like-lyrics/react@0.4.1 OK for: volo-tra-le-righe-playlist@0.1.0 want: *
+52 silly placeDep ROOT @pixi/app@7.4.3 OK for: @applemusic-like-lyrics/react@0.4.1 want: *
+53 silly placeDep ROOT @pixi/core@7.4.3 OK for: @pixi/app@7.4.3 want: 7.4.3
+54 silly placeDep ROOT @pixi/display@7.4.3 OK for: @pixi/app@7.4.3 want: 7.4.3
+55 silly placeDep ROOT @pixi/filter-blur@7.4.3 OK for: @applemusic-like-lyrics/react@0.4.1 want: *
+56 silly placeDep ROOT @pixi/filter-color-matrix@7.4.3 OK for: @applemusic-like-lyrics/react@0.4.1 want: *
+57 silly placeDep ROOT @pixi/sprite@7.4.3 OK for: @applemusic-like-lyrics/react@0.4.1 want: *
+58 silly fetch manifest @applemusic-like-lyrics/core@^0.4.1
+59 silly packumentCache full:https://registry.npmjs.org/@applemusic-like-lyrics%2fcore cache-miss
+60 silly fetch manifest @pixi/math@7.4.3
+61 silly packumentCache full:https://registry.npmjs.org/@pixi%2fmath cache-miss
+62 silly fetch manifest @pixi/color@7.4.3
+63 silly packumentCache full:https://registry.npmjs.org/@pixi%2fcolor cache-miss
+64 silly fetch manifest @pixi/utils@7.4.3
+65 silly packumentCache full:https://registry.npmjs.org/@pixi%2futils cache-miss
+66 silly fetch manifest @pixi/runner@7.4.3
+67 silly packumentCache full:https://registry.npmjs.org/@pixi%2frunner cache-miss
+68 silly fetch manifest @pixi/ticker@7.4.3
+69 silly packumentCache full:https://registry.npmjs.org/@pixi%2fticker cache-miss
+70 silly fetch manifest @pixi/settings@7.4.3
+71 silly packumentCache full:https://registry.npmjs.org/@pixi%2fsettings cache-miss
+72 silly fetch manifest @pixi/constants@7.4.3
+73 silly packumentCache full:https://registry.npmjs.org/@pixi%2fconstants cache-miss
+74 silly fetch manifest @pixi/extensions@7.4.3
+75 silly packumentCache full:https://registry.npmjs.org/@pixi%2fextensions cache-miss
+76 http fetch GET 200 https://registry.npmjs.org/@pixi%2fmath 507ms (cache miss)
+77 silly packumentCache full:https://registry.npmjs.org/@pixi%2fmath set size:undefined disposed:false
+78 http fetch GET 200 https://registry.npmjs.org/@pixi%2fextensions 547ms (cache miss)
+79 silly packumentCache full:https://registry.npmjs.org/@pixi%2fextensions set size:undefined disposed:false
+80 http fetch GET 200 https://registry.npmjs.org/@pixi%2fcolor 552ms (cache miss)
+81 silly packumentCache full:https://registry.npmjs.org/@pixi%2fcolor set size:undefined disposed:false
+82 http fetch GET 200 https://registry.npmjs.org/@pixi%2fconstants 557ms (cache miss)
+83 silly packumentCache full:https://registry.npmjs.org/@pixi%2fconstants set size:undefined disposed:false
+84 http fetch GET 200 https://registry.npmjs.org/@applemusic-like-lyrics%2fcore 581ms (cache miss)
+85 silly packumentCache full:https://registry.npmjs.org/@applemusic-like-lyrics%2fcore set size:undefined disposed:false
+86 http fetch GET 200 https://registry.npmjs.org/@pixi%2frunner 589ms (cache miss)
+87 silly packumentCache full:https://registry.npmjs.org/@pixi%2frunner set size:undefined disposed:false
+88 http fetch GET 200 https://registry.npmjs.org/@pixi%2fticker 627ms (cache miss)
+89 silly packumentCache full:https://registry.npmjs.org/@pixi%2fticker set size:undefined disposed:false
+90 http fetch GET 200 https://registry.npmjs.org/@pixi%2futils 988ms (cache miss)
+91 silly packumentCache full:https://registry.npmjs.org/@pixi%2futils set size:undefined disposed:false
+92 http fetch GET 200 https://registry.npmjs.org/@pixi%2fsettings 3209ms (cache miss)
+93 silly packumentCache full:https://registry.npmjs.org/@pixi%2fsettings set size:undefined disposed:false
+94 silly fetch manifest @pixi/core@*
+95 silly packumentCache full:https://registry.npmjs.org/@pixi%2fcore cache-miss
+96 http cache https://registry.npmjs.org/@pixi%2fcore 6ms (cache hit)
+97 silly packumentCache full:https://registry.npmjs.org/@pixi%2fcore set size:332111 disposed:false
+98 silly fetch manifest @pixi/display@*
+99 silly packumentCache full:https://registry.npmjs.org/@pixi%2fdisplay cache-miss
+100 http cache https://registry.npmjs.org/@pixi%2fdisplay 3ms (cache hit)
+101 silly packumentCache full:https://registry.npmjs.org/@pixi%2fdisplay set size:303636 disposed:false
+102 silly fetch manifest @pixi/filter-bulge-pinch@*
+103 silly packumentCache full:https://registry.npmjs.org/@pixi%2ffilter-bulge-pinch cache-miss
+104 http fetch GET 200 https://registry.npmjs.org/@pixi%2ffilter-bulge-pinch 543ms (cache miss)
+105 silly packumentCache full:https://registry.npmjs.org/@pixi%2ffilter-bulge-pinch set size:undefined disposed:false
+106 silly placeDep ROOT @applemusic-like-lyrics/core@0.4.1 OK for: @applemusic-like-lyrics/react@0.4.1 want: ^0.4.1
+107 silly placeDep ROOT @pixi/filter-bulge-pinch@5.1.1 OK for: @applemusic-like-lyrics/core@0.4.1 want: *
+108 silly fetch manifest @ungap/structured-clone@^1.3.0
+109 silly packumentCache full:https://registry.npmjs.org/@ungap%2fstructured-clone cache-miss
+110 silly fetch manifest bezier-easing@^3.0.0
+111 silly packumentCache full:https://registry.npmjs.org/bezier-easing cache-miss
+112 silly fetch manifest deep-freeze@^0.0.1
+113 silly packumentCache full:https://registry.npmjs.org/deep-freeze cache-miss
+114 silly fetch manifest gl-matrix@4.0.0-beta.2
+115 silly packumentCache full:https://registry.npmjs.org/gl-matrix cache-miss
+116 http fetch GET 200 https://registry.npmjs.org/@ungap%2fstructured-clone 143ms (cache miss)
+117 silly packumentCache full:https://registry.npmjs.org/@ungap%2fstructured-clone set size:undefined disposed:false
+118 http fetch GET 200 https://registry.npmjs.org/deep-freeze 227ms (cache miss)
+119 silly packumentCache full:https://registry.npmjs.org/deep-freeze set size:undefined disposed:false
+120 http fetch GET 200 https://registry.npmjs.org/gl-matrix 251ms (cache miss)
+121 silly packumentCache full:https://registry.npmjs.org/gl-matrix set size:undefined disposed:false
+122 http fetch GET 200 https://registry.npmjs.org/bezier-easing 603ms (cache miss)
+123 silly packumentCache full:https://registry.npmjs.org/bezier-easing set size:undefined disposed:false
+124 silly placeDep ROOT @ungap/structured-clone@1.3.0 OK for: @applemusic-like-lyrics/core@0.4.1 want: ^1.3.0
+125 silly placeDep ROOT bezier-easing@3.0.0 OK for: @applemusic-like-lyrics/core@0.4.1 want: ^3.0.0
+126 silly placeDep ROOT deep-freeze@0.0.1 OK for: @applemusic-like-lyrics/core@0.4.1 want: ^0.0.1
+127 silly placeDep ROOT gl-matrix@4.0.0-beta.2 OK for: @applemusic-like-lyrics/core@0.4.1 want: 4.0.0-beta.2
+128 silly placeDep ROOT @pixi/color@7.4.3 OK for: @pixi/core@7.4.3 want: 7.4.3
+129 silly placeDep ROOT @pixi/constants@7.4.3 OK for: @pixi/core@7.4.3 want: 7.4.3
+130 silly placeDep ROOT @pixi/extensions@7.4.3 OK for: @pixi/core@7.4.3 want: 7.4.3
+131 silly placeDep ROOT @pixi/math@7.4.3 OK for: @pixi/core@7.4.3 want: 7.4.3
+132 silly placeDep ROOT @pixi/runner@7.4.3 OK for: @pixi/core@7.4.3 want: 7.4.3
+133 silly placeDep ROOT @pixi/settings@7.4.3 OK for: @pixi/core@7.4.3 want: 7.4.3
+134 silly placeDep ROOT @pixi/ticker@7.4.3 OK for: @pixi/core@7.4.3 want: 7.4.3
+135 silly placeDep ROOT @pixi/utils@7.4.3 OK for: @pixi/core@7.4.3 want: 7.4.3
+136 silly fetch manifest @pixi/colord@^2.9.6
+137 silly packumentCache full:https://registry.npmjs.org/@pixi%2fcolord cache-miss
+138 silly fetch manifest ismobilejs@^1.1.0
+139 silly packumentCache full:https://registry.npmjs.org/ismobilejs cache-miss
+140 silly fetch manifest @types/css-font-loading-module@^0.0.12
+141 silly packumentCache full:https://registry.npmjs.org/@types%2fcss-font-loading-module cache-miss
+142 silly fetch manifest url@^0.11.0
+143 silly packumentCache full:https://registry.npmjs.org/url cache-miss
+144 silly fetch manifest earcut@^2.2.4
+145 silly packumentCache full:https://registry.npmjs.org/earcut cache-miss
+146 silly fetch manifest @types/earcut@^2.1.0
+147 silly packumentCache full:https://registry.npmjs.org/@types%2fearcut cache-miss
+148 silly fetch manifest eventemitter3@^4.0.0
+149 silly packumentCache full:https://registry.npmjs.org/eventemitter3 cache-miss
+150 http fetch GET 200 https://registry.npmjs.org/eventemitter3 47ms (cache miss)
+151 silly packumentCache full:https://registry.npmjs.org/eventemitter3 set size:undefined disposed:false
+152 http fetch GET 200 https://registry.npmjs.org/url 231ms (cache miss)
+153 silly packumentCache full:https://registry.npmjs.org/url set size:undefined disposed:false
+154 http fetch GET 200 https://registry.npmjs.org/ismobilejs 235ms (cache miss)
+155 silly packumentCache full:https://registry.npmjs.org/ismobilejs set size:undefined disposed:false
+156 http fetch GET 200 https://registry.npmjs.org/@types%2fearcut 431ms (cache miss)
+157 silly packumentCache full:https://registry.npmjs.org/@types%2fearcut set size:undefined disposed:false
+158 http fetch GET 200 https://registry.npmjs.org/@pixi%2fcolord 551ms (cache miss)
+159 silly packumentCache full:https://registry.npmjs.org/@pixi%2fcolord set size:undefined disposed:false
+160 http fetch GET 200 https://registry.npmjs.org/earcut 613ms (cache miss)
+161 silly packumentCache full:https://registry.npmjs.org/earcut set size:undefined disposed:false
+162 http fetch GET 200 https://registry.npmjs.org/@types%2fcss-font-loading-module 757ms (cache miss)
+163 silly packumentCache full:https://registry.npmjs.org/@types%2fcss-font-loading-module set size:undefined disposed:false
+164 silly placeDep ROOT @pixi/colord@2.9.6 OK for: @pixi/color@7.4.3 want: ^2.9.6
+165 silly placeDep ROOT @types/css-font-loading-module@0.0.12 OK for: @pixi/settings@7.4.3 want: ^0.0.12
+166 silly placeDep ROOT ismobilejs@1.1.1 OK for: @pixi/settings@7.4.3 want: ^1.1.0
+167 silly placeDep ROOT @types/earcut@2.1.4 OK for: @pixi/utils@7.4.3 want: ^2.1.0
+168 silly placeDep ROOT earcut@2.2.4 OK for: @pixi/utils@7.4.3 want: ^2.2.4
+169 silly placeDep ROOT eventemitter3@4.0.7 OK for: @pixi/utils@7.4.3 want: ^4.0.0
+170 silly placeDep ROOT url@0.11.4 OK for: @pixi/utils@7.4.3 want: ^0.11.0
+171 silly fetch manifest punycode@^1.4.1
+172 silly packumentCache full:https://registry.npmjs.org/punycode cache-miss
+173 http fetch GET 200 https://registry.npmjs.org/punycode 40ms (cache miss)
+174 silly packumentCache full:https://registry.npmjs.org/punycode set size:undefined disposed:false
+175 silly placeDep node_modules/url punycode@1.4.1 OK for: url@0.11.4 want: ^1.4.1
+176 silly reify moves {}
+177 silly audit bulk request {
+177 silly audit   '@alloc/quick-lru': [ '5.2.0' ],
+177 silly audit   '@babel/code-frame': [ '7.29.0' ],
+177 silly audit   '@babel/compat-data': [ '7.29.0' ],
+177 silly audit   '@babel/core': [ '7.29.0' ],
+177 silly audit   semver: [ '6.3.1', '7.7.4' ],
+177 silly audit   '@babel/generator': [ '7.29.1' ],
+177 silly audit   '@babel/helper-annotate-as-pure': [ '7.27.3' ],
+177 silly audit   '@babel/helper-compilation-targets': [ '7.28.6' ],
+177 silly audit   '@babel/helper-create-class-features-plugin': [ '7.28.6' ],
+177 silly audit   '@babel/helper-globals': [ '7.28.0' ],
+177 silly audit   '@babel/helper-member-expression-to-functions': [ '7.28.5' ],
+177 silly audit   '@babel/helper-module-imports': [ '7.28.6' ],
+177 silly audit   '@babel/helper-module-transforms': [ '7.28.6' ],
+177 silly audit   '@babel/helper-optimise-call-expression': [ '7.27.1' ],
+177 silly audit   '@babel/helper-plugin-utils': [ '7.28.6' ],
+177 silly audit   '@babel/helper-replace-supers': [ '7.28.6' ],
+177 silly audit   '@babel/helper-skip-transparent-expression-wrappers': [ '7.27.1' ],
+177 silly audit   '@babel/helper-string-parser': [ '7.27.1' ],
+177 silly audit   '@babel/helper-validator-identifier': [ '7.28.5' ],
+177 silly audit   '@babel/helper-validator-option': [ '7.27.1' ],
+177 silly audit   '@babel/helpers': [ '7.29.2' ],
+177 silly audit   '@babel/parser': [ '7.29.2' ],
+177 silly audit   '@babel/plugin-syntax-jsx': [ '7.28.6' ],
+177 silly audit   '@babel/plugin-syntax-typescript': [ '7.28.6' ],
+177 silly audit   '@babel/plugin-transform-modules-commonjs': [ '7.28.6' ],
+177 silly audit   '@babel/plugin-transform-typescript': [ '7.28.6' ],
+177 silly audit   '@babel/preset-typescript': [ '7.28.5' ],
+177 silly audit   '@babel/template': [ '7.28.6' ],
+177 silly audit   '@babel/traverse': [ '7.29.0' ],
+177 silly audit   '@babel/types': [ '7.29.0' ],
+177 silly audit   '@dotenvx/dotenvx': [ '1.63.0' ],
+177 silly audit   commander: [ '11.1.0', '4.1.1', '14.0.3' ],
+177 silly audit   execa: [ '5.1.1', '9.6.1' ],
+177 silly audit   fdir: [ '6.5.0' ],
+177 silly audit   'get-stream': [ '6.0.1', '9.0.1' ],
+177 silly audit   'human-signals': [ '2.1.0', '8.0.1' ],
+177 silly audit   'is-stream': [ '2.0.1', '4.0.1' ],
+177 silly audit   isexe: [ '3.1.5', '2.0.0' ],
+177 silly audit   'npm-run-path': [ '4.0.1', '6.0.0' ],
+177 silly audit   onetime: [ '5.1.2', '7.0.0' ],
+177 silly audit   picomatch: [ '4.0.4', '2.3.2' ],
+177 silly audit   'signal-exit': [ '3.0.7', '4.1.0' ],
+177 silly audit   'strip-final-newline': [ '2.0.0', '4.0.0' ],
+177 silly audit   which: [ '4.0.0', '2.0.2' ],
+177 silly audit   '@ecies/ciphers': [ '0.2.6' ],
+177 silly audit   '@emnapi/runtime': [ '1.10.0' ],
+177 silly audit   '@eslint-community/eslint-utils': [ '4.9.1' ],
+177 silly audit   'eslint-visitor-keys': [ '3.4.3', '5.0.1', '4.2.1' ],
+177 silly audit   '@eslint-community/regexpp': [ '4.12.2' ],
+177 silly audit   '@eslint/config-array': [ '0.21.2' ],
+177 silly audit   '@eslint/config-helpers': [ '0.4.2' ],
+177 silly audit   '@eslint/core': [ '0.17.0' ],
+177 silly audit   '@eslint/eslintrc': [ '3.3.5' ],
+177 silly audit   globals: [ '14.0.0', '16.5.0' ],
+177 silly audit   '@eslint/js': [ '9.39.4' ],
+177 silly audit   '@eslint/object-schema': [ '2.1.7' ],
+177 silly audit   '@eslint/plugin-kit': [ '0.4.1' ],
+177 silly audit   '@floating-ui/core': [ '1.7.5' ],
+177 silly audit   '@floating-ui/dom': [ '1.7.6' ],
+177 silly audit   '@floating-ui/react-dom': [ '2.1.8' ],
+177 silly audit   '@floating-ui/utils': [ '0.2.11' ],
+177 silly audit   '@hono/node-server': [ '1.19.14' ],
+177 silly audit   '@humanfs/core': [ '0.19.2' ],
+177 silly audit   '@humanfs/node': [ '0.16.8' ],
+177 silly audit   '@humanfs/types': [ '0.15.0' ],
+177 silly audit   '@humanwhocodes/module-importer': [ '1.0.1' ],
+177 silly audit   '@humanwhocodes/retry': [ '0.4.3' ],
+177 silly audit   '@img/colour': [ '1.1.0' ],
+177 silly audit   '@img/sharp-darwin-arm64': [ '0.34.5' ],
+177 silly audit   '@img/sharp-darwin-x64': [ '0.34.5' ],
+177 silly audit   '@img/sharp-libvips-darwin-arm64': [ '1.2.4' ],
+177 silly audit   '@img/sharp-libvips-darwin-x64': [ '1.2.4' ],
+177 silly audit   '@img/sharp-libvips-linux-arm': [ '1.2.4' ],
+177 silly audit   '@img/sharp-libvips-linux-arm64': [ '1.2.4' ],
+177 silly audit   '@img/sharp-libvips-linux-ppc64': [ '1.2.4' ],
+177 silly audit   '@img/sharp-libvips-linux-riscv64': [ '1.2.4' ],
+177 silly audit   '@img/sharp-libvips-linux-s390x': [ '1.2.4' ],
+177 silly audit   '@img/sharp-libvips-linux-x64': [ '1.2.4' ],
+177 silly audit   '@img/sharp-libvips-linuxmusl-arm64': [ '1.2.4' ],
+177 silly audit   '@img/sharp-libvips-linuxmusl-x64': [ '1.2.4' ],
+177 silly audit   '@img/sharp-linux-arm': [ '0.34.5' ],
+177 silly audit   '@img/sharp-linux-arm64': [ '0.34.5' ],
+177 silly audit   '@img/sharp-linux-ppc64': [ '0.34.5' ],
+177 silly audit   '@img/sharp-linux-riscv64': [ '0.34.5' ],
+177 silly audit   '@img/sharp-linux-s390x': [ '0.34.5' ],
+177 silly audit   '@img/sharp-linux-x64': [ '0.34.5' ],
+177 silly audit   '@img/sharp-linuxmusl-arm64': [ '0.34.5' ],
+177 silly audit   '@img/sharp-linuxmusl-x64': [ '0.34.5' ],
+177 silly audit   '@img/sharp-wasm32': [ '0.34.5' ],
+177 silly audit   '@img/sharp-win32-arm64': [ '0.34.5' ],
+177 silly audit   '@img/sharp-win32-ia32': [ '0.34.5' ],
+177 silly audit   '@img/sharp-win32-x64': [ '0.34.5' ],
+177 silly audit   '@inquirer/ansi': [ '2.0.5' ],
+177 silly audit   '@inquirer/confirm': [ '6.0.12' ],
+177 silly audit   '@inquirer/core': [ '11.1.9' ],
+177 silly audit   '@inquirer/figures': [ '2.0.5' ],
+177 silly audit   '@inquirer/type': [ '4.0.5' ],
+177 silly audit   '@jridgewell/gen-mapping': [ '0.3.13' ],
+177 silly audit   '@jridgewell/remapping': [ '2.3.5' ],
+177 silly audit   '@jridgewell/resolve-uri': [ '3.1.2' ],
+177 silly audit   '@jridgewell/sourcemap-codec': [ '1.5.5' ],
+177 silly audit   '@jridgewell/trace-mapping': [ '0.3.31' ],
+177 silly audit   '@modelcontextprotocol/sdk': [ '1.29.0' ],
+177 silly audit   ajv: [ '8.20.0', '6.15.0' ],
+177 silly audit   'json-schema-traverse': [ '1.0.0', '0.4.1' ],
+177 silly audit   '@mswjs/interceptors': [ '0.41.6' ],
+177 silly audit   '@open-draft/deferred-promise': [ '2.2.0', '3.0.0' ],
+177 silly audit   '@next/env': [ '16.2.4' ],
+177 silly audit   '@next/eslint-plugin-next': [ '16.2.4' ],
+177 silly audit   'fast-glob': [ '3.3.1', '3.3.3' ],
+177 silly audit   'glob-parent': [ '5.1.2', '6.0.2' ],
+177 silly audit   '@next/swc-darwin-arm64': [ '16.2.4' ],
+177 silly audit   '@next/swc-darwin-x64': [ '16.2.4' ],
+177 silly audit   '@next/swc-linux-arm64-gnu': [ '16.2.4' ],
+177 silly audit   '@next/swc-linux-arm64-musl': [ '16.2.4' ],
+177 silly audit   '@next/swc-linux-x64-gnu': [ '16.2.4' ],
+177 silly audit   '@next/swc-linux-x64-musl': [ '16.2.4' ],
+177 silly audit   '@next/swc-win32-arm64-msvc': [ '16.2.4' ],
+177 silly audit   '@next/swc-win32-x64-msvc': [ '16.2.4' ],
+177 silly audit   '@noble/ciphers': [ '1.3.0' ],
+177 silly audit   '@noble/curves': [ '1.9.7' ],
+177 silly audit   '@noble/hashes': [ '1.8.0' ],
+177 silly audit   '@nodelib/fs.scandir': [ '2.1.5' ],
+177 silly audit   '@nodelib/fs.stat': [ '2.0.5' ],
+177 silly audit   '@nodelib/fs.walk': [ '1.2.8' ],
+177 silly audit   '@open-draft/logger': [ '0.3.0' ],
+177 silly audit   '@open-draft/until': [ '2.1.0' ],
+177 silly audit   '@radix-ui/number': [ '1.1.1' ],
+177 silly audit   '@radix-ui/primitive': [ '1.1.3' ],
+177 silly audit   '@radix-ui/react-accessible-icon': [ '1.1.7' ],
+177 silly audit   '@radix-ui/react-accordion': [ '1.2.12' ],
+177 silly audit   '@radix-ui/react-alert-dialog': [ '1.1.15' ],
+177 silly audit   '@radix-ui/react-arrow': [ '1.1.7' ],
+177 silly audit   '@radix-ui/react-aspect-ratio': [ '1.1.7' ],
+177 silly audit   '@radix-ui/react-avatar': [ '1.1.10' ],
+177 silly audit   '@radix-ui/react-checkbox': [ '1.3.3' ],
+177 silly audit   '@radix-ui/react-collapsible': [ '1.1.12' ],
+177 silly audit   '@radix-ui/react-collection': [ '1.1.7' ],
+177 silly audit   '@radix-ui/react-compose-refs': [ '1.1.2' ],
+177 silly audit   '@radix-ui/react-context': [ '1.1.2' ],
+177 silly audit   '@radix-ui/react-context-menu': [ '2.2.16' ],
+177 silly audit   '@radix-ui/react-dialog': [ '1.1.15' ],
+177 silly audit   '@radix-ui/react-direction': [ '1.1.1' ],
+177 silly audit   '@radix-ui/react-dismissable-layer': [ '1.1.11' ],
+177 silly audit   '@radix-ui/react-dropdown-menu': [ '2.1.16' ],
+177 silly audit   '@radix-ui/react-focus-guards': [ '1.1.3' ],
+177 silly audit   '@radix-ui/react-focus-scope': [ '1.1.7' ],
+177 silly audit   '@radix-ui/react-form': [ '0.1.8' ],
+177 silly audit   '@radix-ui/react-hover-card': [ '1.1.15' ],
+177 silly audit   '@radix-ui/react-id': [ '1.1.1' ],
+177 silly audit   '@radix-ui/react-label': [ '2.1.7' ],
+177 silly audit   '@radix-ui/react-menu': [ '2.1.16' ],
+177 silly audit   '@radix-ui/react-menubar': [ '1.1.16' ],
+177 silly audit   '@radix-ui/react-navigation-menu': [ '1.2.14' ],
+177 silly audit   '@radix-ui/react-one-time-password-field': [ '0.1.8' ],
+177 silly audit   '@radix-ui/react-password-toggle-field': [ '0.1.3' ],
+177 silly audit   '@radix-ui/react-popover': [ '1.1.15' ],
+177 silly audit   '@radix-ui/react-popper': [ '1.2.8' ],
+177 silly audit   '@radix-ui/react-portal': [ '1.1.9' ],
+177 silly audit   '@radix-ui/react-presence': [ '1.1.5' ],
+177 silly audit   '@radix-ui/react-primitive': [ '2.1.3' ],
+177 silly audit   '@radix-ui/react-progress': [ '1.1.7' ],
+177 silly audit   '@radix-ui/react-radio-group': [ '1.3.8' ],
+177 silly audit   '@radix-ui/react-roving-focus': [ '1.1.11' ],
+177 silly audit   '@radix-ui/react-scroll-area': [ '1.2.10' ],
+177 silly audit   '@radix-ui/react-select': [ '2.2.6' ],
+177 silly audit   '@radix-ui/react-separator': [ '1.1.7' ],
+177 silly audit   '@radix-ui/react-slider': [ '1.3.6' ],
+177 silly audit   '@radix-ui/react-slot': [ '1.2.3' ],
+177 silly audit   '@radix-ui/react-switch': [ '1.2.6' ],
+177 silly audit   '@radix-ui/react-tabs': [ '1.1.13' ],
+177 silly audit   '@radix-ui/react-toast': [ '1.2.15' ],
+177 silly audit   '@radix-ui/react-toggle': [ '1.1.10' ],
+177 silly audit   '@radix-ui/react-toggle-group': [ '1.1.11' ],
+177 silly audit   '@radix-ui/react-toolbar': [ '1.1.11' ],
+177 silly audit   '@radix-ui/react-tooltip': [ '1.2.8' ],
+177 silly audit   '@radix-ui/react-use-callback-ref': [ '1.1.1' ],
+177 silly audit   '@radix-ui/react-use-controllable-state': [ '1.2.2' ],
+177 silly audit   '@radix-ui/react-use-effect-event': [ '0.0.2' ],
+177 silly audit   '@radix-ui/react-use-escape-keydown': [ '1.1.1' ],
+177 silly audit   '@radix-ui/react-use-is-hydrated': [ '0.1.0' ],
+177 silly audit   '@radix-ui/react-use-layout-effect': [ '1.1.1' ],
+177 silly audit   '@radix-ui/react-use-previous': [ '1.1.1' ],
+177 silly audit   '@radix-ui/react-use-rect': [ '1.1.1' ],
+177 silly audit   '@radix-ui/react-use-size': [ '1.1.1' ],
+177 silly audit   '@radix-ui/react-visually-hidden': [ '1.2.3' ],
+177 silly audit   '@radix-ui/rect': [ '1.1.1' ],
+177 silly audit   '@sec-ant/readable-stream': [ '0.4.1' ],
+177 silly audit   '@sindresorhus/merge-streams': [ '4.0.0' ],
+177 silly audit   '@swc/helpers': [ '0.5.15' ],
+177 silly audit   '@ts-morph/common': [ '0.27.0' ],
+177 silly audit   'balanced-match': [ '4.0.4', '1.0.2' ],
+177 silly audit   'brace-expansion': [ '5.0.5', '1.1.14' ],
+177 silly audit   minimatch: [ '10.2.5', '3.1.5' ],
+177 silly audit   '@types/estree': [ '1.0.8' ],
+177 silly audit   '@types/json-schema': [ '7.0.15' ],
+177 silly audit   '@types/node': [ '22.19.17' ],
+177 silly audit   '@types/react': [ '19.2.14' ],
+177 silly audit   '@types/react-dom': [ '19.2.3' ],
+177 silly audit   '@types/set-cookie-parser': [ '2.4.10' ],
+177 silly audit   '@types/statuses': [ '2.0.6' ],
+177 silly audit   '@types/validate-npm-package-name': [ '4.0.2' ],
+177 silly audit   '@typescript-eslint/eslint-plugin': [ '8.59.0' ],
+177 silly audit   ignore: [ '7.0.5', '5.3.2' ],
+177 silly audit   '@typescript-eslint/parser': [ '8.59.0' ],
+177 silly audit   '@typescript-eslint/project-service': [ '8.59.0' ],
+177 silly audit   '@typescript-eslint/scope-manager': [ '8.59.0' ],
+177 silly audit   '@typescript-eslint/tsconfig-utils': [ '8.59.0' ],
+177 silly audit   '@typescript-eslint/type-utils': [ '8.59.0' ],
+177 silly audit   '@typescript-eslint/types': [ '8.59.0' ],
+177 silly audit   '@typescript-eslint/typescript-estree': [ '8.59.0' ],
+177 silly audit   '@typescript-eslint/utils': [ '8.59.0' ],
+177 silly audit   '@typescript-eslint/visitor-keys': [ '8.59.0' ],
+177 silly audit   accepts: [ '2.0.0' ],
+177 silly audit   acorn: [ '8.16.0' ],
+177 silly audit   'acorn-jsx': [ '5.3.2' ],
+177 silly audit   'agent-base': [ '7.1.4' ],
+177 silly audit   'ajv-formats': [ '3.0.1' ],
+177 silly audit   'ansi-regex': [ '6.2.2', '5.0.1' ],
+177 silly audit   'ansi-styles': [ '4.3.0' ],
+177 silly audit   'any-promise': [ '1.3.0' ],
+177 silly audit   anymatch: [ '3.1.3' ],
+177 silly audit   arg: [ '5.0.2' ],
+177 silly audit   argparse: [ '2.0.1' ],
+177 silly audit   'aria-hidden': [ '1.2.6' ],
+177 silly audit   'ast-types': [ '0.16.1' ],
+177 silly audit   autoprefixer: [ '10.5.0' ],
+177 silly audit   'baseline-browser-mapping': [ '2.10.23' ],
+177 silly audit   'binary-extensions': [ '2.3.0' ],
+177 silly audit   'body-parser': [ '2.2.2' ],
+177 silly audit   braces: [ '3.0.3' ],
+177 silly audit   browserslist: [ '4.28.2' ],
+177 silly audit   'bundle-name': [ '4.1.0' ],
+177 silly audit   bytes: [ '3.1.2' ],
+177 silly audit   'call-bind-apply-helpers': [ '1.0.2' ],
+177 silly audit   'call-bound': [ '1.0.4' ],
+177 silly audit   callsites: [ '3.1.0' ],
+177 silly audit   'camelcase-css': [ '2.0.1' ],
+177 silly audit   'caniuse-lite': [ '1.0.30001791' ],
+177 silly audit   chalk: [ '4.1.2', '5.6.2' ],
+177 silly audit   chokidar: [ '3.6.0' ],
+177 silly audit   'class-variance-authority': [ '0.7.1' ],
+177 silly audit   'cli-cursor': [ '5.0.0' ],
+177 silly audit   'cli-spinners': [ '2.9.2' ],
+177 silly audit   'cli-width': [ '4.1.0' ],
+177 silly audit   'client-only': [ '0.0.1' ],
+177 silly audit   cliui: [ '8.0.1' ],
+177 silly audit   'emoji-regex': [ '8.0.0', '10.6.0' ],
+177 silly audit   'string-width': [ '4.2.3', '7.2.0' ],
+177 silly audit   'strip-ansi': [ '6.0.1', '7.2.0' ],
+177 silly audit   clsx: [ '2.1.1' ],
+177 silly audit   'code-block-writer': [ '13.0.3' ],
+177 silly audit   'color-convert': [ '2.0.1' ],
+177 silly audit   'color-name': [ '1.1.4' ],
+177 silly audit   'concat-map': [ '0.0.1' ],
+177 silly audit   'content-disposition': [ '1.1.0' ],
+177 silly audit   'content-type': [ '1.0.5' ],
+177 silly audit   'convert-source-map': [ '2.0.0' ],
+177 silly audit   cookie: [ '0.7.2', '1.1.1' ],
+177 silly audit   'cookie-signature': [ '1.2.2' ],
+177 silly audit   cors: [ '2.8.6' ],
+177 silly audit   cosmiconfig: [ '9.0.1' ],
+177 silly audit   'cross-spawn': [ '7.0.6' ],
+177 silly audit   cssesc: [ '3.0.0' ],
+177 silly audit   csstype: [ '3.2.3' ],
+177 silly audit   'data-uri-to-buffer': [ '4.0.1' ],
+177 silly audit   debug: [ '4.4.3' ],
+177 silly audit   dedent: [ '1.7.2' ],
+177 silly audit   'deep-is': [ '0.1.4' ],
+177 silly audit   deepmerge: [ '4.3.1' ],
+177 silly audit   'default-browser': [ '5.5.0' ],
+177 silly audit   'default-browser-id': [ '5.0.1' ],
+177 silly audit   'define-lazy-prop': [ '3.0.0' ],
+177 silly audit   depd: [ '2.0.0' ],
+177 silly audit   'detect-libc': [ '2.1.2' ],
+177 silly audit   'detect-node-es': [ '1.1.0' ],
+177 silly audit   didyoumean: [ '1.2.2' ],
+177 silly audit   diff: [ '8.0.4' ],
+177 silly audit   dlv: [ '1.1.3' ],
+177 silly audit   dotenv: [ '17.4.2' ],
+177 silly audit   'dunder-proto': [ '1.0.1' ],
+177 silly audit   eciesjs: [ '0.4.18' ],
+177 silly audit   'ee-first': [ '1.1.1' ],
+177 silly audit   'electron-to-chromium': [ '1.5.344' ],
+177 silly audit   encodeurl: [ '2.0.0' ],
+177 silly audit   'env-paths': [ '2.2.1' ],
+177 silly audit   'error-ex': [ '1.3.4' ],
+177 silly audit   'es-define-property': [ '1.0.1' ],
+177 silly audit   'es-errors': [ '1.3.0' ],
+177 silly audit   'es-object-atoms': [ '1.1.1' ],
+177 silly audit   escalade: [ '3.2.0' ],
+177 silly audit   'escape-html': [ '1.0.3' ],
+177 silly audit   'escape-string-regexp': [ '4.0.0' ],
+177 silly audit   eslint: [ '9.39.4' ],
+177 silly audit   'eslint-scope': [ '8.4.0' ],
+177 silly audit   espree: [ '10.4.0' ],
+177 silly audit   esprima: [ '4.0.1' ],
+177 silly audit   esquery: [ '1.7.0' ],
+177 silly audit   esrecurse: [ '4.3.0' ],
+177 silly audit   estraverse: [ '5.3.0' ],
+177 silly audit   esutils: [ '2.0.3' ],
+177 silly audit   etag: [ '1.8.1' ],
+177 silly audit   eventsource: [ '3.0.7' ],
+177 silly audit   'eventsource-parser': [ '3.0.8' ],
+177 silly audit   express: [ '5.2.1' ],
+177 silly audit   'express-rate-limit': [ '8.4.1' ],
+177 silly audit   'fast-deep-equal': [ '3.1.3' ],
+177 silly audit   'fast-json-stable-stringify': [ '2.1.0' ],
+177 silly audit   'fast-levenshtein': [ '2.0.6' ],
+177 silly audit   'fast-string-truncated-width': [ '3.0.3' ],
+177 silly audit   'fast-string-width': [ '3.0.2' ],
+177 silly audit   'fast-uri': [ '3.1.0' ],
+177 silly audit   'fast-wrap-ansi': [ '0.2.0' ],
+177 silly audit   fastq: [ '1.20.1' ],
+177 silly audit   'fetch-blob': [ '3.2.0' ],
+177 silly audit   figures: [ '6.1.0' ],
+177 silly audit   'file-entry-cache': [ '8.0.0' ],
+177 silly audit   'fill-range': [ '7.1.1' ],
+177 silly audit   finalhandler: [ '2.1.1' ],
+177 silly audit   'find-up': [ '5.0.0' ],
+177 silly audit   'flat-cache': [ '4.0.1' ],
+177 silly audit   flatted: [ '3.4.2' ],
+177 silly audit   'formdata-polyfill': [ '4.0.10' ],
+177 silly audit   forwarded: [ '0.2.0' ],
+177 silly audit   'fraction.js': [ '5.3.4' ],
+177 silly audit   'framer-motion': [ '12.38.0' ],
+177 silly audit   fresh: [ '2.0.0' ],
+177 silly audit   'fs-extra': [ '11.3.4' ],
+177 silly audit   fsevents: [ '2.3.3' ],
+177 silly audit   'function-bind': [ '1.1.2' ],
+177 silly audit   fuzzysort: [ '3.1.0' ],
+177 silly audit   gensync: [ '1.0.0-beta.2' ],
+177 silly audit   'get-caller-file': [ '2.0.5' ],
+177 silly audit   'get-east-asian-width': [ '1.5.0' ],
+177 silly audit   'get-intrinsic': [ '1.3.0' ],
+177 silly audit   'get-nonce': [ '1.0.1' ],
+177 silly audit   'get-own-enumerable-keys': [ '1.0.0' ],
+177 silly audit   'get-proto': [ '1.0.1' ],
+177 silly audit   gopd: [ '1.2.0' ],
+177 silly audit   'graceful-fs': [ '4.2.11' ],
+177 silly audit   graphql: [ '16.13.2' ],
+177 silly audit   gsap: [ '3.15.0' ],
+177 silly audit   'has-flag': [ '4.0.0' ],
+177 silly audit   'has-symbols': [ '1.1.0' ],
+177 silly audit   hasown: [ '2.0.3' ],
+177 silly audit   'headers-polyfill': [ '5.0.1' ],
+177 silly audit   hono: [ '4.12.15' ],
+177 silly audit   'http-errors': [ '2.0.1' ],
+177 silly audit   'https-proxy-agent': [ '7.0.6' ],
+177 silly audit   'iconv-lite': [ '0.7.2' ],
+177 silly audit   'import-fresh': [ '3.3.1' ],
+177 silly audit   imurmurhash: [ '0.1.4' ],
+177 silly audit   inherits: [ '2.0.4' ],
+177 silly audit   'ip-address': [ '10.1.0' ],
+177 silly audit   'ipaddr.js': [ '1.9.1' ],
+177 silly audit   'is-arrayish': [ '0.2.1' ],
+177 silly audit   'is-binary-path': [ '2.1.0' ],
+177 silly audit   'is-core-module': [ '2.16.1' ],
+177 silly audit   'is-docker': [ '3.0.0' ],
+177 silly audit   'is-extglob': [ '2.1.1' ],
+177 silly audit   'is-fullwidth-code-point': [ '3.0.0' ],
+177 silly audit   'is-glob': [ '4.0.3' ],
+177 silly audit   'is-in-ssh': [ '1.0.0' ],
+177 silly audit   'is-inside-container': [ '1.0.0' ],
+177 silly audit   'is-interactive': [ '2.0.0' ],
+177 silly audit   'is-node-process': [ '1.2.0' ],
+177 silly audit   'is-number': [ '7.0.0' ],
+177 silly audit   'is-obj': [ '3.0.0' ],
+177 silly audit   'is-plain-obj': [ '4.1.0' ],
+177 silly audit   'is-promise': [ '4.0.0' ],
+177 silly audit   'is-regexp': [ '3.1.0' ],
+177 silly audit   'is-unicode-supported': [ '2.1.0', '1.3.0' ],
+177 silly audit   'is-wsl': [ '3.1.1' ],
+177 silly audit   jiti: [ '1.21.7' ],
+177 silly audit   jose: [ '6.2.2' ],
+177 silly audit   'js-tokens': [ '4.0.0' ],
+177 silly audit   'js-yaml': [ '4.1.1' ],
+177 silly audit   jsesc: [ '3.1.0' ],
+177 silly audit   'json-buffer': [ '3.0.1' ],
+177 silly audit   'json-parse-even-better-errors': [ '2.3.1' ],
+177 silly audit   'json-schema-typed': [ '8.0.2' ],
+177 silly audit   'json-stable-stringify-without-jsonify': [ '1.0.1' ],
+177 silly audit   json5: [ '2.2.3' ],
+177 silly audit   jsonfile: [ '6.2.1' ],
+177 silly audit   keyv: [ '4.5.4' ],
+177 silly audit   kleur: [ '4.1.5', '3.0.3' ],
+177 silly audit   lenis: [ '1.3.23' ],
+177 silly audit   levn: [ '0.4.1' ],
+177 silly audit   lilconfig: [ '3.1.3' ],
+177 silly audit   'lines-and-columns': [ '1.2.4' ],
+177 silly audit   'locate-path': [ '6.0.0' ],
+177 silly audit   'lodash.merge': [ '4.6.2' ],
+177 silly audit   'log-symbols': [ '6.0.0' ],
+177 silly audit   'lru-cache': [ '5.1.1' ],
+177 silly audit   'lucide-react': [ '0.468.0' ],
+177 silly audit   'math-intrinsics': [ '1.1.0' ],
+177 silly audit   'media-typer': [ '1.1.0' ],
+177 silly audit   'merge-descriptors': [ '2.0.0' ],
+177 silly audit   'merge-stream': [ '2.0.0' ],
+177 silly audit   merge2: [ '1.4.1' ],
+177 silly audit   micromatch: [ '4.0.8' ],
+177 silly audit   'mime-db': [ '1.54.0' ],
+177 silly audit   'mime-types': [ '3.0.2' ],
+177 silly audit   'mimic-fn': [ '2.1.0' ],
+177 silly audit   'mimic-function': [ '5.0.1' ],
+177 silly audit   minimist: [ '1.2.8' ],
+177 silly audit   motion: [ '12.38.0' ],
+177 silly audit   'motion-dom': [ '12.38.0' ],
+177 silly audit   'motion-utils': [ '12.36.0' ],
+177 silly audit   ms: [ '2.1.3' ],
+177 silly audit   msw: [ '2.13.6' ],
+177 silly audit   'mute-stream': [ '3.0.0' ],
+177 silly audit   mz: [ '2.7.0' ],
+177 silly audit   nanoid: [ '3.3.11' ],
+177 silly audit   'natural-compare': [ '1.4.0' ],
+177 silly audit   negotiator: [ '1.0.0' ],
+177 silly audit   next: [ '16.2.4' ],
+177 silly audit   'node-domexception': [ '1.0.0' ],
+177 silly audit   'node-fetch': [ '3.3.2' ],
+177 silly audit   'node-releases': [ '2.0.38' ],
+177 silly audit   'normalize-path': [ '3.0.0' ],
+177 silly audit   'path-key': [ '4.0.0', '3.1.1' ],
+177 silly audit   'object-assign': [ '4.1.1' ],
+177 silly audit   'object-hash': [ '3.0.0' ],
+177 silly audit   'object-inspect': [ '1.13.4' ],
+177 silly audit   'object-treeify': [ '1.1.33' ],
+177 silly audit   ogl: [ '1.0.11' ],
+177 silly audit   'on-finished': [ '2.4.1' ],
+177 silly audit   once: [ '1.4.0' ],
+177 silly audit   open: [ '11.0.0' ],
+177 silly audit   optionator: [ '0.9.4' ],
+177 silly audit   ora: [ '8.2.0' ],
+177 silly audit   outvariant: [ '1.4.3' ],
+177 silly audit   'p-limit': [ '3.1.0' ],
+177 silly audit   'p-locate': [ '5.0.0' ],
+177 silly audit   'parent-module': [ '1.0.1' ],
+177 silly audit   'parse-json': [ '5.2.0' ],
+177 silly audit   'parse-ms': [ '4.0.0' ],
+177 silly audit   parseurl: [ '1.3.3' ],
+177 silly audit   'path-browserify': [ '1.0.1' ],
+177 silly audit   'path-exists': [ '4.0.0' ],
+177 silly audit   'path-parse': [ '1.0.7' ],
+177 silly audit   'path-to-regexp': [ '6.3.0', '8.4.2' ],
+177 silly audit   picocolors: [ '1.1.1' ],
+177 silly audit   pify: [ '2.3.0' ],
+177 silly audit   pirates: [ '4.0.7' ],
+177 silly audit   'pkce-challenge': [ '5.0.1' ],
+177 silly audit   postcss: [ '8.5.12' ],
+177 silly audit   'postcss-import': [ '15.1.0' ],
+177 silly audit   'postcss-js': [ '4.1.0' ],
+177 silly audit   'postcss-load-config': [ '6.0.1' ],
+177 silly audit   'postcss-nested': [ '6.2.0' ],
+177 silly audit   'postcss-selector-parser': [ '6.1.2', '7.1.1' ],
+177 silly audit   'postcss-value-parser': [ '4.2.0' ],
+177 silly audit   'powershell-utils': [ '0.1.0' ],
+177 silly audit   'prelude-ls': [ '1.2.1' ],
+177 silly audit   'pretty-ms': [ '9.3.0' ],
+177 silly audit   prompts: [ '2.4.2' ],
+177 silly audit   'proxy-addr': [ '2.0.7' ],
+177 silly audit   punycode: [ '2.3.1', '1.4.1' ],
+177 silly audit   qs: [ '6.15.1' ],
+177 silly audit   'queue-microtask': [ '1.2.3' ],
+177 silly audit   'radix-ui': [ '1.4.3' ],
+177 silly audit   'range-parser': [ '1.2.1' ],
+177 silly audit   'raw-body': [ '3.0.2' ],
+177 silly audit   react: [ '19.2.5' ],
+177 silly audit   'react-dom': [ '19.2.5' ],
+177 silly audit   'react-remove-scroll': [ '2.7.2' ],
+177 silly audit   'react-remove-scroll-bar': [ '2.3.8' ],
+177 silly audit   'react-style-singleton': [ '2.2.3' ],
+177 silly audit   'read-cache': [ '1.0.0' ],
+177 silly audit   readdirp: [ '3.6.0' ],
+177 silly audit   recast: [ '0.23.11' ],
+177 silly audit   'require-directory': [ '2.1.1' ],
+177 silly audit   'require-from-string': [ '2.0.2' ],
+177 silly audit   resolve: [ '1.22.12' ],
+177 silly audit   'resolve-from': [ '4.0.0' ],
+177 silly audit   'restore-cursor': [ '5.1.0' ],
+177 silly audit   rettime: [ '0.11.8' ],
+177 silly audit   reusify: [ '1.1.0' ],
+177 silly audit   router: [ '2.2.0' ],
+177 silly audit   'run-applescript': [ '7.1.0' ],
+177 silly audit   'run-parallel': [ '1.2.0' ],
+177 silly audit   'safer-buffer': [ '2.1.2' ],
+177 silly audit   scheduler: [ '0.27.0' ],
+177 silly audit   send: [ '1.2.1' ],
+177 silly audit   'serve-static': [ '2.2.1' ],
+177 silly audit   'set-cookie-parser': [ '3.1.0' ],
+177 silly audit   setprototypeof: [ '1.2.0' ],
+177 silly audit   shadcn: [ '4.5.0' ],
+177 silly audit   sharp: [ '0.34.5' ],
+177 silly audit   'shebang-command': [ '2.0.0' ],
+177 silly audit   'shebang-regex': [ '3.0.0' ],
+177 silly audit   'side-channel': [ '1.1.0' ],
+177 silly audit   'side-channel-list': [ '1.0.1' ],
+177 silly audit   'side-channel-map': [ '1.0.1' ],
+177 silly audit   'side-channel-weakmap': [ '1.0.2' ],
+177 silly audit   sisteransi: [ '1.0.5' ],
+177 silly audit   'source-map': [ '0.6.1' ],
+177 silly audit   'source-map-js': [ '1.2.1' ],
+177 silly audit   statuses: [ '2.0.2' ],
+177 silly audit   'stdin-discarder': [ '0.2.2' ],
+177 silly audit   'strict-event-emitter': [ '0.5.1' ],
+177 silly audit   'stringify-object': [ '5.0.0' ],
+177 silly audit   'strip-bom': [ '3.0.0' ],
+177 silly audit   'strip-json-comments': [ '3.1.1' ],
+177 silly audit   'styled-jsx': [ '5.1.6' ],
+177 silly audit   sucrase: [ '3.35.1' ],
+177 silly audit   'supports-color': [ '7.2.0' ],
+177 silly audit   'supports-preserve-symlinks-flag': [ '1.0.0' ],
+177 silly audit   'tagged-tag': [ '1.0.0' ],
+177 silly audit   'tailwind-merge': [ '3.5.0' ],
+177 silly audit   tailwindcss: [ '3.4.19' ],
+177 silly audit   thenify: [ '3.3.1' ],
+177 silly audit   'thenify-all': [ '1.6.0' ],
+177 silly audit   'tiny-invariant': [ '1.3.3' ],
+177 silly audit   tinyglobby: [ '0.2.16' ],
+177 silly audit   tldts: [ '7.0.28' ],
+177 silly audit   'tldts-core': [ '7.0.28' ],
+177 silly audit   'to-regex-range': [ '5.0.1' ],
+177 silly audit   toidentifier: [ '1.0.1' ],
+177 silly audit   'tough-cookie': [ '6.0.1' ],
+177 silly audit   'ts-api-utils': [ '2.5.0' ],
+177 silly audit   'ts-interface-checker': [ '0.1.13' ],
+177 silly audit   'ts-morph': [ '26.0.0' ],
+177 silly audit   'tsconfig-paths': [ '4.2.0' ],
+177 silly audit   tslib: [ '2.8.1' ],
+177 silly audit   'tw-animate-css': [ '1.4.0' ],
+177 silly audit   'type-check': [ '0.4.0' ],
+177 silly audit   'type-fest': [ '5.6.0' ],
+177 silly audit   'type-is': [ '2.0.1' ],
+177 silly audit   typescript: [ '5.9.3' ],
+177 silly audit   'typescript-eslint': [ '8.59.0' ],
+177 silly audit   'undici-types': [ '6.21.0' ],
+177 silly audit   'unicorn-magic': [ '0.3.0' ],
+177 silly audit   universalify: [ '2.0.1' ],
+177 silly audit   unpipe: [ '1.0.0' ],
+177 silly audit   'until-async': [ '3.0.2' ],
+177 silly audit   'update-browserslist-db': [ '1.2.3' ],
+177 silly audit   'uri-js': [ '4.4.1' ],
+177 silly audit   'use-callback-ref': [ '1.3.3' ],
+177 silly audit   'use-sidecar': [ '1.1.3' ],
+177 silly audit   'use-sync-external-store': [ '1.6.0' ],
+177 silly audit   'util-deprecate': [ '1.0.2' ],
+177 silly audit   'validate-npm-package-name': [ '7.0.2' ],
+177 silly audit   vary: [ '1.1.2' ],
+177 silly audit   'web-streams-polyfill': [ '3.3.3' ],
+177 silly audit   'word-wrap': [ '1.2.5' ],
+177 silly audit   'wrap-ansi': [ '7.0.0' ],
+177 silly audit   wrappy: [ '1.0.2' ],
+177 silly audit   'wsl-utils': [ '0.3.1' ],
+177 silly audit   y18n: [ '5.0.8' ],
+177 silly audit   yallist: [ '3.1.1' ],
+177 silly audit   yargs: [ '17.7.2' ],
+177 silly audit   'yargs-parser': [ '21.1.1' ],
+177 silly audit   'yocto-queue': [ '0.1.0' ],
+177 silly audit   'yocto-spinner': [ '1.1.0' ],
+177 silly audit   yoctocolors: [ '2.1.2' ],
+177 silly audit   zod: [ '3.25.76' ],
+177 silly audit   'zod-to-json-schema': [ '3.25.2' ],
+177 silly audit   '@applemusic-like-lyrics/react': [ '0.4.1' ],
+177 silly audit   '@pixi/app': [ '7.4.3' ],
+177 silly audit   '@pixi/core': [ '7.4.3' ],
+177 silly audit   '@pixi/display': [ '7.4.3' ],
+177 silly audit   '@pixi/filter-blur': [ '7.4.3' ],
+177 silly audit   '@pixi/filter-color-matrix': [ '7.4.3' ],
+177 silly audit   '@pixi/sprite': [ '7.4.3' ],
+177 silly audit   '@applemusic-like-lyrics/core': [ '0.4.1' ],
+177 silly audit   '@pixi/filter-bulge-pinch': [ '5.1.1' ],
+177 silly audit   '@ungap/structured-clone': [ '1.3.0' ],
+177 silly audit   'bezier-easing': [ '3.0.0' ],
+177 silly audit   'deep-freeze': [ '0.0.1' ],
+177 silly audit   'gl-matrix': [ '4.0.0-beta.2' ],
+177 silly audit   '@pixi/color': [ '7.4.3' ],
+177 silly audit   '@pixi/constants': [ '7.4.3' ],
+177 silly audit   '@pixi/extensions': [ '7.4.3' ],
+177 silly audit   '@pixi/math': [ '7.4.3' ],
+177 silly audit   '@pixi/runner': [ '7.4.3' ],
+177 silly audit   '@pixi/settings': [ '7.4.3' ],
+177 silly audit   '@pixi/ticker': [ '7.4.3' ],
+177 silly audit   '@pixi/utils': [ '7.4.3' ],
+177 silly audit   '@pixi/colord': [ '2.9.6' ],
+177 silly audit   '@types/css-font-loading-module': [ '0.0.12' ],
+177 silly audit   ismobilejs: [ '1.1.1' ],
+177 silly audit   '@types/earcut': [ '2.1.4' ],
+177 silly audit   earcut: [ '2.2.4' ],
+177 silly audit   eventemitter3: [ '4.0.7' ],
+177 silly audit   url: [ '0.11.4' ]
+177 silly audit }
+178 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\fsevents
+179 silly reify mark deleted [
+179 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\fsevents'
+179 silly reify ]
+180 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@next\swc-win32-arm64-msvc
+181 silly reify mark deleted [
+181 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@next\\swc-win32-arm64-msvc'
+181 silly reify ]
+182 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@next\swc-linux-x64-musl
+183 silly reify mark deleted [
+183 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@next\\swc-linux-x64-musl'
+183 silly reify ]
+184 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@next\swc-linux-x64-gnu
+185 silly reify mark deleted [
+185 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@next\\swc-linux-x64-gnu'
+185 silly reify ]
+186 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@next\swc-linux-arm64-musl
+187 silly reify mark deleted [
+187 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@next\\swc-linux-arm64-musl'
+187 silly reify ]
+188 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@next\swc-linux-arm64-gnu
+189 silly reify mark deleted [
+189 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@next\\swc-linux-arm64-gnu'
+189 silly reify ]
+190 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@next\swc-darwin-x64
+191 silly reify mark deleted [
+191 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@next\\swc-darwin-x64'
+191 silly reify ]
+192 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@next\swc-darwin-arm64
+193 silly reify mark deleted [
+193 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@next\\swc-darwin-arm64'
+193 silly reify ]
+194 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-win32-ia32
+195 silly reify mark deleted [
+195 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-win32-ia32'
+195 silly reify ]
+196 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-win32-arm64
+197 silly reify mark deleted [
+197 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-win32-arm64'
+197 silly reify ]
+198 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-wasm32
+199 silly reify mark deleted [
+199 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-wasm32'
+199 silly reify ]
+200 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@emnapi\runtime
+201 silly reify mark deleted [
+201 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@emnapi\\runtime'
+201 silly reify ]
+202 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-linuxmusl-x64
+203 silly reify mark deleted [
+203 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-linuxmusl-x64'
+203 silly reify ]
+204 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-linuxmusl-arm64
+205 silly reify mark deleted [
+205 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-linuxmusl-arm64'
+205 silly reify ]
+206 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-linux-x64
+207 silly reify mark deleted [
+207 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-linux-x64'
+207 silly reify ]
+208 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-linux-s390x
+209 silly reify mark deleted [
+209 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-linux-s390x'
+209 silly reify ]
+210 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-linux-riscv64
+211 silly reify mark deleted [
+211 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-linux-riscv64'
+211 silly reify ]
+212 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-linux-ppc64
+213 silly reify mark deleted [
+213 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-linux-ppc64'
+213 silly reify ]
+214 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-linux-arm64
+215 silly reify mark deleted [
+215 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-linux-arm64'
+215 silly reify ]
+216 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-linux-arm
+217 silly reify mark deleted [
+217 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-linux-arm'
+217 silly reify ]
+218 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-libvips-linuxmusl-x64
+219 silly reify mark deleted [
+219 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-libvips-linuxmusl-x64'
+219 silly reify ]
+220 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-libvips-linuxmusl-arm64
+221 silly reify mark deleted [
+221 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-libvips-linuxmusl-arm64'
+221 silly reify ]
+222 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-libvips-linux-x64
+223 silly reify mark deleted [
+223 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-libvips-linux-x64'
+223 silly reify ]
+224 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-libvips-linux-s390x
+225 silly reify mark deleted [
+225 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-libvips-linux-s390x'
+225 silly reify ]
+226 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-libvips-linux-riscv64
+227 silly reify mark deleted [
+227 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-libvips-linux-riscv64'
+227 silly reify ]
+228 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-libvips-linux-ppc64
+229 silly reify mark deleted [
+229 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-libvips-linux-ppc64'
+229 silly reify ]
+230 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-libvips-linux-arm64
+231 silly reify mark deleted [
+231 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-libvips-linux-arm64'
+231 silly reify ]
+232 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-libvips-linux-arm
+233 silly reify mark deleted [
+233 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-libvips-linux-arm'
+233 silly reify ]
+234 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-libvips-darwin-x64
+235 silly reify mark deleted [
+235 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-libvips-darwin-x64'
+235 silly reify ]
+236 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-libvips-darwin-arm64
+237 silly reify mark deleted [
+237 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-libvips-darwin-arm64'
+237 silly reify ]
+238 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-darwin-x64
+239 silly reify mark deleted [
+239 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-darwin-x64'
+239 silly reify ]
+240 verbose reify failed optional dependency C:\Users\filip\OneDrive\Desktop\asdasda\node_modules\@img\sharp-darwin-arm64
+241 silly reify mark deleted [
+241 silly reify   'C:\\Users\\filip\\OneDrive\\Desktop\\asdasda\\node_modules\\@img\\sharp-darwin-arm64'
+241 silly reify ]
+242 http cache @types/earcut@https://registry.npmjs.org/@types/earcut/-/earcut-2.1.4.tgz 0ms (cache hit)
+243 http cache eventemitter3@https://registry.npmjs.org/eventemitter3/-/eventemitter3-4.0.7.tgz 0ms (cache hit)
+244 http cache url@https://registry.npmjs.org/url/-/url-0.11.4.tgz 0ms (cache hit)
+245 http cache @pixi/colord@https://registry.npmjs.org/@pixi/colord/-/colord-2.9.6.tgz 0ms (cache hit)
+246 http cache earcut@https://registry.npmjs.org/earcut/-/earcut-2.2.4.tgz 0ms (cache hit)
+247 http cache @types/css-font-loading-module@https://registry.npmjs.org/@types/css-font-loading-module/-/css-font-loading-module-0.0.12.tgz 0ms (cache hit)
+248 http cache ismobilejs@https://registry.npmjs.org/ismobilejs/-/ismobilejs-1.1.1.tgz 0ms (cache hit)
+249 http cache @pixi/settings@https://registry.npmjs.org/@pixi/settings/-/settings-7.4.3.tgz 0ms (cache hit)
+250 http cache @pixi/utils@https://registry.npmjs.org/@pixi/utils/-/utils-7.4.3.tgz 0ms (cache hit)
+251 http cache @pixi/ticker@https://registry.npmjs.org/@pixi/ticker/-/ticker-7.4.3.tgz 0ms (cache hit)
+252 http cache @pixi/math@https://registry.npmjs.org/@pixi/math/-/math-7.4.3.tgz 0ms (cache hit)
+253 http cache @pixi/extensions@https://registry.npmjs.org/@pixi/extensions/-/extensions-7.4.3.tgz 0ms (cache hit)
+254 http cache @pixi/runner@https://registry.npmjs.org/@pixi/runner/-/runner-7.4.3.tgz 0ms (cache hit)
+255 http cache @pixi/constants@https://registry.npmjs.org/@pixi/constants/-/constants-7.4.3.tgz 0ms (cache hit)
+256 http cache @pixi/color@https://registry.npmjs.org/@pixi/color/-/color-7.4.3.tgz 1ms (cache hit)
+257 http cache @ungap/structured-clone@https://registry.npmjs.org/@ungap/structured-clone/-/structured-clone-1.3.0.tgz 0ms (cache hit)
+258 http cache deep-freeze@https://registry.npmjs.org/deep-freeze/-/deep-freeze-0.0.1.tgz 0ms (cache hit)
+259 http cache bezier-easing@https://registry.npmjs.org/bezier-easing/-/bezier-easing-3.0.0.tgz 0ms (cache hit)
+260 http cache gl-matrix@https://registry.npmjs.org/gl-matrix/-/gl-matrix-4.0.0-beta.2.tgz 0ms (cache hit)
+261 http cache @pixi/filter-bulge-pinch@https://registry.npmjs.org/@pixi/filter-bulge-pinch/-/filter-bulge-pinch-5.1.1.tgz 0ms (cache hit)
+262 http cache @applemusic-like-lyrics/core@https://registry.npmjs.org/@applemusic-like-lyrics/core/-/core-0.4.1.tgz 0ms (cache hit)
+263 http cache @pixi/sprite@https://registry.npmjs.org/@pixi/sprite/-/sprite-7.4.3.tgz 0ms (cache hit)
+264 http cache @pixi/filter-blur@https://registry.npmjs.org/@pixi/filter-blur/-/filter-blur-7.4.3.tgz 0ms (cache hit)
+265 http cache @pixi/filter-color-matrix@https://registry.npmjs.org/@pixi/filter-color-matrix/-/filter-color-matrix-7.4.3.tgz 0ms (cache hit)
+266 http cache @pixi/core@https://registry.npmjs.org/@pixi/core/-/core-7.4.3.tgz 0ms (cache hit)
+267 http cache @pixi/display@https://registry.npmjs.org/@pixi/display/-/display-7.4.3.tgz 0ms (cache hit)
+268 http cache @pixi/app@https://registry.npmjs.org/@pixi/app/-/app-7.4.3.tgz 0ms (cache hit)
+269 http cache @applemusic-like-lyrics/react@https://registry.npmjs.org/@applemusic-like-lyrics/react/-/react-0.4.1.tgz 0ms (cache hit)
+270 http cache @emnapi/runtime@https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.10.0.tgz 0ms (cache hit)
+271 silly tarball no local data for @types/earcut@https://registry.npmjs.org/@types/earcut/-/earcut-2.1.4.tgz. Extracting by manifest.
+272 silly tarball no local data for eventemitter3@https://registry.npmjs.org/eventemitter3/-/eventemitter3-4.0.7.tgz. Extracting by manifest.
+273 silly tarball no local data for url@https://registry.npmjs.org/url/-/url-0.11.4.tgz. Extracting by manifest.
+274 silly tarball no local data for @pixi/colord@https://registry.npmjs.org/@pixi/colord/-/colord-2.9.6.tgz. Extracting by manifest.
+275 http cache punycode@https://registry.npmjs.org/punycode/-/punycode-1.4.1.tgz 0ms (cache hit)
+276 silly tarball no local data for earcut@https://registry.npmjs.org/earcut/-/earcut-2.2.4.tgz. Extracting by manifest.
+277 silly tarball no local data for @types/css-font-loading-module@https://registry.npmjs.org/@types/css-font-loading-module/-/css-font-loading-module-0.0.12.tgz. Extracting by manifest.
+278 silly tarball no local data for ismobilejs@https://registry.npmjs.org/ismobilejs/-/ismobilejs-1.1.1.tgz. Extracting by manifest.
+279 silly tarball no local data for @pixi/settings@https://registry.npmjs.org/@pixi/settings/-/settings-7.4.3.tgz. Extracting by manifest.
+280 silly tarball no local data for @pixi/utils@https://registry.npmjs.org/@pixi/utils/-/utils-7.4.3.tgz. Extracting by manifest.
+281 silly tarball no local data for @pixi/ticker@https://registry.npmjs.org/@pixi/ticker/-/ticker-7.4.3.tgz. Extracting by manifest.
+282 silly tarball no local data for @pixi/math@https://registry.npmjs.org/@pixi/math/-/math-7.4.3.tgz. Extracting by manifest.
+283 silly tarball no local data for @pixi/extensions@https://registry.npmjs.org/@pixi/extensions/-/extensions-7.4.3.tgz. Extracting by manifest.
+284 silly tarball no local data for @pixi/runner@https://registry.npmjs.org/@pixi/runner/-/runner-7.4.3.tgz. Extracting by manifest.
+285 silly tarball no local data for @pixi/constants@https://registry.npmjs.org/@pixi/constants/-/constants-7.4.3.tgz. Extracting by manifest.
+286 silly tarball no local data for @pixi/color@https://registry.npmjs.org/@pixi/color/-/color-7.4.3.tgz. Extracting by manifest.
+287 silly tarball no local data for @ungap/structured-clone@https://registry.npmjs.org/@ungap/structured-clone/-/structured-clone-1.3.0.tgz. Extracting by manifest.
+288 silly tarball no local data for deep-freeze@https://registry.npmjs.org/deep-freeze/-/deep-freeze-0.0.1.tgz. Extracting by manifest.
+289 silly tarball no local data for bezier-easing@https://registry.npmjs.org/bezier-easing/-/bezier-easing-3.0.0.tgz. Extracting by manifest.
+290 silly tarball no local data for gl-matrix@https://registry.npmjs.org/gl-matrix/-/gl-matrix-4.0.0-beta.2.tgz. Extracting by manifest.
+291 silly tarball no local data for @pixi/filter-bulge-pinch@https://registry.npmjs.org/@pixi/filter-bulge-pinch/-/filter-bulge-pinch-5.1.1.tgz. Extracting by manifest.
+292 silly tarball no local data for @applemusic-like-lyrics/core@https://registry.npmjs.org/@applemusic-like-lyrics/core/-/core-0.4.1.tgz. Extracting by manifest.
+293 silly tarball no local data for @pixi/sprite@https://registry.npmjs.org/@pixi/sprite/-/sprite-7.4.3.tgz. Extracting by manifest.
+294 silly tarball no local data for @pixi/filter-blur@https://registry.npmjs.org/@pixi/filter-blur/-/filter-blur-7.4.3.tgz. Extracting by manifest.
+295 silly tarball no local data for @pixi/filter-color-matrix@https://registry.npmjs.org/@pixi/filter-color-matrix/-/filter-color-matrix-7.4.3.tgz. Extracting by manifest.
+296 silly tarball no local data for @pixi/core@https://registry.npmjs.org/@pixi/core/-/core-7.4.3.tgz. Extracting by manifest.
+297 silly tarball no local data for @pixi/display@https://registry.npmjs.org/@pixi/display/-/display-7.4.3.tgz. Extracting by manifest.
+298 silly tarball no local data for @pixi/app@https://registry.npmjs.org/@pixi/app/-/app-7.4.3.tgz. Extracting by manifest.
+299 silly tarball no local data for @applemusic-like-lyrics/react@https://registry.npmjs.org/@applemusic-like-lyrics/react/-/react-0.4.1.tgz. Extracting by manifest.
+300 silly tarball no local data for @emnapi/runtime@https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.10.0.tgz. Extracting by manifest.
+301 silly tarball no local data for punycode@https://registry.npmjs.org/punycode/-/punycode-1.4.1.tgz. Extracting by manifest.
+302 http fetch GET 200 https://registry.npmjs.org/eventemitter3/-/eventemitter3-4.0.7.tgz 98ms (cache miss)
+303 http fetch GET 200 https://registry.npmjs.org/url/-/url-0.11.4.tgz 103ms (cache miss)
+304 http fetch GET 200 https://registry.npmjs.org/earcut/-/earcut-2.2.4.tgz 104ms (cache miss)
+305 http fetch GET 200 https://registry.npmjs.org/@ungap/structured-clone/-/structured-clone-1.3.0.tgz 127ms (cache miss)
+306 http fetch GET 200 https://registry.npmjs.org/ismobilejs/-/ismobilejs-1.1.1.tgz 131ms (cache miss)
+307 http fetch GET 200 https://registry.npmjs.org/deep-freeze/-/deep-freeze-0.0.1.tgz 145ms (cache miss)
+308 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 233ms
+309 silly audit report {}
+310 http fetch GET 200 https://registry.npmjs.org/@types/css-font-loading-module/-/css-font-loading-module-0.0.12.tgz 263ms (cache miss)
+311 http fetch GET 200 https://registry.npmjs.org/@pixi/settings/-/settings-7.4.3.tgz 263ms (cache miss)
+312 http fetch GET 200 https://registry.npmjs.org/@pixi/colord/-/colord-2.9.6.tgz 295ms (cache miss)
+313 http fetch GET 200 https://registry.npmjs.org/bezier-easing/-/bezier-easing-3.0.0.tgz 307ms (cache miss)
+314 http fetch GET 200 https://registry.npmjs.org/@pixi/color/-/color-7.4.3.tgz 517ms (cache miss)
+315 http fetch GET 200 https://registry.npmjs.org/@pixi/runner/-/runner-7.4.3.tgz 536ms (cache miss)
+316 http fetch GET 200 https://registry.npmjs.org/@pixi/sprite/-/sprite-7.4.3.tgz 534ms (cache miss)
+317 http fetch GET 200 https://registry.npmjs.org/@pixi/ticker/-/ticker-7.4.3.tgz 613ms (cache miss)
+318 http fetch GET 200 https://registry.npmjs.org/@types/earcut/-/earcut-2.1.4.tgz 618ms (cache miss)
+319 http fetch GET 200 https://registry.npmjs.org/punycode/-/punycode-1.4.1.tgz 610ms (cache miss)
+320 http fetch GET 200 https://registry.npmjs.org/@pixi/math/-/math-7.4.3.tgz 636ms (cache miss)
+321 http fetch GET 200 https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.10.0.tgz 647ms (cache miss)
+322 http fetch GET 200 https://registry.npmjs.org/@pixi/filter-bulge-pinch/-/filter-bulge-pinch-5.1.1.tgz 669ms (cache miss)
+323 http fetch GET 200 https://registry.npmjs.org/@pixi/filter-color-matrix/-/filter-color-matrix-7.4.3.tgz 672ms (cache miss)
+324 http fetch GET 200 https://registry.npmjs.org/@pixi/utils/-/utils-7.4.3.tgz 719ms (cache miss)
+325 http fetch GET 200 https://registry.npmjs.org/@pixi/filter-blur/-/filter-blur-7.4.3.tgz 724ms (cache miss)
+326 http fetch GET 200 https://registry.npmjs.org/@pixi/extensions/-/extensions-7.4.3.tgz 831ms (cache miss)
+327 http fetch GET 200 https://registry.npmjs.org/@pixi/constants/-/constants-7.4.3.tgz 966ms (cache miss)
+328 http fetch GET 200 https://registry.npmjs.org/@pixi/display/-/display-7.4.3.tgz 995ms (cache miss)
+329 http fetch GET 200 https://registry.npmjs.org/@applemusic-like-lyrics/react/-/react-0.4.1.tgz 1032ms (cache miss)
+330 http fetch GET 200 https://registry.npmjs.org/gl-matrix/-/gl-matrix-4.0.0-beta.2.tgz 1248ms (cache miss)
+331 http fetch GET 200 https://registry.npmjs.org/@pixi/app/-/app-7.4.3.tgz 1287ms (cache miss)
+332 http fetch GET 200 https://registry.npmjs.org/@applemusic-like-lyrics/core/-/core-0.4.1.tgz 1611ms (cache miss)
+333 http fetch GET 200 https://registry.npmjs.org/@pixi/core/-/core-7.4.3.tgz 1929ms (cache miss)
+334 silly ADD node_modules/url
+335 silly ADD node_modules/url/node_modules/punycode
+336 silly ADD node_modules/eventemitter3
+337 silly ADD node_modules/earcut
+338 silly ADD node_modules/@types/earcut
+339 silly ADD node_modules/ismobilejs
+340 silly ADD node_modules/@types/css-font-loading-module
+341 silly ADD node_modules/@pixi/colord
+342 silly ADD node_modules/@pixi/utils
+343 silly ADD node_modules/@pixi/ticker
+344 silly ADD node_modules/@pixi/settings
+345 silly ADD node_modules/@pixi/runner
+346 silly ADD node_modules/@pixi/math
+347 silly ADD node_modules/@pixi/extensions
+348 silly ADD node_modules/@pixi/constants
+349 silly ADD node_modules/@pixi/color
+350 silly ADD node_modules/gl-matrix
+351 silly ADD node_modules/deep-freeze
+352 silly ADD node_modules/bezier-easing
+353 silly ADD node_modules/@ungap/structured-clone
+354 silly ADD node_modules/@pixi/filter-bulge-pinch
+355 silly ADD node_modules/@applemusic-like-lyrics/core
+356 silly ADD node_modules/@pixi/sprite
+357 silly ADD node_modules/@pixi/filter-color-matrix
+358 silly ADD node_modules/@pixi/filter-blur
+359 silly ADD node_modules/@pixi/display
+360 silly ADD node_modules/@pixi/core
+361 silly ADD node_modules/@pixi/app
+362 silly ADD node_modules/@applemusic-like-lyrics/react
+363 silly ADD
+364 silly ADD
+365 silly ADD
+366 silly ADD
+367 silly ADD
+368 silly ADD
+369 silly ADD
+370 silly ADD
+371 silly ADD
+372 silly ADD
+373 silly ADD
+374 silly ADD
+375 silly ADD
+376 silly ADD
+377 silly ADD
+378 silly ADD
+379 silly ADD
+380 silly ADD
+381 silly ADD
+382 silly ADD
+383 silly ADD
+384 silly ADD
+385 silly ADD
+386 silly ADD
+387 silly ADD
+388 silly ADD
+389 silly ADD
+390 silly ADD
+391 silly ADD
+392 silly ADD
+393 silly ADD
+394 silly ADD
+395 verbose cwd C:\Users\filip\OneDrive\Desktop\asdasda
+396 verbose os Windows_NT 10.0.26100
+397 verbose node v22.16.0
+398 verbose npm  v10.9.2
+399 notice
+399 notice New major version of npm available! 10.9.2 -> 11.13.0
+399 notice Changelog: https://github.com/npm/cli/releases/tag/v11.13.0
+399 notice To update run: npm install -g npm@11.13.0
+399 notice  { force: true, [Symbol(proc-log.meta)]: true }
+400 verbose exit 0
+401 info ok

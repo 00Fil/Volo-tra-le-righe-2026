@@ -7,6 +7,7 @@ type LyricsProviderResponse = {
 };
 
 type LyricsSearchItem = LyricsProviderResponse & {
+  id?: number;
   trackName?: string;
   artistName?: string;
 };
@@ -124,13 +125,8 @@ async function fetchLyricsWithGet(artist: string, title: string) {
   return (await response.json()) as LyricsProviderResponse;
 }
 
-async function fetchLyricsWithSearch(artist: string, title: string) {
-  const params = new URLSearchParams({
-    track_name: title,
-    artist_name: artist,
-  });
-
-  const response = await fetch(`${LRCLIB_BASE}/search?${params.toString()}`, {
+async function fetchLyricsById(id: number) {
+  const response = await fetch(`${LRCLIB_BASE}/get/${id}`, {
     headers: { "User-Agent": USER_AGENT },
     next: { revalidate: CACHE_SECONDS },
   });
@@ -139,16 +135,59 @@ async function fetchLyricsWithSearch(artist: string, title: string) {
     return null;
   }
 
+  return (await response.json()) as LyricsProviderResponse;
+}
+
+async function runSearch(params: URLSearchParams) {
+  const response = await fetch(`${LRCLIB_BASE}/search?${params.toString()}`, {
+    headers: { "User-Agent": USER_AGENT },
+    next: { revalidate: CACHE_SECONDS },
+  });
+
+  if (!response.ok) {
+    return [];
+  }
+
   const results = (await response.json()) as LyricsSearchItem[];
-  if (!Array.isArray(results) || results.length === 0) {
+  return Array.isArray(results) ? results : [];
+}
+
+async function fetchLyricsWithSearch(artist: string, title: string) {
+  const byQuery = await runSearch(
+    new URLSearchParams({ q: `${artist} ${title}` }),
+  );
+  const byTrackAndArtist = await runSearch(
+    new URLSearchParams({
+      track_name: title,
+      artist_name: artist,
+    }),
+  );
+  const byTitle = await runSearch(
+    new URLSearchParams({ q: title }),
+  );
+
+  const mergedResults = [...byQuery, ...byTrackAndArtist, ...byTitle];
+  if (mergedResults.length === 0) {
     return null;
   }
 
-  const sorted = [...results].sort(
+  const sorted = [...mergedResults].sort(
     (a, b) => scoreMatch(b, artist, title) - scoreMatch(a, artist, title),
   );
 
-  return sorted[0];
+  const best = sorted[0];
+  if (
+    best.id &&
+    !best.syncedLyrics?.trim() &&
+    !best.plainLyrics?.trim()
+  ) {
+    const byId = await fetchLyricsById(best.id);
+    if (byId) {
+      return byId;
+    }
+  }
+
+  return best;
 }
 
 export async function GET(request: NextRequest) {

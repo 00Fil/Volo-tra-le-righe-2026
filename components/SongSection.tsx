@@ -16,24 +16,15 @@ type SongSectionProps = {
   track: Track;
   index: number;
   total: number;
-  nextImageSrc?: string;
 };
 
-export function SongSection({
-  track,
-  index,
-  total,
-  nextImageSrc,
-}: SongSectionProps) {
+export function SongSection({ track, index, total }: SongSectionProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const imageLayerRef = useRef<HTMLDivElement | null>(null);
-  const nextImageLayerRef = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
-  const nextImageRef = useRef<HTMLImageElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const detailRefs = useRef<HTMLDivElement[]>([]);
   const [imageMissing, setImageMissing] = useState(false);
-  const [nextImageMissing, setNextImageMissing] = useState(false);
 
   const ambientStyle = useMemo(
     () =>
@@ -55,17 +46,12 @@ export function SongSection({
     setImageMissing(false);
   }, [track.imageSrc]);
 
-  useEffect(() => {
-    setNextImageMissing(false);
-  }, [nextImageSrc]);
-
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const section = sectionRef.current;
-    const nextImageLayer = nextImageLayerRef.current;
+    const imageLayer = imageLayerRef.current;
     const image = imageRef.current;
-    const nextImage = nextImageRef.current;
     const pinnedScene = section?.querySelector(".story-pin");
 
     if (!section) {
@@ -101,28 +87,30 @@ export function SongSection({
         );
       }
 
-      if (nextImage) {
-        gsap.to(nextImage, {
-          scale: 1.08,
-          xPercent: index % 2 === 0 ? 1.6 : -1.6,
-          yPercent: -1.2,
-          duration: 9,
-          ease: "sine.inOut",
-          repeat: -1,
-          yoyo: true,
-        });
-      }
+      if (imageLayer) {
+        gsap.fromTo(
+          imageLayer,
+          { autoAlpha: 0.34 },
+          {
+            autoAlpha: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 88%",
+              end: "top 45%",
+              scrub: 0.65,
+            },
+          },
+        );
 
-      if (nextImageLayer && nextImageSrc && !nextImageMissing) {
-        gsap.set(nextImageLayer, { autoAlpha: 0 });
-        gsap.to(nextImageLayer, {
-          autoAlpha: 1,
+        gsap.to(imageLayer, {
+          autoAlpha: 0.32,
           ease: "none",
           scrollTrigger: {
             trigger: section,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.9,
+            start: "bottom 62%",
+            end: "bottom 20%",
+            scrub: 0.7,
           },
         });
       }
@@ -173,7 +161,7 @@ export function SongSection({
     }, section);
 
     return () => context.revert();
-  }, [index, nextImageSrc, nextImageMissing]);
+  }, [index]);
 
   return (
     <section
@@ -183,7 +171,7 @@ export function SongSection({
       style={ambientStyle}
     >
       <div className="story-pin relative h-screen overflow-hidden bg-[linear-gradient(140deg,var(--ambient-dark),#000)]">
-        <div ref={imageLayerRef} className="absolute inset-0 will-change-transform">
+        <div ref={imageLayerRef} className="absolute inset-0 will-change-opacity">
           <StaticImageFallback visible={imageMissing} />
 
           {!imageMissing ? (
@@ -199,25 +187,6 @@ export function SongSection({
             />
           ) : null}
         </div>
-        {nextImageSrc ? (
-          <div
-            ref={nextImageLayerRef}
-            className="absolute inset-0 opacity-0 will-change-[opacity,transform]"
-          >
-            {!nextImageMissing ? (
-              // This second layer creates the real image-to-image crossfade.
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                ref={nextImageRef}
-                src={nextImageSrc}
-                alt=""
-                loading="lazy"
-                onError={() => setNextImageMissing(true)}
-                className="absolute inset-0 h-full w-full scale-[1.035] object-cover"
-              />
-            ) : null}
-          </div>
-        ) : null}
 
         <div className="absolute inset-0 bg-black/25" />
         <div className={`scene-atmosphere scene-atmosphere-${track.id}`} />

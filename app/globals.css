@@ -1,3 +1,5 @@
+@import "@applemusic-like-lyrics/core/style.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -112,6 +114,17 @@ select {
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.32);
     background-clip: padding-box;
+  }
+
+  .amll-live-shell .amll-lyric-player {
+    --amll-lp-font-size: clamp(19px, 2.35vw, 30px);
+    --amll-lp-color: rgba(255, 255, 255, 0.96);
+    --amll-lp-hover-bg-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .amll-live-shell .amll-lyric-player.dom {
+    --amll-lp-line-width-aspect: 0.94;
+    --amll-lp-line-padding-x: 0.72em;
   }
 }
 
