@@ -1,5 +1,11 @@
 @import "@applemusic-like-lyrics/core/style.css";
 
+@font-face {
+  font-family: "Bumbbled";
+  src: url("/fonts/Bumbbled.otf") format("opentype");
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

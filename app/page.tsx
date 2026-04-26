@@ -14,11 +14,13 @@ import {
 } from "react";
 import { GlassPlayer } from "@/components/GlassPlayer";
 import { HomeAudio } from "@/components/HomeAudio";
+import { IntroSplash } from "@/components/IntroSplash";
 import { SectionDots } from "@/components/SectionDots";
 import { SongSection } from "@/components/SongSection";
 import { tracks } from "@/data/tracks";
 
 export default function Home() {
+  const [showIntro, setShowIntro] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
   const [hasEntered, setHasEntered] = useState(false);
   const [showPlayer, setShowPlayer] = useState(false);
@@ -43,6 +45,20 @@ export default function Home() {
       }) as CSSProperties,
     [palette],
   );
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setShowIntro(false), 4400);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = showIntro ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [showIntro]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -135,6 +151,7 @@ export default function Home() {
       className="relative min-h-screen overflow-x-hidden bg-black pb-36 text-white"
       data-playing={musicPlaying ? "true" : "false"}
     >
+      <IntroSplash visible={showIntro} />
       <AmbientShell style={ambientStyle} playing={musicPlaying} />
       <Hero
         onEnter={enterStory}
