@@ -1,0 +1,356 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ambient-1: #2e3438;
+  --ambient-2: #6b7f6a;
+  --ambient-3: #b6a16a;
+  --ambient-dark: #050608;
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --section-glow: #6b7f6a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  background: #000;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: Aptos, "Segoe UI", "Helvetica Neue", sans-serif;
+  text-rendering: geometricPrecision;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--ambient-3) 55%, transparent);
+  color: #fff;
+}
+
+@layer components {
+  .glass-panel {
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(24px);
+  }
+
+  .player-shell {
+    border-radius: 24px;
+    background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--ambient-1) 28%, rgba(255, 255, 255, 0.13)),
+        color-mix(in srgb, var(--ambient-dark) 64%, rgba(255, 255, 255, 0.06))
+      ),
+      rgba(0, 0, 0, 0.28);
+    box-shadow:
+      0 24px 80px rgba(0, 0, 0, 0.48),
+      0 0 90px color-mix(in srgb, var(--section-glow) 34%, transparent),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(28px) saturate(1.25);
+    transition:
+      background 600ms ease,
+      box-shadow 600ms ease,
+      transform 360ms ease;
+  }
+
+  .player-shell.is-playing {
+    box-shadow:
+      0 28px 95px rgba(0, 0, 0, 0.52),
+      0 0 130px color-mix(in srgb, var(--section-glow) 48%, transparent),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  }
+
+  .player-shell.phase-changing {
+    animation: player-phase 680ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .bg-noise {
+    background-image: radial-gradient(
+        circle at 20% 30%,
+        rgba(255, 255, 255, 0.25) 0 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 70% 60%,
+        rgba(255, 255, 255, 0.16) 0 1px,
+        transparent 1px
+      );
+    background-size: 34px 34px, 58px 58px;
+  }
+}
+
+.hero-drift {
+  animation: hero-drift 18s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.hero-index {
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035)),
+    rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 22px 70px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  padding: 1.25rem;
+  backdrop-filter: blur(24px);
+}
+
+.ambient-shell.is-playing > div:first-child {
+  animation: ambient-music-bloom 3.8s ease-in-out infinite;
+}
+
+.story-section {
+  isolation: isolate;
+}
+
+.scene-atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.36;
+}
+
+.scene-atmosphere-heathens {
+  background:
+    linear-gradient(90deg, transparent 0 9%, rgba(255, 255, 255, 0.09) 9.4% 9.8%, transparent 10.2% 20%),
+    radial-gradient(circle at 74% 18%, var(--ambient-3), transparent 16%),
+    radial-gradient(circle at 22% 72%, var(--ambient-2), transparent 18%);
+  background-size: 120px 100%, auto, auto;
+}
+
+.scene-atmosphere-creep {
+  opacity: 0.28;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 100%),
+    radial-gradient(ellipse at 70% 22%, var(--ambient-3), transparent 22%),
+    linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.1), transparent 58%);
+  background-size: 100% 82px, auto, auto;
+}
+
+.scene-atmosphere-way-down-we-go {
+  background:
+    radial-gradient(ellipse at 46% 86%, rgba(255, 255, 255, 0.18), transparent 28%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 18px),
+    radial-gradient(circle at 20% 28%, var(--ambient-1), transparent 24%),
+    radial-gradient(circle at 82% 68%, var(--ambient-3), transparent 18%);
+  animation: rain-drift 11s linear infinite;
+}
+
+.scene-atmosphere-coraline {
+  opacity: 0.32;
+  background:
+    linear-gradient(92deg, transparent 0 48%, rgba(255, 255, 255, 0.18) 49%, transparent 51% 100%),
+    radial-gradient(circle at 72% 54%, var(--ambient-2), transparent 22%),
+    radial-gradient(ellipse at 42% 28%, rgba(255, 255, 255, 0.14), transparent 20%);
+}
+
+.scene-atmosphere-uprising {
+  opacity: 0.42;
+  background:
+    radial-gradient(ellipse at 50% 82%, rgba(255, 255, 255, 0.2), transparent 20%),
+    repeating-radial-gradient(ellipse at 50% 90%, rgba(255, 255, 255, 0.12) 0 1px, transparent 2px 18px),
+    radial-gradient(circle at 82% 32%, var(--ambient-3), transparent 18%),
+    radial-gradient(circle at 28% 72%, var(--ambient-2), transparent 20%);
+  animation: water-pulse 5.4s ease-in-out infinite;
+}
+
+.scene-atmosphere-wait {
+  opacity: 0.4;
+  background:
+    radial-gradient(circle at 82% 16%, var(--ambient-1), transparent 30%),
+    radial-gradient(circle at 18% 78%, var(--ambient-3), transparent 18%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 42px),
+    linear-gradient(180deg, transparent 0 46%, rgba(242, 184, 128, 0.2));
+  animation: dawn-breathe 7.2s ease-in-out infinite;
+}
+
+.story-beat {
+  text-shadow: 0 12px 48px rgba(0, 0, 0, 0.72);
+}
+
+.story-panel {
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity, filter;
+}
+
+.story-beat p:last-child {
+  text-wrap: pretty;
+}
+
+.player-pulse {
+  animation: player-pulse 1.8s ease-in-out infinite;
+  box-shadow: 0 0 24px var(--ambient-3);
+}
+
+.player-reactor {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--ambient-3) 40%, transparent) 0 var(--track-progress), transparent var(--track-progress) 100%),
+    radial-gradient(circle at var(--track-progress) 0%, var(--ambient-3), transparent 28%),
+    radial-gradient(circle at 12% 100%, var(--ambient-1), transparent 42%),
+    radial-gradient(circle at 88% 100%, var(--ambient-2), transparent 42%);
+  opacity: 0.32;
+  transition: opacity 400ms ease;
+}
+
+.player-reactor.is-playing {
+  animation: music-reactor 2.4s ease-in-out infinite;
+  opacity: 0.58;
+}
+
+.home-audio {
+  background:
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--ambient-3) 34%, transparent), transparent 36%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.035)),
+    rgba(0, 0, 0, 0.32);
+  box-shadow:
+    0 18px 60px rgba(0, 0, 0, 0.38),
+    0 0 70px color-mix(in srgb, var(--ambient-2) 28%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.home-audio::before {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  background: conic-gradient(
+    from 180deg,
+    transparent,
+    color-mix(in srgb, var(--ambient-3) 26%, transparent),
+    transparent,
+    color-mix(in srgb, var(--ambient-2) 20%, transparent),
+    transparent
+  );
+  opacity: 0;
+  transform: rotate(0deg);
+  transition: opacity 420ms ease;
+}
+
+.home-audio[data-playing="true"]::before {
+  animation: home-audio-spin 7s linear infinite;
+  opacity: 1;
+}
+
+@keyframes hero-drift {
+  from {
+    transform: scale(1.02) translate3d(-0.4%, -0.2%, 0);
+  }
+
+  to {
+    transform: scale(1.065) translate3d(0.6%, 0.35%, 0);
+  }
+}
+
+@keyframes home-audio-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes player-pulse {
+  0%,
+  100% {
+    transform: scale(0.86);
+    opacity: 0.52;
+  }
+
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+@keyframes player-phase {
+  0% {
+    transform: translateY(10px) scale(0.985);
+    filter: saturate(0.88) brightness(0.88);
+  }
+
+  58% {
+    transform: translateY(-2px) scale(1.012);
+    filter: saturate(1.45) brightness(1.2);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+    filter: saturate(1) brightness(1);
+  }
+}
+
+@keyframes ambient-music-bloom {
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: scale(1);
+  }
+
+  45% {
+    opacity: 0.52;
+    transform: scale(1.035);
+  }
+}
+
+@keyframes music-reactor {
+  0%,
+  100% {
+    filter: saturate(1) brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    filter: saturate(1.45) brightness(1.22);
+    transform: scale(1.035);
+  }
+}
+
+@keyframes rain-drift {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0;
+  }
+
+  to {
+    background-position: 0 0, 180px 260px, 0 0, 0 0;
+  }
+}
+
+@keyframes water-pulse {
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes dawn-breathe {
+  0%,
+  100% {
+    filter: brightness(0.9);
+  }
+
+  50% {
+    filter: brightness(1.22);
+  }
+}
