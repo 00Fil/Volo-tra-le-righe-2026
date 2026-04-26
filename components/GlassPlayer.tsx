@@ -13,18 +13,6 @@ import type { Track } from "@/data/tracks";
 import { SongDialog } from "./SongDialog";
 import Grainient from "@/components/Grainient";
 
-// ── MusicBrainz / Cover Art Archive types ─────────────────────────────────────
-
-interface MBRecording {
-  releases?: { "release-group"?: { id: string } }[];
-}
-
-interface CAImage {
-  front: boolean;
-  image: string;
-  thumbnails: { "500"?: string; large?: string; [k: string]: string | undefined };
-}
-
 // ── Hook ──────────────────────────────────────────────────────────────────────
 
 type CoverState =
@@ -41,50 +29,44 @@ function useCoverArt(
 
   useEffect(() => {
     setState({ status: "loading" });
-    let cancelled = false;
+    const controller = new AbortController();
 
     async function run() {
       try {
-        const query = encodeURIComponent(
-          `recording:"${title}" AND artist:"${artist}"`,
+        const params = new URLSearchParams({
+          artist,
+          title,
+        });
+        const response = await fetch(
+          `/api/cover-art?${params.toString()}`,
+          { signal: controller.signal },
         );
-        const mbRes = await fetch(
-          `https://musicbrainz.org/ws/2/recording?query=${query}&limit=5&fmt=json`,
-          { headers: { "User-Agent": "GlassPlayer/1.0 (contact@example.com)" } },
-        );
-        if (!mbRes.ok) throw new Error("mb");
 
-        const mbData = await mbRes.json();
-        const recordings: MBRecording[] = mbData.recordings ?? [];
-
-        let rgMbid: string | null = null;
-        outer: for (const rec of recordings) {
-          for (const rel of rec.releases ?? []) {
-            const id = rel["release-group"]?.id;
-            if (id) { rgMbid = id; break outer; }
-          }
+        if (!response.ok) {
+          throw new Error("cover-lookup-failed");
         }
-        if (!rgMbid) throw new Error("no rg");
 
-        const caRes = await fetch(
-          `https://coverartarchive.org/release-group/${rgMbid}`,
-        );
-        if (!caRes.ok) throw new Error("caa");
+        const data = (await response.json()) as { url?: string };
+        if (!data.url) {
+          throw new Error("cover-url-missing");
+        }
 
-        const caData = await caRes.json();
-        const front = (caData.images as CAImage[]).find((img) => img.front);
-        const url =
-          front?.thumbnails?.["500"] ?? front?.thumbnails?.large ?? front?.image;
-        if (!url) throw new Error("no url");
-
-        if (!cancelled) setState({ status: "ready", url });
-      } catch {
-        if (!cancelled) setState({ status: "error" });
+        setState({ status: "ready", url: data.url });
+      } catch (error) {
+        if (
+          error instanceof DOMException &&
+          error.name === "AbortError"
+        ) {
+          return;
+        }
+        setState({ status: "error" });
       }
     }
 
     run();
-    return () => { cancelled = true; };
+    return () => {
+      controller.abort();
+    };
   }, [artist, title]);
 
   if (state.status === "ready") return { src: state.url, loading: false };
