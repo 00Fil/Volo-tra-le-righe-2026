@@ -145,6 +145,9 @@ export function WarpDialogContent({
         <motion.div
           role="dialog"
           aria-modal="true"
+          data-lenis-prevent=""
+          onWheelCapture={(event) => event.stopPropagation()}
+          onTouchMoveCapture={(event) => event.stopPropagation()}
           className={`fixed inset-0 z-[80] overflow-hidden bg-black ${
             className ?? ""
           }`}
