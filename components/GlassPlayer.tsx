@@ -13,6 +13,87 @@ import type { Track } from "@/data/tracks";
 import { SongDialog } from "./SongDialog";
 import Grainient from "@/components/Grainient";
 
+// ── MusicBrainz / Cover Art Archive types ─────────────────────────────────────
+
+interface MBRecording {
+  releases?: { "release-group"?: { id: string } }[];
+}
+
+interface CAImage {
+  front: boolean;
+  image: string;
+  thumbnails: { "500"?: string; large?: string; [k: string]: string | undefined };
+}
+
+// ── Hook ──────────────────────────────────────────────────────────────────────
+
+type CoverState =
+  | { status: "loading" }
+  | { status: "ready"; url: string }
+  | { status: "error" };
+
+function useCoverArt(
+  artist: string,
+  title: string,
+  fallbackSrc: string,
+): { src: string; loading: boolean } {
+  const [state, setState] = useState<CoverState>({ status: "loading" });
+
+  useEffect(() => {
+    setState({ status: "loading" });
+    let cancelled = false;
+
+    async function run() {
+      try {
+        const query = encodeURIComponent(
+          `recording:"${title}" AND artist:"${artist}"`,
+        );
+        const mbRes = await fetch(
+          `https://musicbrainz.org/ws/2/recording?query=${query}&limit=5&fmt=json`,
+          { headers: { "User-Agent": "GlassPlayer/1.0 (contact@example.com)" } },
+        );
+        if (!mbRes.ok) throw new Error("mb");
+
+        const mbData = await mbRes.json();
+        const recordings: MBRecording[] = mbData.recordings ?? [];
+
+        let rgMbid: string | null = null;
+        outer: for (const rec of recordings) {
+          for (const rel of rec.releases ?? []) {
+            const id = rel["release-group"]?.id;
+            if (id) { rgMbid = id; break outer; }
+          }
+        }
+        if (!rgMbid) throw new Error("no rg");
+
+        const caRes = await fetch(
+          `https://coverartarchive.org/release-group/${rgMbid}`,
+        );
+        if (!caRes.ok) throw new Error("caa");
+
+        const caData = await caRes.json();
+        const front = (caData.images as CAImage[]).find((img) => img.front);
+        const url =
+          front?.thumbnails?.["500"] ?? front?.thumbnails?.large ?? front?.image;
+        if (!url) throw new Error("no url");
+
+        if (!cancelled) setState({ status: "ready", url });
+      } catch {
+        if (!cancelled) setState({ status: "error" });
+      }
+    }
+
+    run();
+    return () => { cancelled = true; };
+  }, [artist, title]);
+
+  if (state.status === "ready") return { src: state.url, loading: false };
+  if (state.status === "loading") return { src: fallbackSrc, loading: true };
+  return { src: fallbackSrc, loading: false };
+}
+
+// ── Component ─────────────────────────────────────────────────────────────────
+
 type GlassPlayerProps = {
   activeTrack: Track;
   activeIndex: number;
@@ -36,9 +117,14 @@ export function GlassPlayer({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [audioError, setAudioError] = useState(false);
-  const [coverMissing, setCoverMissing] = useState(false);
   const [phaseChanging, setPhaseChanging] = useState(false);
   const progress = duration > 0 ? Math.min(currentTime / duration, 1) : 0;
+
+  const { src: coverSrc, loading: coverLoading } = useCoverArt(
+    activeTrack.artist,
+    activeTrack.title,
+    activeTrack.imageSrc,
+  );
 
   const cssVars = useMemo(
     () =>
@@ -68,7 +154,6 @@ export function GlassPlayer({
     setAudioError(false);
     setCurrentTime(0);
     setDuration(0);
-    setCoverMissing(false);
     audio.load();
 
     if (enabled && wantsPlaybackRef.current) {
@@ -151,7 +236,7 @@ export function GlassPlayer({
 
       {/* Shell */}
       <div className="relative overflow-hidden rounded-2xl text-white shadow-[0_24px_64px_rgba(0,0,0,.5),0_0_0_1px_rgba(255,255,255,.08)]">
-        {/* Grainient background — keyed on track id so it remounts on track change */}
+        {/* Grainient background */}
         <div
           key={activeTrack.id}
           className={`absolute inset-0 transition-opacity duration-700 ${
@@ -177,12 +262,12 @@ export function GlassPlayer({
             saturation={0.9}
             colorBalance={0.0}
             blendAngle={0.0}
-            blendSoftness={0.40}
+            blendSoftness={0.4}
             zoom={0.95}
           />
         </div>
 
-        {/* Dark overlay so text is always readable */}
+        {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/40" />
 
         {/* Top highlight */}
@@ -192,18 +277,33 @@ export function GlassPlayer({
         <div className="relative flex items-center gap-3 p-3 sm:gap-4 sm:p-4">
           {/* Album art + play button */}
           <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-[1.15rem] bg-white/10 shadow-[0_18px_45px_rgba(0,0,0,.34)] sm:h-20 sm:w-20">
-            {!coverMissing ? (
-              // eslint-disable-next-line @next/next/no-img-element
+            {/* Palette gradient — visible while cover is loading */}
+            <div
+              className={`absolute inset-0 transition-opacity duration-500 ${
+                coverLoading ? "opacity-100" : "opacity-0"
+              } bg-[radial-gradient(circle_at_35%_25%,var(--ambient-3),transparent_42%),linear-gradient(145deg,var(--ambient-1),var(--ambient-2))]`}
+            />
+
+            {/* Remote cover (fades in once loaded) */}
+            <div
+              className={`absolute inset-0 transition-opacity duration-500 ${
+                coverLoading ? "opacity-0" : "opacity-100"
+              }`}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                key={activeTrack.id}
-                src={activeTrack.imageSrc}
+                key={coverSrc}
+                src={coverSrc}
                 alt={`Copertina di ${activeTrack.title}`}
-                onError={() => setCoverMissing(true)}
                 className="h-full w-full object-cover"
+                onError={(e) => {
+                  const img = e.currentTarget;
+                  if (img.src !== activeTrack.imageSrc) {
+                    img.src = activeTrack.imageSrc;
+                  }
+                }}
               />
-            ) : (
-              <div className="h-full w-full bg-[radial-gradient(circle_at_35%_25%,var(--ambient-3),transparent_42%),linear-gradient(145deg,var(--ambient-1),var(--ambient-2))]" />
-            )}
+            </div>
 
             <div className="absolute inset-0 bg-black/10" />
 

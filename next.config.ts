@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   experimental: {
     workerThreads: true,
   },
+  output: "standalone",
   outputFileTracingRoot: process.cwd(),
   reactStrictMode: true,
 };
