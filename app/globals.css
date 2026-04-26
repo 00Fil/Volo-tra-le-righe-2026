@@ -132,6 +132,17 @@ select {
     --amll-lp-line-width-aspect: 0.94;
     --amll-lp-line-padding-x: 0.72em;
   }
+
+  @media (max-width: 767px) {
+    .amll-live-shell .amll-lyric-player {
+      --amll-lp-font-size: clamp(17px, 5.2vw, 24px);
+    }
+
+    .amll-live-shell .amll-lyric-player.dom {
+      --amll-lp-line-width-aspect: 0.86;
+      --amll-lp-line-padding-x: 0.48em;
+    }
+  }
 }
 
 .hero-drift {

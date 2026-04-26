@@ -7,6 +7,7 @@ export type Track = {
   sectionTitle: string;
   shortLine: string;
   imageSrc: string;
+  mobileImageSrc: string;
   canvasSrc: string;
   audioSrc: string;
   cueStartSeconds: number;
@@ -35,6 +36,7 @@ export const tracks: Track[] = [
     sectionTitle: "Sopravvivere",
     shortLine: "La comunità non è un rifugio: è il primo luogo da cui scappare.",
     imageSrc: "/images/01-heathens.jpg",
+    mobileImageSrc: "/images/mobile/01-heathens-mobile.jpg",
     canvasSrc: "/canvas/01-heathens.mp4",
     audioSrc: "/audio/01-heathens.mp3",
     cueStartSeconds: 22,
@@ -96,6 +98,7 @@ export const tracks: Track[] = [
     sectionTitle: "Fuori posto",
     shortLine: "Olivo entra in una nuova vita, ma non riesce ancora ad abitarla.",
     imageSrc: "/images/02-creep.jpg",
+    mobileImageSrc: "/images/mobile/02-creep-mobile.jpg",
     canvasSrc: "/canvas/02-creep.mp4",
     audioSrc: "/audio/02-creep.mp3",
     cueStartSeconds: 58,
@@ -157,6 +160,7 @@ export const tracks: Track[] = [
     sectionTitle: "Discesa",
     shortLine: "Dalla strada alla cisterna, ogni passo porta Olivo più in basso.",
     imageSrc: "/images/03-way-down-we-go.jpg",
+    mobileImageSrc: "/images/mobile/03-way-down-we-go-mobile.jpg",
     canvasSrc: "/canvas/03-way-down-we-go.mp4",
     audioSrc: "/audio/03-way-down-we-go.mp3",
     cueStartSeconds: 49,
@@ -216,6 +220,7 @@ export const tracks: Track[] = [
     sectionTitle: "Ferita",
     shortLine: "Il falso mostro cade. Il trauma resta.",
     imageSrc: "/images/04-coraline.jpg",
+    mobileImageSrc: "/images/mobile/04-coraline-mobile.jpg",
     canvasSrc: "/canvas/04-coraline.mp4",
     audioSrc: "/audio/04-coraline.mp3",
     cueStartSeconds: 44,
@@ -277,6 +282,7 @@ export const tracks: Track[] = [
     sectionTitle: "Rivolta",
     shortLine: "Le vittime non erano ferme: stavano preparando la loro fuga.",
     imageSrc: "/images/05-uprising.jpg",
+    mobileImageSrc: "/images/mobile/05-uprising-mobile.jpg",
     canvasSrc: "/canvas/05-uprising.mp4",
     audioSrc: "/audio/05-uprising.mp3",
     cueStartSeconds: 37,
@@ -337,6 +343,7 @@ export const tracks: Track[] = [
     sectionTitle: "Scegliere",
     shortLine: "La libertà arriva in silenzio: Olivo sale sulla barca, poi scende da solo.",
     imageSrc: "/images/06-wait.jpg",
+    mobileImageSrc: "/images/mobile/06-wait-mobile.jpg",
     canvasSrc: "/canvas/06-wait.mp4",
     audioSrc: "/audio/06-wait.mp3",
     cueStartSeconds: 51,

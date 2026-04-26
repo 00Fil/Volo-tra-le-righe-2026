@@ -44,7 +44,7 @@ export function SongSection({ track, index, total }: SongSectionProps) {
 
   useEffect(() => {
     setImageMissing(false);
-  }, [track.imageSrc]);
+  }, [track.imageSrc, track.mobileImageSrc]);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -170,21 +170,25 @@ export function SongSection({ track, index, total }: SongSectionProps) {
       className={`story-section scene-${track.id} relative h-[720vh]`}
       style={ambientStyle}
     >
-      <div className="story-pin relative h-screen overflow-hidden bg-[linear-gradient(140deg,var(--ambient-dark),#000)]">
+      <div className="story-pin relative h-[100svh] overflow-hidden bg-[linear-gradient(140deg,var(--ambient-dark),#000)]">
         <div ref={imageLayerRef} className="absolute inset-0 will-change-opacity">
           <StaticImageFallback visible={imageMissing} />
 
           {!imageMissing ? (
-            // GSAP needs a direct image element reference for the perpetual drift.
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              ref={imageRef}
-              src={track.imageSrc}
-              alt={`Immagine ispirata a ${track.title}, ${track.chapters}`}
-              loading={index === 0 ? "eager" : "lazy"}
-              onError={() => setImageMissing(true)}
-              className="absolute inset-0 h-full w-full scale-[1.035] object-cover"
-            />
+            <picture className="absolute inset-0 h-full w-full">
+              <source
+                media="(max-width: 767px)"
+                srcSet={track.mobileImageSrc}
+              />
+              <img
+                ref={imageRef}
+                src={track.imageSrc}
+                alt={`Immagine ispirata a ${track.title}, ${track.chapters}`}
+                loading={index === 0 ? "eager" : "lazy"}
+                onError={() => setImageMissing(true)}
+                className="h-full w-full scale-[1.035] object-cover"
+              />
+            </picture>
           ) : null}
         </div>
 

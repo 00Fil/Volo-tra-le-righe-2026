@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { ArrowDown } from "lucide-react";
-import Image from "next/image";
 import {
   useCallback,
   useEffect,
@@ -211,17 +210,21 @@ function Hero({
 }) {
   return (
     <section className="relative z-10 flex min-h-[100svh] overflow-hidden px-5 py-6 md:px-10 md:py-8">
-      <Image
-        src="/images/00-copertina.jpg"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="hero-drift object-cover opacity-95"
-        onError={(event) => {
-          event.currentTarget.style.display = "none";
-        }}
-      />
+      <picture className="absolute inset-0 h-full w-full">
+        <source
+          media="(max-width: 767px)"
+          srcSet="/images/mobile/00-copertina-mobile.jpg"
+        />
+        <img
+          src="/images/00-copertina.jpg"
+          alt=""
+          fetchPriority="high"
+          className="hero-drift h-full w-full object-cover opacity-95"
+          onError={(event) => {
+            event.currentTarget.style.display = "none";
+          }}
+        />
+      </picture>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(107,127,106,.18),transparent_28%),radial-gradient(circle_at_82%_22%,rgba(216,205,184,.16),transparent_30%),radial-gradient(circle_at_58%_88%,rgba(227,106,44,.20),transparent_30%),linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.42)_50%,#000)]" />
       <div className="absolute inset-0 bg-noise opacity-[0.08]" />
 

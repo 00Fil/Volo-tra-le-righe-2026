@@ -338,6 +338,7 @@ export function GlassPlayer({
   visible,
   onPlayingChange,
 }: GlassPlayerProps) {
+  const playerRef          = useRef<HTMLDivElement | null>(null);
   const audioRef           = useRef<HTMLAudioElement | null>(null);
   const wantsPlaybackRef   = useRef(false);
   const pendingCueSeekRef  = useRef(true);
@@ -350,6 +351,7 @@ export function GlassPlayer({
   const [audioError,    setAudioError]    = useState(false);
   const [phaseChanging, setPhaseChanging] = useState(false);
   const [lyricsOpen,    setLyricsOpen]    = useState(false);
+  const [isTouchLike,    setIsTouchLike]  = useState(false);
 
   const progress = duration > 0 ? Math.min(currentTime / duration, 1) : 0;
 
@@ -375,13 +377,30 @@ export function GlassPlayer({
   );
 
   function handleMouseEnter() {
+    if (isTouchLike) return;
     if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
     hoverTimerRef.current = setTimeout(() => setLyricsOpen(true), 60);
   }
 
   function handleMouseLeave() {
+    if (isTouchLike) return;
     if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
     hoverTimerRef.current = setTimeout(() => setLyricsOpen(false), 100);
+  }
+
+  function handlePlayerClick(event: MouseEvent<HTMLDivElement>) {
+    if (!isTouchLike) return;
+    const target = event.target;
+
+    if (
+      target instanceof HTMLElement &&
+      target.closest("[data-player-control='true']")
+    ) {
+      return;
+    }
+
+    if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
+    setLyricsOpen((open) => !open);
   }
 
   useEffect(
@@ -389,10 +408,38 @@ export function GlassPlayer({
     [],
   );
 
+  useEffect(() => {
+    const query = window.matchMedia("(hover: none), (pointer: coarse)");
+    const update = () => setIsTouchLike(query.matches);
+
+    update();
+    query.addEventListener("change", update);
+
+    return () => query.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!isTouchLike || !lyricsOpen) return;
+
+    const closeOnOutsideTap = (event: PointerEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (playerRef.current?.contains(target)) return;
+      setLyricsOpen(false);
+    };
+
+    window.addEventListener("pointerdown", closeOnOutsideTap, {
+      passive: true,
+    });
+
+    return () => window.removeEventListener("pointerdown", closeOnOutsideTap);
+  }, [isTouchLike, lyricsOpen]);
+
   useEffect(() => { onPlayingChange?.(isPlaying); }, [isPlaying, onPlayingChange]);
 
   useEffect(() => {
     setPhaseChanging(true);
+    setLyricsOpen(false);
     const t = window.setTimeout(() => setPhaseChanging(false), 680);
     return () => window.clearTimeout(t);
   }, [activeTrack.id]);
@@ -461,7 +508,8 @@ export function GlassPlayer({
 
   return (
     <div
-      className={`fixed bottom-4 left-1/2 z-50 w-[calc(100%-24px)] max-w-4xl -translate-x-1/2 transition duration-500 ${
+      ref={playerRef}
+      className={`fixed bottom-[calc(env(safe-area-inset-bottom)+1rem)] left-1/2 z-50 w-[calc(100%-24px)] max-w-4xl -translate-x-1/2 transition duration-500 ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-10 opacity-0"
@@ -469,8 +517,11 @@ export function GlassPlayer({
       style={cssVars}
       data-track={activeTrack.id}
       data-playing={isPlaying ? "true" : "false"}
+      data-lyrics-open={lyricsOpen ? "true" : "false"}
+      aria-expanded={lyricsOpen}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handlePlayerClick}
     >
       <audio
         ref={audioRef}
@@ -618,6 +669,7 @@ export function GlassPlayer({
               <div className="absolute inset-0 bg-black/10" />
 
               <button
+                data-player-control="true"
                 type="button"
                 onClick={togglePlayback}
                 disabled={!enabled}
@@ -649,7 +701,9 @@ export function GlassPlayer({
                     {activeTrack.chapters}
                   </p>
                   <div className="truncate">
-                    <SongDialog activeTrack={activeTrack} />
+                    <span data-player-control="true" className="block">
+                      <SongDialog activeTrack={activeTrack} />
+                    </span>
                   </div>
                   <p className="truncate text-sm text-white/60">
                     {activeTrack.artist}
@@ -667,6 +721,7 @@ export function GlassPlayer({
               {/* Scrubber */}
               <div className="mt-3 flex items-center gap-3 sm:mt-4">
                 <button
+                  data-player-control="true"
                   ref={scrubberRef}
                   type="button"
                   onClick={seek}
