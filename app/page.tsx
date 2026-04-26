@@ -197,7 +197,7 @@ function Hero({
   return (
     <section className="relative z-10 flex min-h-[100svh] overflow-hidden px-5 py-6 md:px-10 md:py-8">
       <Image
-        src="/images/ciao.png"
+        src="/images/00-copertina.jpg"
         alt=""
         fill
         priority
