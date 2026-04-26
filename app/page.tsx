@@ -13,8 +13,7 @@ import {
   type CSSProperties,
 } from "react";
 import { GlassPlayer } from "@/components/GlassPlayer";
-import { HomeAudio } from "@/components/HomeAudio";
-import { IntroSplash } from "@/components/IntroSplash";
+import { HomeAudio } from "@/components/HomeAudio"
 import { SectionDots } from "@/components/SectionDots";
 import { SongSection } from "@/components/SongSection";
 import { tracks } from "@/data/tracks";
@@ -151,7 +150,6 @@ export default function Home() {
       className="relative min-h-screen overflow-x-hidden bg-black pb-36 text-white"
       data-playing={musicPlaying ? "true" : "false"}
     >
-      <IntroSplash visible={showIntro} />
       <AmbientShell style={ambientStyle} playing={musicPlaying} />
       <Hero
         onEnter={enterStory}
