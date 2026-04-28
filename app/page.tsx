@@ -216,13 +216,8 @@ function PresentationSection() {
 
         <div className="glass-panel border border-white/10 p-6 md:p-8">
           <p className="text-base leading-relaxed text-white/82 md:text-lg">
-            L'opera è una playlist multimediale ispirata a Il gioco della
-            salamandra di Davide Longo. Ogni canzone accompagna una parte del
-            romanzo e aiuta a seguirne l'atmosfera: la paura iniziale di Olivo,
-            l'indagine sui ragazzi scomparsi, la scoperta delle salamandre e il
-            finale sul Po. È attinente al libro perché ripercorre le tappe
-            principali della storia e ne mette in evidenza i temi più
-            importanti: trauma, ribellione, fiducia e libertà.
+L'elaborato è una playlist di canzoni ispirata al libro "Il gioco della salamandra" di Davide Longo. 
+Ogni canzone è la colonna sonora di una parte del romanzo e aiuta a seguirne il filo narrativo: la paura iniziale di Olivo, l'aiuto nell'indagine sui ragazzi scomparsi, la scoperta del gruppo delle "salamandre" e il l'addio finale sul Po. Noi crediamo che le canzoni scelte permettano di far provare sensazioni nuove ma coerenti alla storia e che permettano una "immersione" più facile del lettore nella storia.
           </p>
         </div>
       </div>
@@ -251,7 +246,6 @@ function CreditsBadge() {
 
   const getDimensions = () => {
     const rect = ref.current?.getBoundingClientRect();
-
     return {
       left: rect?.left ?? 0,
       right: rect?.right ?? 1,
@@ -273,7 +267,6 @@ function CreditsBadge() {
     const rotateX = -y * maxRotate;
     const rotateY = x * maxRotate;
     const rotateZ = x * 0.06;
-
     return `${scale}, 0, ${-rotateY}, 0, ${rotateX}, ${scale}, ${rotateZ}, 0, ${rotateY}, ${-rotateX}, ${scale}, 0, 0, 0, 0, 1`;
   };
 
@@ -284,11 +277,9 @@ function CreditsBadge() {
         if (index === 2 || index === 4 || index === 6 || index === 8 || index === 9) {
           return `${-parseFloat(item) / weakening}`;
         }
-
         if (index === 0 || index === 5 || index === 10 || index === 15) {
           return "1";
         }
-
         return item;
       })
       .join(", ");
@@ -296,9 +287,7 @@ function CreditsBadge() {
   const clearHoverTimeouts = () => {
     [enterTimeout, leaveTimeout1, leaveTimeout2, leaveTimeout3].forEach(
       (timeout) => {
-        if (timeout.current) {
-          clearTimeout(timeout.current);
-        }
+        if (timeout.current) clearTimeout(timeout.current);
       },
     );
   };
@@ -312,12 +301,10 @@ function CreditsBadge() {
       () => setDisableInOutOverlayAnimation(true),
       350,
     );
-
     const { left, right, top, bottom } = getDimensions();
     const xCenter = (left + right) / 2;
     const yCenter = (top + bottom) / 2;
     const nextMatrix = getMatrix(event.clientX, event.clientY);
-
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         setFirstOverlayPosition(
@@ -327,7 +314,6 @@ function CreditsBadge() {
         );
       });
     });
-
     setMatrix(getOppositeMatrix(nextMatrix, -0.7));
     setIsTimeoutFinished(false);
     setTimeout(() => setIsTimeoutFinished(true), 200);
@@ -337,7 +323,6 @@ function CreditsBadge() {
     const { left, right, top, bottom } = getDimensions();
     const xCenter = (left + right) / 2;
     const yCenter = (top + bottom) / 2;
-
     setTimeout(
       () =>
         setFirstOverlayPosition(
@@ -347,7 +332,6 @@ function CreditsBadge() {
         ),
       150,
     );
-
     if (isTimeoutFinished) {
       setCurrentMatrix(getMatrix(event.clientX, event.clientY));
     }
@@ -358,7 +342,6 @@ function CreditsBadge() {
     setIsHoverOpen(false);
     setCurrentMatrix(getOppositeMatrix(matrix, 4));
     setTimeout(() => setCurrentMatrix(identityMatrix), 200);
-
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         setDisableInOutOverlayAnimation(false);
@@ -379,9 +362,7 @@ function CreditsBadge() {
   };
 
   useEffect(() => {
-    if (isTimeoutFinished) {
-      setMatrix(currentMatrix);
-    }
+    if (isTimeoutFinished) setMatrix(currentMatrix);
   }, [currentMatrix, isTimeoutFinished]);
 
   useEffect(() => clearHoverTimeouts, []);
@@ -408,7 +389,7 @@ function CreditsBadge() {
       onMouseEnter={onMouseEnter}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      className={`block h-14 overflow-hidden rounded-xl text-left shadow-[0_18px_60px_rgba(0,0,0,.35)] transition-[width,filter] duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70 ${
+      className={`block h-14 overflow-hidden rounded-xl text-left shadow-[0_18px_60px_rgba(0,0,0,.5)] transition-[width,filter] duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/30 ${
         isExpanded
           ? "w-[min(22rem,calc(100vw-2.5rem))]"
           : "w-14 hover:w-[min(22rem,calc(100vw-2.5rem))]"
@@ -422,7 +403,8 @@ function CreditsBadge() {
           transition: "transform 200ms ease-out",
         }}
       >
-        <div className="relative h-14 overflow-hidden rounded-xl border border-black/15 bg-[#f3e3ac] text-[#2a2618] shadow-[inset_0_1px_0_rgba(255,255,255,.65)]">
+        {/* ── Sfondo black minimal opaco ── */}
+        <div className="relative h-14 overflow-hidden rounded-xl border border-white/[0.07] bg-[#0a0a0a] text-white shadow-[inset_0_1px_0_rgba(255,255,255,.06)]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 260 54"
@@ -438,14 +420,19 @@ function CreditsBadge() {
                 <rect width="260" height="54" fill="white" rx="10" />
               </mask>
             </defs>
-            <rect width="260" height="54" rx="10" fill="#f3e3ac" />
-            <g style={{ mixBlendMode: "overlay" }} mask="url(#creditsBadgeMask)">
+            {/* Base nera opaca */}
+            <rect width="260" height="54" rx="10" fill="#0a0a0a" />
+            {/* Overlay sottilissimo per texture minima */}
+            <g
+              style={{ mixBlendMode: "overlay", opacity: 0.08 }}
+              mask="url(#creditsBadgeMask)"
+            >
               {[
-                "hsl(358, 100%, 62%)",
-                "hsl(30, 100%, 50%)",
-                "hsl(60, 100%, 50%)",
-                "hsl(96, 100%, 50%)",
-                "hsl(210, 85%, 47%)",
+                "hsl(0, 0%, 100%)",
+                "hsl(0, 0%, 80%)",
+                "hsl(0, 0%, 60%)",
+                "hsl(0, 0%, 40%)",
+                "hsl(0, 0%, 20%)",
                 "white",
               ].map((color, index) => (
                 <g
@@ -466,7 +453,7 @@ function CreditsBadge() {
                     points="0,0 260,54 260,0 0,54"
                     fill={color}
                     filter="url(#creditsBlur)"
-                    opacity="0.45"
+                    opacity="0.3"
                   />
                 </g>
               ))}
@@ -474,9 +461,11 @@ function CreditsBadge() {
           </svg>
 
           <div className="relative z-10 flex h-full items-center">
-            <span className="grid h-14 w-14 shrink-0 place-items-center border-r border-black/10 bg-black/[0.06] font-display text-2xl font-semibold leading-none">
-              FC
+            {/* ── Icona: D corsiva al posto di FC ── */}
+            <span className="grid h-14 w-14 shrink-0 place-items-center border-r border-white/[0.08] bg-white/[0.04] font-display text-3xl leading-none text-white/90">
+              <i>D</i>
             </span>
+
             <span
               className={`min-w-0 px-3 transition duration-300 ${
                 isExpanded
@@ -484,10 +473,10 @@ function CreditsBadge() {
                   : "-translate-x-2 opacity-0"
               }`}
             >
-              <span className="block whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.16em]">
+              <span className="block whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.16em] text-white/90">
                 Developed by Filippo Corsini
               </span>
-              <span className="mt-0.5 block truncate text-[11px] font-semibold normal-case tracking-[-0.01em] text-black/70">
+              <span className="mt-0.5 block truncate text-[11px] font-semibold normal-case tracking-[-0.01em] text-white/40">
                 written by Davide De Lellis, Filippo Corsini, Adam Ezauiui,
                 Stefano Borghi
               </span>
