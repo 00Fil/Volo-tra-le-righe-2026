@@ -58,20 +58,6 @@ export const tracks: Track[] = [
         ],
       },
       {
-        title: "Cosa deve far sentire questa parte",
-        paragraphs: [
-          "Questa parte deve far sentire paura, diffidenza e pericolo.",
-          "Olivo non è in mezzo a mostri o criminali professionisti. È in mezzo a ragazzi feriti, arrabbiati, imprevedibili. Alcuni sono fragili, altri violenti. Il problema è che non sai mai chi può diventare una minaccia.",
-        ],
-      },
-      {
-        title: "Perché la canzone funziona",
-        paragraphs: [
-          "“Heathens” funziona perché sembra parlare proprio di un gruppo di persone difficili, pericolose, da cui bisogna guardarsi. Non è una canzone triste: è una canzone sospettosa, chiusa, tesa.",
-          "Per Olivo la comunità è così: un posto dove deve controllare ogni dettaglio, scegliere le parole giuste e non fidarsi troppo. Il titolo stesso, “Heathens”, richiama persone ai margini, fuori dalle regole, potenzialmente pericolose. Il brano è dei Twenty One Pilots ed è legato alla colonna sonora di Suicide Squad, quindi anche ufficialmente ha un immaginario di personaggi problematici e fuori controllo.",
-        ],
-      },
-      {
         title: "Motivazione pronta per l’elaborato",
         paragraphs: [
           "Ho scelto “Heathens” per i capitoli 1-6 perché rappresenta bene la comunità in cui vive Olivo. Questo luogo dovrebbe proteggerlo, ma in realtà è pieno di tensione e paura. Olivo deve stare attento a Mungiu e al suo gruppo, perché sa che possono fargli del male. La scena del terrazzo dimostra che il pericolo è concreto. La canzone è adatta perché trasmette diffidenza e minaccia: sembra dire che, in un gruppo di persone fragili e violente, bisogna muoversi con cautela per sopravvivere.",
@@ -117,20 +103,6 @@ export const tracks: Track[] = [
           "Olivo lascia la comunità e arriva a Torino con Sonia Sperlari. Va a vivere temporaneamente a casa sua, conosce Manon e poi viene mandato in una scuola nuova con una falsa identità.",
           "A scuola incontra Serafine, Matilda e Francesco. Loro iniziano ad accoglierlo, ma Olivo non riesce comunque a sentirsi come gli altri. È intelligente, osserva tutto, capisce dettagli che agli altri sfuggono, ma nei rapporti normali è impacciato e distante.",
           "In questi capitoli si scopre anche il suo trauma: da bambino è rimasto chiuso nel bagagliaio dell’auto finita nel lago. Quindi Olivo non è solo strano: è un ragazzo segnato da qualcosa di enorme.",
-        ],
-      },
-      {
-        title: "Cosa deve far sentire questa parte",
-        paragraphs: [
-          "Questa parte deve far sentire estraneità.",
-          "Olivo è dentro una casa, dentro una classe, dentro un possibile gruppo di amici. Però non si sente davvero dentro. È presente fisicamente, ma emotivamente resta fuori.",
-        ],
-      },
-      {
-        title: "Perché la canzone funziona",
-        paragraphs: [
-          "“Creep” funziona perché racconta esattamente questa sensazione: essere in mezzo agli altri e sentirsi sbagliati. Non è la canzone della scuola in generale: è la canzone di Olivo mentre guarda gli altri vivere una normalità che lui non riesce ad avere.",
-          "Nei capitoli 7-12 lui vorrebbe forse essere accettato, ma non sa come comportarsi. Serafine, Matilda e Francesco gli danno spazio, però lui resta chiuso. “Creep” rende credibile questo contrasto: desiderare un posto, ma sentirsi inadatto. Il brano è una traccia di Pablo Honey dei Radiohead, pubblicato da XL Recordings.",
         ],
       },
       {
@@ -181,20 +153,6 @@ export const tracks: Track[] = [
         ],
       },
       {
-        title: "Cosa deve far sentire questa parte",
-        paragraphs: [
-          "Questa parte deve far sentire una trappola che si chiude.",
-          "Non succede tutto all’improvviso. Il pericolo cresce poco alla volta: prima l’auto, poi la biblioteca, poi il furgone, poi la cisterna.",
-        ],
-      },
-      {
-        title: "Perché la canzone funziona",
-        paragraphs: [
-          "“Way Down We Go” funziona perché la storia va davvero verso il basso. Olivo passa dalla superficie della città al sottosuolo. La canzone ha un ritmo lento, pesante, quasi inevitabile. Sembra accompagnare ogni passo verso la trappola.",
-          "Non rappresenta solo il rapimento. Rappresenta tutto il percorso: Olivo decide di rischiare, segue gli indizi, entra nel pericolo e finisce fisicamente sotto terra. Il brano è dei KALEO ed è incluso nell’album A/B.",
-        ],
-      },
-      {
         title: "Motivazione pronta per l’elaborato",
         paragraphs: [
           "Ho scelto “Way Down We Go” per i capitoli 13-18 perché questa parte del romanzo è una vera discesa nel pericolo. Olivo viene seguito dalla Golf grigia, indaga da solo, studia le mappe in biblioteca e alla fine viene rapito e portato in una cisterna. La canzone ha un ritmo lento e pesante, che fa sentire la trappola chiudersi passo dopo passo. È adatta perché la discesa è sia fisica, verso il sottosuolo, sia narrativa, dentro il cuore del mistero.",
@@ -239,20 +197,6 @@ export const tracks: Track[] = [
           "Dopo il rapimento, Olivo si ritrova davanti Gustavo e il suo gruppo. Per un momento sembra che siano loro i veri colpevoli. Gustavo fa paura, parla di violenza e vuole dominare la scena.",
           "Poi però Olivo capisce che non sono loro i veri rapitori. Gustavo e i suoi sono pericolosi, ma non sono il centro del caso. La loro minaccia è in parte una messa in scena.",
           "Dopo questa falsa pista, la storia si sposta su Olivo. Il momento con Manon fa riemergere il trauma del passato: il bagagliaio, l’acqua, la sensazione di soffocare. Olivo ha una crisi, urla, si chiude in bagno e si rifugia nella vasca.",
-        ],
-      },
-      {
-        title: "Cosa deve far sentire questa parte",
-        paragraphs: [
-          "Questa parte deve far sentire dolore che torna fuori.",
-          "Prima sembra una scena da thriller, con Gustavo come mostro. Poi si capisce che il vero punto è un altro: Olivo porta dentro una ferita che non ha mai superato.",
-        ],
-      },
-      {
-        title: "Perché la canzone funziona",
-        paragraphs: [
-          "“CORALINE” funziona perché non è solo aggressiva: è emotiva, dolorosa e cresce lentamente. Questo è importante, perché il trauma di Olivo non esplode subito. Prima resta nascosto. Poi, quando Manon si avvicina, torna fuori tutto insieme.",
-          "La canzone segue bene questo movimento: parte più intima, poi diventa più intensa. Per questo rappresenta non tanto Gustavo, ma Olivo che crolla. Il brano è dei Måneskin ed è contenuto nell’album Teatro d’ira - Vol. I.",
         ],
       },
       {
@@ -303,20 +247,6 @@ export const tracks: Track[] = [
         ],
       },
       {
-        title: "Cosa deve far sentire questa parte",
-        paragraphs: [
-          "Questa parte deve far sentire ribaltamento.",
-          "Prima pensiamo che i ragazzi siano vittime. Poi scopriamo che sono loro ad aver preso il controllo. Non stanno solo scappando: stanno reagendo contro adulti corrotti, famiglie ipocrite e bulli.",
-        ],
-      },
-      {
-        title: "Perché la canzone funziona",
-        paragraphs: [
-          "“Uprising” funziona perché non è una canzone di paura: è una canzone di ribellione. Ha un ritmo forte, regolare, quasi da marcia. Questo si collega bene alle salamandre, perché non agiscono da sole e in modo casuale: sono un gruppo organizzato.",
-          "La canzone dà energia al momento in cui la storia cambia: i ragazzi non sono più quelli da salvare, ma quelli che hanno costruito il piano. “Uprising” è il singolo principale dell’album The Resistance dei Muse, e anche il titolo dell’album rafforza l’idea di opposizione e resistenza.",
-        ],
-      },
-      {
         title: "Motivazione pronta per l’elaborato",
         paragraphs: [
           "Ho scelto “Uprising” per i capitoli 25-30 perché qui la storia si ribalta. I ragazzi scomparsi non sono vittime passive: hanno organizzato il finto rapimento, il riscatto e la fuga. Il borsone che sparisce sott’acqua e la pinna nera mostrano che le salamandre avevano previsto tutto. La canzone è adatta perché trasmette forza collettiva e ribellione: rappresenta il momento in cui i ragazzi riprendono il controllo contro gli adulti che li hanno feriti o ignorati.",
@@ -362,20 +292,6 @@ export const tracks: Track[] = [
           "Nel finale Olivo capisce che le salamandre non hanno finito. Studia le mappe del sottosuolo di Torino e chiede aiuto a Mungiu. Insieme attraversano i cunicoli, trovano la finta bomba e poi arrivano alla villa dove si nasconde il gruppo.",
           "Olivo e Mungiu entrano nel giardino, trovano lo stagno e passano dietro la cascata. Lì scoprono la grotta delle salamandre. I ragazzi sono pronti a scappare in barca attraverso i sotterranei.",
           "Olivo sale con loro. La barca attraversa il tunnel buio e poi sbuca nel Po all’alba. Per un attimo sembra che Olivo abbia trovato un gruppo. Però poi decide di scendere. Non resta con Serafine e gli altri: vuole cercare sua madre da solo.",
-        ],
-      },
-      {
-        title: "Cosa deve far sentire questa parte",
-        paragraphs: [
-          "Questa parte deve far sentire libertà e separazione insieme.",
-          "Non è una corsa frenetica. È una fuga lenta, silenziosa, quasi sospesa. Il punto importante non è solo che Olivo scappa: è che sceglie di non andare con gli altri.",
-        ],
-      },
-      {
-        title: "Perché la canzone funziona",
-        paragraphs: [
-          "“Wait” funziona perché ha un’atmosfera lenta, ampia, malinconica. Non rende il finale un inseguimento, ma un momento di passaggio. Va bene per la barca nel tunnel, per l’alba sul Po e per il distacco finale.",
-          "La canzone rappresenta bene l’idea che Olivo sia libero, ma non completamente felice. Ha trovato le salamandre, ha trovato un possibile gruppo, ma sceglie una strada più solitaria. Il video ufficiale di “Wait” viene presentato come il capitolo finale di una trilogia visiva di M83, quindi è già legato a un’idea di chiusura e trasformazione.",
         ],
       },
       {
