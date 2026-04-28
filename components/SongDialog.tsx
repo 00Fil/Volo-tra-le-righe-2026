@@ -33,6 +33,12 @@ export function SongDialog({ activeTrack }: SongDialogProps) {
     setVideoReady(true);
   }, [activeTrack.canvasSrc]);
 
+  const motivationSection = activeTrack.explanationSections.find(
+    (section) => section.title === "Motivazione pronta per l'elaborato",
+  );
+  const motivationParagraphs =
+    motivationSection?.paragraphs ?? [activeTrack.explanation];
+
   return (
     <WarpDialog>
       <WarpDialogTrigger asChild>
@@ -96,40 +102,21 @@ export function SongDialog({ activeTrack }: SongDialogProps) {
                 onWheelCapture={(event) => event.stopPropagation()}
                 onTouchMoveCapture={(event) => event.stopPropagation()}
               >
-                <p className="max-w-xl text-base leading-relaxed text-white/70">
-                  {activeTrack.idea}
-                </p>
-
-                <div className="mt-7 space-y-6">
-                  {activeTrack.explanationSections.map((section) => (
-                    <section key={section.title}>
-                      <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-white/55">
-                        {section.title}
-                      </h3>
-                      <div className="mt-3 space-y-3">
-                        {section.paragraphs.map((paragraph) => (
-                          <p
-                            key={paragraph}
-                            className="leading-relaxed text-white/80"
-                          >
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
-                    </section>
-                  ))}
-                </div>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {activeTrack.situations.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full bg-white/10 px-3 py-1 text-sm text-white/80 backdrop-blur-xl"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
+                <section>
+                  <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-white/55">
+                    Motivazione
+                  </h3>
+                  <div className="mt-3 space-y-3">
+                    {motivationParagraphs.map((paragraph) => (
+                      <p
+                        key={paragraph}
+                        className="leading-relaxed text-white/80"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </section>
               </div>
 
               {/* ── Footer fisso con blur ── */}

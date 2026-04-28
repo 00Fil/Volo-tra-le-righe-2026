@@ -140,7 +140,7 @@ export default function Home() {
     setShowPlayer(true);
     setPhase(0);
     document
-      .getElementById(tracks[0].id)
+      .getElementById("scheda-presentazione")
       ?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -155,6 +155,8 @@ export default function Home() {
         showHomeAudio={!showPlayer}
         onHomePlayingChange={setMusicPlaying}
       />
+
+      <PresentationSection />
 
       {tracks.map((track, index) => (
         <SongSection
@@ -178,6 +180,42 @@ export default function Home() {
       />
       <CuteWatermark />
     </main>
+  );
+}
+
+function PresentationSection() {
+  return (
+    <section
+      id="scheda-presentazione"
+      className="relative z-10 flex min-h-screen items-center px-5 py-24 md:px-16"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(182,161,106,.28),transparent_30%),radial-gradient(circle_at_82%_70%,rgba(107,127,106,.26),transparent_32%),linear-gradient(180deg,#000,#050608_48%,#000)]" />
+      <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-black to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black to-transparent" />
+
+      <div className="relative mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+        <div>
+          <p className="text-sm uppercase tracking-[0.18em] text-white/55">
+            Scheda di presentazione
+          </p>
+          <h2 className="mt-4 max-w-3xl font-display text-5xl font-semibold leading-[0.95] md:text-7xl">
+            Playlist narrativa
+          </h2>
+        </div>
+
+        <div className="glass-panel border border-white/10 p-6 md:p-8">
+          <p className="text-base leading-relaxed text-white/82 md:text-lg">
+            L'opera è una playlist multimediale ispirata a Il gioco della
+            salamandra di Davide Longo. Ogni canzone accompagna una parte del
+            romanzo e aiuta a seguirne l'atmosfera: la paura iniziale di Olivo,
+            l'indagine sui ragazzi scomparsi, la scoperta delle salamandre e il
+            finale sul Po. È attinente al libro perché ripercorre le tappe
+            principali della storia e ne mette in evidenza i temi più
+            importanti: trauma, ribellione, fiducia e libertà.
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
 
