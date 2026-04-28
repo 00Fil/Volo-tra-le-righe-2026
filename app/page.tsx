@@ -8,14 +8,26 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type CSSProperties,
+  type MouseEvent,
 } from "react";
 import { GlassPlayer } from "@/components/GlassPlayer";
 import { HomeAudio } from "@/components/HomeAudio"
 import { SectionDots } from "@/components/SectionDots";
 import { SongSection } from "@/components/SongSection";
 import { tracks } from "@/data/tracks";
+
+const identityMatrix =
+  "1, 0, 0, 0, " +
+  "0, 1, 0, 0, " +
+  "0, 0, 1, 0, " +
+  "0, 0, 0, 1";
+
+const maxRotate = 0.18;
+const maxScale = 1;
+const minScale = 0.985;
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
@@ -178,7 +190,6 @@ export default function Home() {
         visible={showPlayer}
         onPlayingChange={setMusicPlaying}
       />
-      <CuteWatermark />
     </main>
   );
 }
@@ -219,78 +230,272 @@ function PresentationSection() {
   );
 }
 
-function CuteWatermark() {
-  const [open, setOpen] = useState(false);
-  const [hovered, setHovered] = useState(false);
+function CreditsBadge() {
+  const ref = useRef<HTMLButtonElement>(null);
+  const [firstOverlayPosition, setFirstOverlayPosition] = useState(0);
+  const [matrix, setMatrix] = useState(identityMatrix);
+  const [currentMatrix, setCurrentMatrix] = useState(identityMatrix);
+  const [disableInOutOverlayAnimation, setDisableInOutOverlayAnimation] =
+    useState(true);
+  const [disableOverlayAnimation, setDisableOverlayAnimation] =
+    useState(false);
+  const [isTimeoutFinished, setIsTimeoutFinished] = useState(false);
+  const [isPinnedOpen, setIsPinnedOpen] = useState(false);
+  const [isHoverOpen, setIsHoverOpen] = useState(false);
+  const enterTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const leaveTimeout1 = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const leaveTimeout2 = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const leaveTimeout3 = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const isExpanded = isPinnedOpen || isHoverOpen;
+
+  const getDimensions = () => {
+    const rect = ref.current?.getBoundingClientRect();
+
+    return {
+      left: rect?.left ?? 0,
+      right: rect?.right ?? 1,
+      top: rect?.top ?? 0,
+      bottom: rect?.bottom ?? 1,
+    };
+  };
+
+  const getMatrix = (clientX: number, clientY: number) => {
+    const { left, right, top, bottom } = getDimensions();
+    const width = Math.max(right - left, 1);
+    const height = Math.max(bottom - top, 1);
+    const xCenter = left + width / 2;
+    const yCenter = top + height / 2;
+    const x = (clientX - xCenter) / (width / 2);
+    const y = (clientY - yCenter) / (height / 2);
+    const distance = Math.min(Math.sqrt(x * x + y * y), 1);
+    const scale = maxScale - (maxScale - minScale) * distance;
+    const rotateX = -y * maxRotate;
+    const rotateY = x * maxRotate;
+    const rotateZ = x * 0.06;
+
+    return `${scale}, 0, ${-rotateY}, 0, ${rotateX}, ${scale}, ${rotateZ}, 0, ${rotateY}, ${-rotateX}, ${scale}, 0, 0, 0, 0, 1`;
+  };
+
+  const getOppositeMatrix = (sourceMatrix: string, weakening: number) =>
+    sourceMatrix
+      .split(", ")
+      .map((item, index) => {
+        if (index === 2 || index === 4 || index === 6 || index === 8 || index === 9) {
+          return `${-parseFloat(item) / weakening}`;
+        }
+
+        if (index === 0 || index === 5 || index === 10 || index === 15) {
+          return "1";
+        }
+
+        return item;
+      })
+      .join(", ");
+
+  const clearHoverTimeouts = () => {
+    [enterTimeout, leaveTimeout1, leaveTimeout2, leaveTimeout3].forEach(
+      (timeout) => {
+        if (timeout.current) {
+          clearTimeout(timeout.current);
+        }
+      },
+    );
+  };
+
+  const onMouseEnter = (event: MouseEvent<HTMLButtonElement>) => {
+    clearHoverTimeouts();
+    setIsHoverOpen(true);
+    setDisableOverlayAnimation(true);
+    setDisableInOutOverlayAnimation(false);
+    enterTimeout.current = setTimeout(
+      () => setDisableInOutOverlayAnimation(true),
+      350,
+    );
+
+    const { left, right, top, bottom } = getDimensions();
+    const xCenter = (left + right) / 2;
+    const yCenter = (top + bottom) / 2;
+    const nextMatrix = getMatrix(event.clientX, event.clientY);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setFirstOverlayPosition(
+          (Math.abs(xCenter - event.clientX) +
+            Math.abs(yCenter - event.clientY)) /
+            1.5,
+        );
+      });
+    });
+
+    setMatrix(getOppositeMatrix(nextMatrix, -0.7));
+    setIsTimeoutFinished(false);
+    setTimeout(() => setIsTimeoutFinished(true), 200);
+  };
+
+  const onMouseMove = (event: MouseEvent<HTMLButtonElement>) => {
+    const { left, right, top, bottom } = getDimensions();
+    const xCenter = (left + right) / 2;
+    const yCenter = (top + bottom) / 2;
+
+    setTimeout(
+      () =>
+        setFirstOverlayPosition(
+          (Math.abs(xCenter - event.clientX) +
+            Math.abs(yCenter - event.clientY)) /
+            1.5,
+        ),
+      150,
+    );
+
+    if (isTimeoutFinished) {
+      setCurrentMatrix(getMatrix(event.clientX, event.clientY));
+    }
+  };
+
+  const onMouseLeave = () => {
+    clearHoverTimeouts();
+    setIsHoverOpen(false);
+    setCurrentMatrix(getOppositeMatrix(matrix, 4));
+    setTimeout(() => setCurrentMatrix(identityMatrix), 200);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setDisableInOutOverlayAnimation(false);
+        leaveTimeout1.current = setTimeout(
+          () => setFirstOverlayPosition(-firstOverlayPosition / 4),
+          150,
+        );
+        leaveTimeout2.current = setTimeout(
+          () => setFirstOverlayPosition(0),
+          300,
+        );
+        leaveTimeout3.current = setTimeout(() => {
+          setDisableOverlayAnimation(false);
+          setDisableInOutOverlayAnimation(true);
+        }, 500);
+      });
+    });
+  };
+
+  useEffect(() => {
+    if (isTimeoutFinished) {
+      setMatrix(currentMatrix);
+    }
+  }, [currentMatrix, isTimeoutFinished]);
+
+  useEffect(() => clearHoverTimeouts, []);
+
+  const overlayAnimations = [...Array(6).keys()]
+    .map(
+      (index) => `
+        @keyframes creditsOverlayAnimation${index + 1} {
+          0% { transform: rotate(${index * 14}deg); }
+          50% { transform: rotate(${(index + 1) * 14}deg); }
+          100% { transform: rotate(${index * 14}deg); }
+        }
+      `,
+    )
+    .join(" ");
 
   return (
-    <div className="fixed right-[calc(env(safe-area-inset-right)+1rem)] top-[calc(env(safe-area-inset-top)+1rem)] z-[70] flex items-center justify-end gap-2.5 text-white">
-      {/* Tooltip bubble */}
+    <button
+      ref={ref}
+      type="button"
+      aria-label={isExpanded ? "Nascondi crediti" : "Mostra crediti"}
+      aria-expanded={isExpanded}
+      onClick={() => setIsPinnedOpen((open) => !open)}
+      onMouseEnter={onMouseEnter}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      className={`block h-14 overflow-hidden rounded-xl text-left shadow-[0_18px_60px_rgba(0,0,0,.35)] transition-[width,filter] duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70 ${
+        isExpanded
+          ? "w-[min(22rem,calc(100vw-2.5rem))]"
+          : "w-14 hover:w-[min(22rem,calc(100vw-2.5rem))]"
+      }`}
+    >
+      <style>{overlayAnimations}</style>
       <div
-        className={`pointer-events-none rounded-2xl border border-white/10 bg-gradient-to-br from-pink-500/20 via-purple-500/15 to-indigo-500/20 px-4 py-2.5 text-xs font-medium shadow-[0_20px_60px_rgba(236,72,153,.15),0_8px_24px_rgba(0,0,0,.25)] backdrop-blur-2xl transition-all duration-500 ease-out ${
-          open
-            ? "translate-x-0 scale-100 opacity-100 blur-0"
-            : "translate-x-4 scale-90 opacity-0 blur-sm"
-        }`}
+        style={{
+          transform: `perspective(700px) matrix3d(${matrix})`,
+          transformOrigin: "center center",
+          transition: "transform 200ms ease-out",
+        }}
       >
-        <span className="bg-gradient-to-r from-pink-200 via-white to-purple-200 bg-clip-text text-transparent">
-          Developed with 💖 by FC
-        </span>
-        {/* Little tail/arrow */}
-        <div className="absolute -right-1 top-1/2 h-2.5 w-2.5 -translate-y-1/2 rotate-45 rounded-sm border-r border-t border-white/10 bg-purple-500/15 backdrop-blur-2xl" />
+        <div className="relative h-14 overflow-hidden rounded-xl border border-black/15 bg-[#f3e3ac] text-[#2a2618] shadow-[inset_0_1px_0_rgba(255,255,255,.65)]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 260 54"
+            preserveAspectRatio="none"
+            className="absolute inset-0 h-full w-full"
+            aria-hidden="true"
+          >
+            <defs>
+              <filter id="creditsBlur">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+              </filter>
+              <mask id="creditsBadgeMask">
+                <rect width="260" height="54" fill="white" rx="10" />
+              </mask>
+            </defs>
+            <rect width="260" height="54" rx="10" fill="#f3e3ac" />
+            <g style={{ mixBlendMode: "overlay" }} mask="url(#creditsBadgeMask)">
+              {[
+                "hsl(358, 100%, 62%)",
+                "hsl(30, 100%, 50%)",
+                "hsl(60, 100%, 50%)",
+                "hsl(96, 100%, 50%)",
+                "hsl(210, 85%, 47%)",
+                "white",
+              ].map((color, index) => (
+                <g
+                  key={color}
+                  style={{
+                    transform: `rotate(${firstOverlayPosition + index * 16}deg)`,
+                    transformOrigin: "center center",
+                    transition: !disableInOutOverlayAnimation
+                      ? "transform 200ms ease-out"
+                      : "none",
+                    animation: disableOverlayAnimation
+                      ? "none"
+                      : `creditsOverlayAnimation${index + 1} 5s infinite`,
+                    willChange: "transform",
+                  }}
+                >
+                  <polygon
+                    points="0,0 260,54 260,0 0,54"
+                    fill={color}
+                    filter="url(#creditsBlur)"
+                    opacity="0.45"
+                  />
+                </g>
+              ))}
+            </g>
+          </svg>
+
+          <div className="relative z-10 flex h-full items-center">
+            <span className="grid h-14 w-14 shrink-0 place-items-center border-r border-black/10 bg-black/[0.06] font-display text-2xl font-semibold leading-none">
+              FC
+            </span>
+            <span
+              className={`min-w-0 px-3 transition duration-300 ${
+                isExpanded
+                  ? "translate-x-0 opacity-100"
+                  : "-translate-x-2 opacity-0"
+              }`}
+            >
+              <span className="block whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.16em]">
+                Developed by Filippo Corsini
+              </span>
+              <span className="mt-0.5 block truncate text-[11px] font-semibold normal-case tracking-[-0.01em] text-black/70">
+                written by Davide De Lellis, Filippo Corsini, Adam Ezauiui,
+                Stefano Borghi
+              </span>
+            </span>
+          </div>
+        </div>
       </div>
-
-      {/* Main button */}
-      <button
-        type="button"
-        aria-label="Mostra watermark"
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        className={`group relative grid h-12 w-12 place-items-center rounded-2xl border text-sm font-semibold shadow-[0_20px_60px_rgba(236,72,153,.12),0_8px_24px_rgba(0,0,0,.2),inset_0_1px_0_rgba(255,255,255,.2)] backdrop-blur-2xl transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-300/70 ${
-          open
-            ? "border-pink-300/25 bg-gradient-to-br from-pink-500/25 to-purple-500/20 hover:from-pink-500/30 hover:to-purple-500/25"
-            : "border-white/15 bg-white/10 hover:border-pink-300/20 hover:bg-white/15"
-        } ${hovered ? "scale-105" : "scale-100"}`}
-      >
-        {/* Glow ring on hover */}
-        <div
-          className={`absolute inset-0 rounded-2xl transition-opacity duration-500 ${
-            hovered ? "opacity-100" : "opacity-0"
-          }`}
-          style={{
-            background:
-              "radial-gradient(circle at center, rgba(236,72,153,.15) 0%, transparent 70%)",
-          }}
-        />
-
-        {/* Sparkle dots */}
-        <div
-          className={`absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full bg-pink-300 transition-all duration-500 ${
-            open
-              ? "scale-100 opacity-80"
-              : "scale-0 opacity-0"
-          }`}
-        />
-        <div
-          className={`absolute -bottom-0.5 -left-0.5 h-1 w-1 rounded-full bg-purple-300 transition-all delay-100 duration-500 ${
-            open
-              ? "scale-100 opacity-60"
-              : "scale-0 opacity-0"
-          }`}
-        />
-
-        {/* Face */}
-        <span
-          className={`relative z-10 select-none transition-all duration-300 ${
-            hovered ? "scale-125" : "scale-100"
-          } ${open ? "rotate-12" : "rotate-0"}`}
-        >
-          {open ? "✿" : ":3"}
-        </span>
-      </button>
-    </div>
+    </button>
   );
 }
 
@@ -344,9 +549,12 @@ function Hero({
       <div className="absolute inset-0 bg-noise opacity-[0.08]" />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-3rem)] w-full max-w-7xl flex-col justify-between py-8 md:py-10">
-        <div className="flex items-center justify-between gap-5 text-xs uppercase text-white/60">
-
-        </div>
+        <header className="flex items-start justify-between gap-5 text-xs font-medium uppercase tracking-[0.22em] text-white/62">
+          <CreditsBadge />
+          <span className="hidden text-right text-white/48 sm:block">
+            Il gioco della salamandra
+          </span>
+        </header>
 
         <div className="max-w-5xl">
           <p className="text-sm uppercase text-white/60">
