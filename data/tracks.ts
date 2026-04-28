@@ -32,9 +32,10 @@ export const tracks: Track[] = [
     title: "Heathens",
     artist: "Twenty One Pilots",
     chapters: "Capitoli 1-6",
-    idea: "Olivo è in un posto dove deve stare attento a tutti.",
-    sectionTitle: "Sopravvivere",
-    shortLine: "La comunità non è un rifugio: è il primo luogo da cui scappare.",
+    idea: "Olivo vive in comunità, cerca di non attirare l'attenzione e teme Mungiu.",
+    sectionTitle: "Comunità",
+    shortLine:
+      "Nei primi capitoli Olivo è in comunità: Mungiu lo minaccia e Sonia diventa la possibilità di andarsene.",
     imageSrc: "/images/01-heathens.jpg",
     mobileImageSrc: "/images/mobile/01-heathens-mobile.jpg",
     canvasSrc: "/canvas/01-heathens.mp4",
@@ -47,34 +48,41 @@ export const tracks: Track[] = [
       dark: "#050608",
     },
     explanation:
-      "Ho scelto Heathens per i capitoli 1-6 perché rappresenta bene la comunità in cui vive Olivo. Questo luogo dovrebbe proteggerlo, ma in realtà è pieno di tensione e paura. Olivo deve stare attento a Mungiu e al suo gruppo, perché sa che possono fargli del male. La scena del terrazzo dimostra che il pericolo è concreto. La canzone è adatta perché trasmette diffidenza e minaccia: sembra dire che, in un gruppo di persone fragili e violente, bisogna muoversi con cautela per sopravvivere.",
+      "Ho scelto Heathens per i capitoli 1-6 perché questa parte mostra da dove parte Olivo: una comunità in cui dovrebbe essere protetto, ma dove vive con paura e diffidenza. Il problema principale è Mungiu, che è convinto che sia stato Olivo a rivelare il nascondiglio della droga agli educatori. In parallelo entra in scena Sonia Sperlari, che lo vuole coinvolgere nel caso dei ragazzi scomparsi a Torino. La canzone si collega bene a questo inizio perché parla di un ambiente chiuso, teso, in cui bisogna stare attenti alle persone intorno.",
     explanationSections: [
       {
-        title: "Cosa succede nei capitoli",
+        title: "Cosa succede",
         paragraphs: [
-          "Olivo vive in una comunità per ragazzi difficili. Lui non si sente al sicuro, perché ha paura di Mungiu. Mungiu pensa che Olivo lo abbia denunciato per il nascondiglio della droga.",
-          "All’inizio Olivo cerca di evitare il refettorio perché teme di incontrarlo. Poi la paura diventa reale: Mungiu e il suo gruppo lo rapiscono di notte, gli mettono un sacchetto in testa e lo portano sul terrazzo. Lì lo minacciano e lo sollevano oltre il bordo. Olivo riesce a salvarsi solo usando la sua capacità di osservazione: capisce che Jessica ha tradito Mungiu e lo rivela.",
-          "Dopo quell’episodio, Olivo capisce che restare in comunità è troppo pericoloso. Per questo accetta di partire con Sonia Sperlari.",
+          "All'inizio Olivo si trova in una comunità per ragazzi difficili. Non vive questa situazione con tranquillità: cerca di evitare problemi, soprattutto con Mungiu, che è convinto che sia stato lui a rivelare il nascondiglio della droga agli educatori.",
+          "Asa lo provoca in continuazione, ma alla fine è Ettore, un educatore, a convincerlo a uscire per il pranzo. Nel refettorio Olivo osserva tutti e cerca di capire se Mungiu lo stia ignorando davvero o stia preparando qualcosa.",
+          "Nel frattempo Sonia Sperlari, commissaria di polizia, arriva in comunità perché vuole l'aiuto di Olivo. A Torino sono scomparsi quattro adolescenti e lei sa che Olivo ha capacità fuori dal comune nell'osservare dettagli e collegare informazioni.",
+          "Sul terrazzo gli mettono un sacchetto in testa e Mungiu lo solleva oltre il bordo, pronto a lasciarlo cadere. Olivo si salva accusando Jessica: è stata lei a far scoprire l'erba, perché da due mesi ha una relazione segreta con Ottaviano. Mungiu va a controllare e non torna più, segno che Olivo ha detto la verità. Dopo questa scena Olivo capisce che restare in comunità è troppo rischioso e accetta di partire con Sonia.",
         ],
       },
       {
-        title: "Cosa deve far sentire questa parte",
+        title: "Filo dell'indagine",
         paragraphs: [
-          "Questa parte deve far sentire paura, diffidenza e pericolo.",
-          "Olivo non è in mezzo a mostri o criminali professionisti. È in mezzo a ragazzi feriti, arrabbiati, imprevedibili. Alcuni sono fragili, altri violenti. Il problema è che non sai mai chi può diventare una minaccia.",
+          "L'indagine comincia davvero quando Sonia spiega a Olivo il caso: quattro ragazzi sono spariti a Torino e la polizia non sa chi li abbia presi né perché. Sonia non cerca solo un testimone, ma qualcuno capace di leggere dettagli che gli altri non vedono.",
+          "Questa parte serve a presentare due cose insieme: la situazione di Olivo nella comunità, dove non è al sicuro, e il motivo per cui viene portato a Torino. È la paura di Mungiu e la minaccia di Jessica a spingerlo ad accettare, anche se non sa ancora quanto sarà pericolosa la nuova situazione.",
+        ],
+      },
+      {
+        title: "Personaggi",
+        paragraphs: [
+          "Olivo è il protagonista: osserva molto e cerca di sopravvivere senza farsi notare. Mungiu è il ragazzo che lo minaccia e rappresenta il pericolo principale nella comunità. Asa lo provoca e lo spinge a esporsi. Jessica è importante perché il suo tradimento diventa l'informazione che salva Olivo sul terrazzo. Ettore è l'educatore che si preoccupa per lui e prova a rassicurarlo. Sonia Sperlari è la commissaria che lo porta via dalla comunità per coinvolgerlo nell'indagine.",
         ],
       },
       {
         title: "Perché la canzone funziona",
         paragraphs: [
-          "“Heathens” funziona perché sembra parlare proprio di un gruppo di persone difficili, pericolose, da cui bisogna guardarsi. Non è una canzone triste: è una canzone sospettosa, chiusa, tesa.",
-          "Per Olivo la comunità è così: un posto dove deve controllare ogni dettaglio, scegliere le parole giuste e non fidarsi troppo. Il titolo stesso, “Heathens”, richiama persone ai margini, fuori dalle regole, potenzialmente pericolose. Il brano è dei Twenty One Pilots ed è legato alla colonna sonora di Suicide Squad, quindi anche ufficialmente ha un immaginario di personaggi problematici e fuori controllo.",
+          "Heathens è adatta perché il testo e l'atmosfera fanno pensare a un gruppo di persone difficili, chiuse e poco prevedibili. Questo rispecchia la comunità, dove Olivo non si sente protetto e deve valutare continuamente i comportamenti degli altri.",
+          "La canzone non serve a descrivere un singolo fatto, ma il clima dei primi capitoli: sospetto, paura e necessità di difendersi. Per questo accompagna bene la scena del refettorio, il rapporto con Mungiu e la decisione finale di andare via.",
         ],
       },
       {
-        title: "Motivazione pronta per l’elaborato",
+        title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto “Heathens” per i capitoli 1-6 perché rappresenta bene la comunità in cui vive Olivo. Questo luogo dovrebbe proteggerlo, ma in realtà è pieno di tensione e paura. Olivo deve stare attento a Mungiu e al suo gruppo, perché sa che possono fargli del male. La scena del terrazzo dimostra che il pericolo è concreto. La canzone è adatta perché trasmette diffidenza e minaccia: sembra dire che, in un gruppo di persone fragili e violente, bisogna muoversi con cautela per sopravvivere.",
+          "Ho scelto Heathens per i capitoli 1-6 perché Olivo vive in una comunità dove non si sente al sicuro. Mungiu è convinto che sia stato lui a fare la spia e arriva a minacciarlo sul terrazzo. In questi capitoli Sonia Sperlari gli presenta anche il caso dei quattro ragazzi scomparsi a Torino. La canzone rende bene il clima di diffidenza e pericolo da cui Olivo parte prima di entrare nell'indagine.",
         ],
       },
     ],
@@ -84,6 +92,7 @@ export const tracks: Track[] = [
       "refettorio pieno di gruppi e tensioni",
       "paura di Mungiu",
       "sacchetto in testa e minaccia sul terrazzo",
+      "Jessica smascherata per salvare Olivo",
       "decisione di partire con Sonia",
     ],
     imagePrompt:
@@ -94,9 +103,10 @@ export const tracks: Track[] = [
     title: "Creep",
     artist: "Radiohead",
     chapters: "Capitoli 7-12",
-    idea: "Olivo entra in una nuova vita, ma si sente diverso.",
+    idea: "Olivo arriva a Torino e prova una vita normale, ma il suo passato lo blocca.",
     sectionTitle: "Fuori posto",
-    shortLine: "Olivo entra in una nuova vita, ma non riesce ancora ad abitarla.",
+    shortLine:
+      "A Torino Olivo incontra Sonia, Manon e nuovi compagni, però si sente ancora diverso dagli altri.",
     imageSrc: "/images/02-creep.jpg",
     mobileImageSrc: "/images/mobile/02-creep-mobile.jpg",
     canvasSrc: "/canvas/02-creep.mp4",
@@ -109,34 +119,40 @@ export const tracks: Track[] = [
       dark: "#0B1020",
     },
     explanation:
-      "Ho scelto Creep per i capitoli 7-12 perché Olivo entra in una nuova vita, ma non riesce a sentirsi parte di essa. Arriva a Torino, vive a casa di Sonia, conosce Manon e inizia la scuola con Serafine, Matilda e Francesco. Anche se alcuni compagni lo accolgono, lui resta distante, perché il suo passato e il trauma del lago lo separano dagli altri. La canzone è adatta perché fa capire la sensazione di essere in mezzo alle persone, ma sentirsi comunque diverso, fuori posto e difficile da capire.",
+      "Ho scelto Creep per i capitoli 7-12 perché Olivo lascia la comunità e arriva a Torino, ma non riesce subito a sentirsi normale. Sonia lo ospita e lo manda a scuola con una falsa identità per avvicinarsi all'ambiente dei ragazzi scomparsi. Lì conosce Serafine, Matilda e Francesco. La canzone funziona perché Olivo è dentro una vita nuova e dentro l'indagine, ma continua a sentirsi diverso e fuori posto.",
     explanationSections: [
       {
-        title: "Cosa succede nei capitoli",
+        title: "Cosa succede",
         paragraphs: [
-          "Olivo lascia la comunità e arriva a Torino con Sonia Sperlari. Va a vivere temporaneamente a casa sua, conosce Manon e poi viene mandato in una scuola nuova con una falsa identità.",
-          "A scuola incontra Serafine, Matilda e Francesco. Loro iniziano ad accoglierlo, ma Olivo non riesce comunque a sentirsi come gli altri. È intelligente, osserva tutto, capisce dettagli che agli altri sfuggono, ma nei rapporti normali è impacciato e distante.",
-          "In questi capitoli si scopre anche il suo trauma: da bambino è rimasto chiuso nel bagagliaio dell’auto finita nel lago. Quindi Olivo non è solo strano: è un ragazzo segnato da qualcosa di enorme.",
+          "Dopo la comunità, Olivo arriva a Torino con Sonia Sperlari. Va a vivere a casa sua, dove conosce Manon, la figlia diciassettenne: vivace, provocatoria e senza filtri. L'ambiente è diverso dalla comunità, ma non necessariamente più semplice.",
+          "Sonia lo manda a scuola con una falsa identità perché la scuola è collegata al caso dei ragazzi scomparsi. In classe Olivo incontra Serafine, Matilda e Francesco: loro provano ad avvicinarlo e a farlo entrare nel gruppo.",
+          "Olivo però non riesce a comportarsi come un ragazzo qualunque. Rimane attento, rigido e spesso distante. In questi capitoli racconta per la prima volta a Manon cosa gli è successo da bambino: il padre ha fatto finire l'auto nel lago e lui è rimasto chiuso nel bagagliaio per ore. Dopo quell'evento qualcosa è cambiato nel suo cervello e nel suo modo di stare con gli altri.",
         ],
       },
       {
-        title: "Cosa deve far sentire questa parte",
+        title: "Filo dell'indagine",
         paragraphs: [
-          "Questa parte deve far sentire estraneità.",
-          "Olivo è dentro una casa, dentro una classe, dentro un possibile gruppo di amici. Però non si sente davvero dentro. È presente fisicamente, ma emotivamente resta fuori.",
+          "A Torino Olivo non è solo ospite di Sonia: viene inserito nella scuola per osservare dall'interno l'ambiente vicino ai ragazzi scomparsi. La sua capacità di leggere persone, oggetti e comportamenti diventa lo strumento principale dell'indagine.",
+          "Serafine, Matilda e Francesco non sono soltanto nuovi compagni: Serafine è l'unica persona collegata a tre dei quattro ragazzi scomparsi. Per questo la polizia ha messo Olivo nella sua classe. Questi capitoli collegano la nuova vita di Olivo alla ricerca dei ragazzi scomparsi.",
+        ],
+      },
+      {
+        title: "Personaggi",
+        paragraphs: [
+          "Sonia Sperlari è la commissaria che lo ospita e lo usa anche come aiuto nell'indagine. Manon è sua figlia e mostra a Olivo una vita familiare complicata ma reale: è la prima persona a cui racconta davvero il suo passato. Serafine, Matilda e Francesco sono compagni di scuola importanti: sembrano nuovi amici, ma sono anche collegati al mistero dei ragazzi scomparsi.",
         ],
       },
       {
         title: "Perché la canzone funziona",
         paragraphs: [
-          "“Creep” funziona perché racconta esattamente questa sensazione: essere in mezzo agli altri e sentirsi sbagliati. Non è la canzone della scuola in generale: è la canzone di Olivo mentre guarda gli altri vivere una normalità che lui non riesce ad avere.",
-          "Nei capitoli 7-12 lui vorrebbe forse essere accettato, ma non sa come comportarsi. Serafine, Matilda e Francesco gli danno spazio, però lui resta chiuso. “Creep” rende credibile questo contrasto: desiderare un posto, ma sentirsi inadatto. Il brano è una traccia di Pablo Honey dei Radiohead, pubblicato da XL Recordings.",
+          "Creep è adatta perché parla di sentirsi sbagliati e fuori posto. Questo corrisponde a Olivo: gli altri non lo rifiutano, anzi provano ad accoglierlo, ma lui non riesce comunque a sentirsi davvero dentro quella normalità.",
+          "La canzone quindi non descrive un'azione precisa, ma la condizione del protagonista. Olivo è in una casa, in una classe e in un possibile gruppo di amici, però dentro di sé resta separato dagli altri.",
         ],
       },
       {
-        title: "Motivazione pronta per l’elaborato",
+        title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto “Creep” per i capitoli 7-12 perché Olivo entra in una nuova vita, ma non riesce a sentirsi parte di essa. Arriva a Torino, vive a casa di Sonia, conosce Manon e inizia la scuola con Serafine, Matilda e Francesco. Anche se alcuni compagni lo accolgono, lui resta distante, perché il suo passato e il trauma del lago lo separano dagli altri. La canzone è adatta perché fa capire la sensazione di essere in mezzo alle persone, ma sentirsi comunque diverso, fuori posto e difficile da capire.",
+          "Ho scelto Creep per i capitoli 7-12 perché Olivo arriva a Torino e sembra avere una possibilità di vita normale: Sonia lo ospita, conosce Manon e a scuola incontra Serafine, Matilda e Francesco. In realtà è lì anche per capire cosa sia successo ai ragazzi scomparsi. La canzone rende bene la sua condizione: viene avvicinato dagli altri, ma il trauma e il suo ruolo nell'indagine lo fanno sentire fuori posto.",
         ],
       },
     ],
@@ -146,7 +162,7 @@ export const tracks: Track[] = [
       "nuova scuola",
       "primo contatto con Serafine",
       "Matilda e Francesco che lo accolgono",
-      "trauma del bagagliaio nel lago",
+      "racconto del trauma del bagagliaio a Manon",
     ],
     imagePrompt:
       "A lonely teenage boy sitting at the back of an art classroom in Turin, separated from the rest of the students. The classmates are blurred and distant, gathered around desks with sketchbooks and pencils. The boy looks calm but isolated, with books beside him and an unfinished animal drawing on the desk. Tall classroom windows reflect a dark lake, car headlights, and the vague shape of a car trunk, suggesting a traumatic memory without showing it directly. The room has soft cold daylight, dusty air, paper sheets floating slightly, and a feeling of silence around him. Inspired by the song Creep: feeling different, out of place, wanting to belong but staying distant. Cinematic emotional style, realistic but slightly stylized, cold blue and grey tones, no clear faces, no readable text, no logos, no explicit accident scene.",
@@ -156,9 +172,10 @@ export const tracks: Track[] = [
     title: "Way Down We Go",
     artist: "KALEO",
     chapters: "Capitoli 13-18",
-    idea: "Olivo scende passo dopo passo nella trappola.",
-    sectionTitle: "Discesa",
-    shortLine: "Dalla strada alla cisterna, ogni passo porta Olivo più in basso.",
+    idea: "Olivo capisce di essere seguito, indaga da solo e finisce nella trappola.",
+    sectionTitle: "Trappola",
+    shortLine:
+      "La Golf grigia, lo scontro con Gustavo, le mappe e il rapimento: Olivo si espone sempre di più.",
     imageSrc: "/images/03-way-down-we-go.jpg",
     mobileImageSrc: "/images/mobile/03-way-down-we-go-mobile.jpg",
     canvasSrc: "/canvas/03-way-down-we-go.mp4",
@@ -171,38 +188,47 @@ export const tracks: Track[] = [
       dark: "#030712",
     },
     explanation:
-      "Ho scelto Way Down We Go per i capitoli 13-18 perché questa parte del romanzo è una vera discesa nel pericolo. Olivo viene seguito dalla Golf grigia, indaga da solo, studia le mappe in biblioteca e alla fine viene rapito e portato in una cisterna. La canzone ha un ritmo lento e pesante, che fa sentire la trappola chiudersi passo dopo passo. È adatta perché la discesa è sia fisica, verso il sottosuolo, sia narrativa, dentro il cuore del mistero.",
+      "Ho scelto Way Down We Go per i capitoli 13-18 perché in questa parte l'indagine diventa più rischiosa. Olivo sospetta di essere seguito da una Golf grigia, non racconta tutto a Sonia e prova a muoversi da solo tra scuola, biblioteca e mappe. A scuola si scontra con Gustavo e si espone sempre di più. La canzone si collega a questa discesa progressiva: Olivo pensa di controllare la situazione, ma ogni scelta lo porta più vicino alla trappola.",
     explanationSections: [
       {
-        title: "Cosa succede nei capitoli",
+        title: "Cosa succede",
         paragraphs: [
-          "In questi capitoli Olivo capisce di essere seguito da una Golf grigia. Invece di avvisare subito Sonia, continua a muoversi da solo. Si mette anche volontariamente in situazioni rischiose, perché vuole capire chi c’è dietro le sparizioni.",
-          "Poi va in biblioteca, studia mappe e vie di fuga, cerca di seminare chi lo segue. Alla fine però viene rapito. Gli mettono un cappuccio, lo legano, lo portano su un furgone e poi in uno spazio buio, freddo, metallico, simile a una cisterna.",
+          "Olivo nota che una Golf grigia lo segue. Per lui è il primo segnale chiaro che qualcuno lo sta controllando. Invece di affidarsi subito a Sonia, decide di continuare a capire da solo cosa sta succedendo.",
+          "A scuola si mette volontariamente in pericolo andando nell'ala dello scientifico, dove Gustavo lo trova e lo minaccia. Gustavo lo afferra e lo solleva, ma Olivo lo mette in difficoltà smascherando che è daltonico. Serafine e la professoressa Ballot intervengono, ma è chiaro che Olivo si sta esponendo troppo.",
+          "Per questo va in biblioteca e studia mappe, vie di fuga e spostamenti possibili. Questa parte mostra Olivo mentre prova a ragionare e a usare la sua capacità di osservazione per non farsi prendere.",
+          "All'uscita dalla biblioteca prova a seminare chi lo segue uscendo dal retro. Per un momento sembra funzionare, ma appena si allontana viene rapito: cappuccio, nastro, movimenti rapidi. Non sono bulli improvvisati, agiscono in modo organizzato. Olivo si risveglia legato in uno spazio metallico sotterraneo. Non è nel panico: in fondo, era quello che cercava.",
         ],
       },
       {
-        title: "Cosa deve far sentire questa parte",
+        title: "Filo dell'indagine",
         paragraphs: [
-          "Questa parte deve far sentire una trappola che si chiude.",
-          "Non succede tutto all’improvviso. Il pericolo cresce poco alla volta: prima l’auto, poi la biblioteca, poi il furgone, poi la cisterna.",
+          "In questi capitoli Olivo non ha ancora la soluzione. Sa solo che i ragazzi scomparsi sono collegati alla scuola, che Serafine e il suo gruppo sono importanti e che qualcuno lo sta seguendo. Il problema è che tiene molte informazioni per sé.",
+          "La Golf grigia è importante perché Olivo non sa chi ci sia dietro. Potrebbe essere il rapitore, la polizia o qualcun altro. Questo lo porta a non fidarsi di nessuno e a muoversi da solo, il che lo rende più vulnerabile.",
+        ],
+      },
+      {
+        title: "Personaggi",
+        paragraphs: [
+          "Olivo porta avanti l'indagine, ma lo fa in modo rischioso perché tiene molte cose per sé. Sonia è sotto pressione perché il caso non si risolve e teme di fallire. Gustavo è un bullo violento e pericoloso, protetto dalla famiglia. Serafine resta un contatto fondamentale e cerca di proteggerlo, ma lui la ignora.",
         ],
       },
       {
         title: "Perché la canzone funziona",
         paragraphs: [
-          "“Way Down We Go” funziona perché la storia va davvero verso il basso. Olivo passa dalla superficie della città al sottosuolo. La canzone ha un ritmo lento, pesante, quasi inevitabile. Sembra accompagnare ogni passo verso la trappola.",
-          "Non rappresenta solo il rapimento. Rappresenta tutto il percorso: Olivo decide di rischiare, segue gli indizi, entra nel pericolo e finisce fisicamente sotto terra. Il brano è dei KALEO ed è incluso nell’album A/B.",
+          "Way Down We Go è adatta perché il titolo e il ritmo richiamano una discesa. Nel libro la discesa è sia concreta, perché Olivo finisce in un luogo sotterraneo, sia narrativa, perché la situazione peggiora a ogni passaggio.",
+          "La canzone accompagna bene la progressione: pedinamento, scontro con Gustavo, biblioteca, rapimento. Non rappresenta solo un luogo fisico, ma il modo in cui l'indagine trascina Olivo sempre più in basso.",
         ],
       },
       {
-        title: "Motivazione pronta per l’elaborato",
+        title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto “Way Down We Go” per i capitoli 13-18 perché questa parte del romanzo è una vera discesa nel pericolo. Olivo viene seguito dalla Golf grigia, indaga da solo, studia le mappe in biblioteca e alla fine viene rapito e portato in una cisterna. La canzone ha un ritmo lento e pesante, che fa sentire la trappola chiudersi passo dopo passo. È adatta perché la discesa è sia fisica, verso il sottosuolo, sia narrativa, dentro il cuore del mistero.",
+          "Ho scelto Way Down We Go per i capitoli 13-18 perché Olivo viene seguito dalla Golf grigia, si scontra con Gustavo, nasconde informazioni a Sonia e prova a risolvere da solo il caso. Alla fine viene rapito fuori dalla biblioteca. La canzone, con il suo ritmo lento e pesante, rende bene la sensazione di una trappola che si chiude poco alla volta.",
         ],
       },
     ],
     situations: [
       "Golf grigia che segue Olivo",
+      "scontro con Gustavo nell'ala dello scientifico",
       "Olivo che sceglie di non avvisare subito Sonia",
       "biblioteca e mappe",
       "cappuccio, furgone e rapimento",
@@ -216,9 +242,10 @@ export const tracks: Track[] = [
     title: "CORALINE",
     artist: "Måneskin",
     chapters: "Capitoli 19-24",
-    idea: "Il vero problema non è Gustavo, ma il trauma di Olivo.",
-    sectionTitle: "Ferita",
-    shortLine: "Il falso mostro cade. Il trauma resta.",
+    idea: "La pista di Gustavo si rivela sbagliata, Sonia confessa di aver usato Olivo come esca e il trauma torna fuori con Manon.",
+    sectionTitle: "Trauma",
+    shortLine:
+      "Gustavo sembra il colpevole ma non lo è, Sonia confessa di aver usato Olivo come esca, e il trauma del bagagliaio torna fuori con Manon.",
     imageSrc: "/images/04-coraline.jpg",
     mobileImageSrc: "/images/mobile/04-coraline-mobile.jpg",
     canvasSrc: "/canvas/04-coraline.mp4",
@@ -231,44 +258,54 @@ export const tracks: Track[] = [
       dark: "#08060A",
     },
     explanation:
-      "Ho scelto CORALINE per i capitoli 19-24 perché questa parte mostra il trauma di Olivo. All'inizio sembra che Gustavo sia il vero mostro, ma poi Olivo capisce che lui e il suo gruppo non sono i veri rapitori. Dopo questa falsa pista, il romanzo porta al centro la ferita del protagonista: il ricordo del bagagliaio, dell'acqua e della cisterna ritorna durante il momento con Manon. La canzone è adatta perché cresce lentamente e poi diventa intensa, proprio come un dolore che Olivo non riesce più a trattenere.",
+      "Ho scelto CORALINE per i capitoli 19-24 perché in questa parte crolla tutto quello che sembrava sicuro. Olivo si trova davanti a Gustavo e al suo gruppo, che sembrano i colpevoli ma non lo sono davvero. Poi scopre che Sonia lo ha usato come esca fin dall'inizio. Infine il momento con Manon fa riemergere il trauma del bagagliaio. Tutto crolla insieme: l'indagine, la fiducia in Sonia, la tenuta psicologica di Olivo. La canzone è adatta perché cresce lentamente e poi diventa intensa, come la crisi del protagonista.",
     explanationSections: [
       {
-        title: "Cosa succede nei capitoli",
+        title: "Cosa succede",
         paragraphs: [
-          "Dopo il rapimento, Olivo si ritrova davanti Gustavo e il suo gruppo. Per un momento sembra che siano loro i veri colpevoli. Gustavo fa paura, parla di violenza e vuole dominare la scena.",
-          "Poi però Olivo capisce che non sono loro i veri rapitori. Gustavo e i suoi sono pericolosi, ma non sono il centro del caso. La loro minaccia è in parte una messa in scena.",
-          "Dopo questa falsa pista, la storia si sposta su Olivo. Il momento con Manon fa riemergere il trauma del passato: il bagagliaio, l’acqua, la sensazione di soffocare. Olivo ha una crisi, urla, si chiude in bagno e si rifugia nella vasca.",
+          "Olivo è legato a una sedia davanti a Gustavo e ai suoi quattro complici. Gustavo si vanta di aver rapito i quattro ragazzi e descrive torture che intende fare. Ma quando gli tolgono il cappello e vedono la cicatrice che divide il cranio di Olivo in due, Gustavo resta affascinato invece di reagire con violenza. In quel momento Sonia irrompe con la polizia.",
+          "In centrale Olivo racconta nel verbale che non è stato rapito davvero, che era una specie di gioco. Sonia è furiosa perché senza la sua testimonianza non può incriminare Gustavo. Poi gli rivela la verità: la Golf grigia era della polizia, nel cappello c'era un trasmettitore e anche la scena con Mungiu in comunità era stata orchestrata per spingerlo ad accettare il caso. Olivo era un'esca dall'inizio.",
+          "Di notte Manon va nella stanza di Olivo. I due si avvicinano, lei lo bacia e prende l'iniziativa. Ma a un certo punto Olivo sente tornare la sensazione di essere chiuso nel bagagliaio: ha una crisi di panico, urla e si allontana. Scoppia un litigio violento tra Manon e Sonia, che arrivano a schiaffeggiarsi. Olivo si chiude in bagno. Sonia decide che alla fine della settimana lo rimanderà in comunità.",
+          "Il giorno dopo a scuola Olivo è distrutto ma prende nove e mezzo in un tema su Foscolo. Fuori lo aspetta Flavio: il rapitore si è fatto vivo con una richiesta di riscatto. Duecentocinquantamila euro per ciascun ragazzo, da consegnare in un canale sotterraneo. Olivo nota subito che il messaggio è scritto da qualcuno colto — usa il congiuntivo correttamente — e dice a Sonia di pagare senza tendere trappole. Lei non lo ascolta.",
         ],
       },
       {
-        title: "Cosa deve far sentire questa parte",
+        title: "Filo dell'indagine",
         paragraphs: [
-          "Questa parte deve far sentire dolore che torna fuori.",
-          "Prima sembra una scena da thriller, con Gustavo come mostro. Poi si capisce che il vero punto è un altro: Olivo porta dentro una ferita che non ha mai superato.",
+          "Questa sezione serve a chiarire che Gustavo non basta come risposta. Può sembrare colpevole e violento, ma Olivo capisce che la sua crudeltà è più teatrale che reale: gli strumenti di tortura erano finti, come la tosatrice senza lame.",
+          "La richiesta di riscatto sposta l'indagine su un nuovo livello: non si tratta più solo di capire chi frequenta la scuola, ma di seguire un piano organizzato che porta nei sotterranei di Torino. Il fatto che il messaggio sia scritto in modo colto dice a Olivo che il vero responsabile è molto diverso da Gustavo.",
+        ],
+      },
+      {
+        title: "Personaggi",
+        paragraphs: [
+          "Gustavo è importante perché sembra un colpevole possibile, ma non risolve il mistero. Sonia appare più ambigua perché ha manipolato Olivo fin dall'inizio e ora lo ammette. Manon è decisiva perché il contatto con lei fa tornare fuori il trauma. Olivo è il più fragile di tutto il libro in questi capitoli: scopre di essere stato usato, ha una crisi di panico e rischia di essere rimandato in comunità.",
         ],
       },
       {
         title: "Perché la canzone funziona",
         paragraphs: [
-          "“CORALINE” funziona perché non è solo aggressiva: è emotiva, dolorosa e cresce lentamente. Questo è importante, perché il trauma di Olivo non esplode subito. Prima resta nascosto. Poi, quando Manon si avvicina, torna fuori tutto insieme.",
-          "La canzone segue bene questo movimento: parte più intima, poi diventa più intensa. Per questo rappresenta non tanto Gustavo, ma Olivo che crolla. Il brano è dei Måneskin ed è contenuto nell’album Teatro d’ira - Vol. I.",
+          "CORALINE è adatta perché ha una struttura emotiva: non resta sempre uguale, ma cresce e diventa più intensa. Questo si collega alla scena in cui Olivo non riesce più a tenere nascosto il trauma.",
+          "La canzone non rappresenta Gustavo come personaggio, ma il passaggio dal mistero esterno alla ferita personale di Olivo. Funziona soprattutto per la crisi con Manon e per il ricordo dell'acqua.",
         ],
       },
       {
-        title: "Motivazione pronta per l’elaborato",
+        title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto “CORALINE” per i capitoli 19-24 perché questa parte mostra il trauma di Olivo. All’inizio sembra che Gustavo sia il vero mostro, ma poi Olivo capisce che lui e il suo gruppo non sono i veri rapitori. Dopo questa falsa pista, il romanzo porta al centro la ferita del protagonista: il ricordo del bagagliaio, dell’acqua e della cisterna ritorna durante il momento con Manon. La canzone è adatta perché cresce lentamente e poi diventa intensa, proprio come un dolore che Olivo non riesce più a trattenere.",
+          "Ho scelto CORALINE per i capitoli 19-24 perché tutto crolla: Gustavo sembra il colpevole ma non lo è, Sonia ammette di aver usato Olivo come esca e il trauma del bagagliaio torna fuori con Manon. Alla fine arriva anche la richiesta di riscatto, che rimette in moto l'indagine. La canzone è adatta perché cresce lentamente e poi diventa intensa, come la crisi del protagonista.",
         ],
       },
     ],
     situations: [
-      "stanza sotterranea",
-      "Gustavo come falso colpevole",
-      "minaccia che sembra una messa in scena",
-      "Manon che fa riaffiorare il passato",
-      "crisi di Olivo",
-      "bagno, vasca e trauma",
+      "Olivo legato davanti a Gustavo",
+      "la cicatrice che sconvolge il gruppo",
+      "Sonia che irrompe con la polizia",
+      "il verbale in cui Olivo non accusa Gustavo",
+      "la rivelazione sull'esca e sul trasmettitore",
+      "Manon che fa riaffiorare il trauma",
+      "crisi di panico e litigio tra Manon e Sonia",
+      "il tema su Foscolo e il nove e mezzo",
+      "la richiesta di riscatto",
     ],
     imagePrompt:
       "A dark emotional cinematic scene split between two connected spaces. On one side, an underground room with a single chair under a hanging light, fake threatening props, cardboard silhouettes and theatrical shadows, showing that the supposed monster is only a false scene. On the other side, a small bathroom with a bathtub, still water, steam, and a cracked mirror reflecting the same teenage boy in a distorted and fragile way. A cap lies on the floor, wet papers are scattered, and the light from the crack in the mirror looks like a scar. The image must express trauma returning: the memory of the car trunk, water and the cistern. Inspired by the song CORALINE: pain hidden inside, fragility, emotional collapse. Dark blue, black, cold white light, red police reflections very subtle, no clear faces, no blood, no explicit violence, no sexual scene.",
@@ -278,9 +315,10 @@ export const tracks: Track[] = [
     title: "Uprising",
     artist: "Muse",
     chapters: "Capitoli 25-30",
-    idea: "I ragazzi scomparsi non sono vittime: si ribellano.",
-    sectionTitle: "Rivolta",
-    shortLine: "Le vittime non erano ferme: stavano preparando la loro fuga.",
+    idea: "Olivo capisce che i ragazzi scomparsi non sono solo vittime, ma hanno preparato una fuga.",
+    sectionTitle: "Il piano",
+    shortLine:
+      "Olivo scopre i segreti delle famiglie, i soldi del riscatto spariscono sott'acqua e la telefonata con Serafine rivela che i ragazzi scomparsi hanno organizzato tutto.",
     imageSrc: "/images/05-uprising.jpg",
     mobileImageSrc: "/images/mobile/05-uprising-mobile.jpg",
     canvasSrc: "/canvas/05-uprising.mp4",
@@ -293,42 +331,53 @@ export const tracks: Track[] = [
       dark: "#020617",
     },
     explanation:
-      "Ho scelto Uprising per i capitoli 25-30 perché qui la storia si ribalta. I ragazzi scomparsi non sono vittime passive: hanno organizzato il finto rapimento, il riscatto e la fuga. Il borsone che sparisce sott'acqua e la pinna nera mostrano che le salamandre avevano previsto tutto. La canzone è adatta perché trasmette forza collettiva e ribellione: rappresenta il momento in cui i ragazzi riprendono il controllo contro gli adulti che li hanno feriti o ignorati.",
+      "Ho scelto Uprising per i capitoli 25-30 perché qui cambia il senso dell'indagine. Olivo indaga sulle famiglie dei ragazzi e scopre segreti pesanti. Intanto il rapitore alza la posta mandando quattro dita mozzate. La polizia organizza lo scambio nel canale sotterraneo, ma il borsone sparisce sott'acqua e Olivo vede una pinna nera. Poi chiama Serafine e scopre la verità: non esiste un rapitore, i ragazzi scomparsi hanno costruito una messinscena. La canzone si collega alla ribellione di un gruppo che non vuole più subire gli adulti.",
     explanationSections: [
       {
-        title: "Cosa succede nei capitoli",
+        title: "Cosa succede",
         paragraphs: [
-          "Il rapitore chiede un riscatto. La polizia organizza lo scambio nel canale sotterraneo. Sembra che gli adulti abbiano tutto sotto controllo.",
-          "In realtà succede il contrario. Il borsone con i soldi sparisce sott’acqua e Olivo vede una pinna nera. Poi, parlando con Serafine, capisce la verità: non esiste un rapitore unico. I ragazzi scomparsi hanno organizzato tutto. Le salamandre hanno finto i rapimenti, usato le debolezze delle famiglie e preparato la fuga.",
+          "Olivo passa un pomeriggio in un internet point a indagare sulle famiglie dei ragazzi scomparsi. Scopre cose pesanti: un padre è un usuraio, una madre nasconde reperti archeologici di valore, un'altra famiglia ha fondi nascosti all'estero. Queste informazioni diventano la chiave per trovare i soldi del riscatto.",
+          "Prima dello scambio vero, la polizia aveva già provato a tendere una trappola al rapitore nel tunnel, ma l'operazione era fallita: il rapitore non si era presentato perché aveva capito l'inganno. Sonia ammette di aver sbagliato e per la prima volta chiede davvero aiuto a Olivo.",
+          "Il rapitore alza la posta mandando una scatola con quattro dita mozzate e chiedendo trecentomila euro per ciascun ragazzo. Olivo usa i segreti scoperti sulle famiglie per dimostrare che i soldi si possono trovare in fretta. La polizia organizza la consegna nel canale sotterraneo.",
+          "Durante lo scambio il borsone con i soldi si muove da solo e sparisce sott'acqua. Olivo vede una pinna nera. Dopo, riesce a uscire di nascosto e chiama Serafine: lei risponde come se lo aspettasse. Gli conferma che non esiste un rapitore. Sono stati Ryan, Elena, Federico e Maria a organizzare tutto, con l'aiuto di Serafine, Francesco e Matilda. Il piano nasce dalla scoperta dei segreti e dei crimini dei loro genitori.",
         ],
       },
       {
-        title: "Cosa deve far sentire questa parte",
+        title: "Filo dell'indagine",
         paragraphs: [
-          "Questa parte deve far sentire ribaltamento.",
-          "Prima pensiamo che i ragazzi siano vittime. Poi scopriamo che sono loro ad aver preso il controllo. Non stanno solo scappando: stanno reagendo contro adulti corrotti, famiglie ipocrite e bulli.",
+          "Il caso cambia direzione perché gli indizi non portano più a un adulto misterioso, ma ai ragazzi stessi. I mignoli, il riscatto, il canale e la pinna nera diventano pezzi di una messa in scena.",
+          "Olivo capisce che le salamandre non sono solo persone da salvare: sono un gruppo organizzato. La loro fuga nasce dalla rabbia verso famiglie corrotte, bulli e adulti che non li hanno protetti.",
+        ],
+      },
+      {
+        title: "Personaggi",
+        paragraphs: [
+          "Olivo osserva lo scambio e nota dettagli che gli adulti non interpretano subito. Sonia cambia: ammette i suoi errori e comincia a fidarsi davvero di Olivo. Serafine è il personaggio che gli permette di capire il piano. Ryan, Elena, Federico e Maria sono i ragazzi scomparsi che hanno finto il rapimento. Le salamandre diventano il nome del gruppo che agisce insieme per scappare.",
         ],
       },
       {
         title: "Perché la canzone funziona",
         paragraphs: [
-          "“Uprising” funziona perché non è una canzone di paura: è una canzone di ribellione. Ha un ritmo forte, regolare, quasi da marcia. Questo si collega bene alle salamandre, perché non agiscono da sole e in modo casuale: sono un gruppo organizzato.",
-          "La canzone dà energia al momento in cui la storia cambia: i ragazzi non sono più quelli da salvare, ma quelli che hanno costruito il piano. “Uprising” è il singolo principale dell’album The Resistance dei Muse, e anche il titolo dell’album rafforza l’idea di opposizione e resistenza.",
+          "Uprising è adatta perché parla di ribellione e di reazione collettiva. Questo corrisponde alle salamandre: non agiscono da sole, ma come gruppo organizzato contro adulti che li hanno traditi.",
+          "Il ritmo forte della canzone aiuta a far capire il cambio di prospettiva. Prima pensiamo che i ragazzi vadano solo salvati; poi scopriamo che sono loro ad aver costruito il piano per scappare.",
         ],
       },
       {
-        title: "Motivazione pronta per l’elaborato",
+        title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto “Uprising” per i capitoli 25-30 perché qui la storia si ribalta. I ragazzi scomparsi non sono vittime passive: hanno organizzato il finto rapimento, il riscatto e la fuga. Il borsone che sparisce sott’acqua e la pinna nera mostrano che le salamandre avevano previsto tutto. La canzone è adatta perché trasmette forza collettiva e ribellione: rappresenta il momento in cui i ragazzi riprendono il controllo contro gli adulti che li hanno feriti o ignorati.",
+          "Ho scelto Uprising per i capitoli 25-30 perché Olivo scopre che i ragazzi scomparsi non sono solo vittime: hanno organizzato un piano. Indaga sulle famiglie, trova i soldi per il riscatto, vede il borsone sparire sott'acqua e poi chiama Serafine che gli rivela la verità. La canzone è adatta perché trasmette energia, ribellione e forza di gruppo.",
         ],
       },
     ],
     situations: [
-      "richiesta di riscatto",
-      "canale sotterraneo",
+      "Olivo all'internet point che indaga sulle famiglie",
+      "Sonia che ammette il fallimento della prima operazione",
+      "le dita mozzate nella scatola",
+      "i segreti delle famiglie per trovare i soldi",
+      "canale sotterraneo e consegna del riscatto",
       "borsone trascinato sott'acqua",
       "pinna nera vista da Olivo",
-      "Serafine che rivela il piano",
+      "telefonata a Serafine che rivela il piano",
       "scoperta delle salamandre",
     ],
     imagePrompt:
@@ -339,9 +388,10 @@ export const tracks: Track[] = [
     title: "Wait",
     artist: "M83",
     chapters: "Capitoli 31-41",
-    idea: "Olivo può fuggire con gli altri, ma sceglie un'altra strada.",
-    sectionTitle: "Scegliere",
-    shortLine: "La libertà arriva in silenzio: Olivo sale sulla barca, poi scende da solo.",
+    idea: "Olivo raggiunge le salamandre e potrebbe fuggire con loro, ma sceglie sua madre.",
+    sectionTitle: "La scelta",
+    shortLine:
+      "Nel finale Olivo arriva al Po con le salamandre, poi scende dalla barca e prende un'altra strada.",
     imageSrc: "/images/06-wait.jpg",
     mobileImageSrc: "/images/mobile/06-wait-mobile.jpg",
     canvasSrc: "/canvas/06-wait.mp4",
@@ -354,46 +404,61 @@ export const tracks: Track[] = [
       dark: "#040713",
     },
     explanation:
-      "Ho scelto Wait per i capitoli 31-41 perché il finale del romanzo non è solo una fuga, ma una scelta. Olivo attraversa i sotterranei con Mungiu, trova la grotta delle salamandre, sale sulla barca e arriva sul Po all'alba. A quel punto potrebbe restare con il gruppo, ma decide di scendere e continuare da solo verso sua madre. La canzone è adatta perché ha un'atmosfera lenta e malinconica: accompagna bene la libertà della fuga, ma anche la solitudine del distacco finale.",
+      "Ho scelto Wait per i capitoli 31-41 perché il finale chiude sia l'indagine sia il percorso personale di Olivo. Dopo aver capito il piano delle salamandre, studia le mappe dei sotterranei, chiede aiuto a Mungiu e insieme trovano una bomba sotto il covo dei neonazisti. Poi Sonia gli rivela che sua madre è viva. Olivo trova le salamandre nella grotta, sale sulla barca e sbuca nel Po all'alba. Potrebbe restare con Serafine e gli altri, ma decide di scendere e cercare sua madre da solo. La canzone è lenta e malinconica, adatta a una libertà che comporta anche separazione.",
     explanationSections: [
       {
-        title: "Cosa succede nei capitoli",
+        title: "Cosa succede",
         paragraphs: [
-          "Nel finale Olivo capisce che le salamandre non hanno finito. Studia le mappe del sottosuolo di Torino e chiede aiuto a Mungiu. Insieme attraversano i cunicoli, trovano la finta bomba e poi arrivano alla villa dove si nasconde il gruppo.",
-          "Olivo e Mungiu entrano nel giardino, trovano lo stagno e passano dietro la cascata. Lì scoprono la grotta delle salamandre. I ragazzi sono pronti a scappare in barca attraverso i sotterranei.",
-          "Olivo sale con loro. La barca attraversa il tunnel buio e poi sbuca nel Po all’alba. Per un attimo sembra che Olivo abbia trovato un gruppo. Però poi decide di scendere. Non resta con Serafine e gli altri: vuole cercare sua madre da solo.",
+          "Dopo la telefonata con Serafine, Olivo capisce che le salamandre devono ancora fare qualcosa prima di sparire. Va in biblioteca a studiare le mappe dei sotterranei di Torino e scopre che sotto il covo dei neonazisti passa un antico acquedotto romano. Chiede aiuto a Mungiu, l'unico che sa muoversi sottoterra.",
+          "Nei sotterranei Olivo e Mungiu trovano una carica esplosiva piazzata sotto il covo dei neonazisti. Sopra c'è una festa e mancano tredici minuti all'esplosione. Portano fuori la bomba e fanno evacuare una piazza, ma quando il timer scade la bomba non esplode: era un bluff di Serafine. Dentro c'è un messaggio: avrebbero potuto farlo davvero, ma hanno scelto di non farlo.",
+          "Sonia usa un'informazione personale per ottenere la collaborazione di Olivo: gli rivela che sua madre è viva e gli mostra una foto recente. Olivo accetta di aiutarla a trovare le salamandre, ma alle sue condizioni: niente irruzione della polizia, vuole entrare da solo con Mungiu.",
+          "Nella villa Olivo spegne il trasmettitore della polizia e corre con Mungiu verso lo stagno nel giardino. Dietro una cascata trovano l'ingresso ai sotterranei. Nella caverna ci sono Serafine e le altre salamandre, con il fuoco acceso e la barca pronta. Serafine propone a Olivo di unirsi a loro.",
+          "Mungiu ammette di aver aiutato Olivo perché gli doveva qualcosa, anche se prima lo negava. Decide di non salire sulla barca e si ferisce da solo per coprire Olivo con la polizia. Olivo sale sulla barca, attraversa il tunnel e sbuca nel Po all'alba. Potrebbe restare con le salamandre, ma a un certo punto dice che deve scendere. Confessa a Serafine che sua madre è viva ed è una criminale, e che vuole trovarla da solo. Si salutano. Solo dopo Olivo scopre che Serafine gli ha messo in tasca cinquemila euro. Le salamandre spariscono lungo il fiume, Olivo cammina nella direzione opposta.",
         ],
       },
       {
-        title: "Cosa deve far sentire questa parte",
+        title: "Filo dell'indagine",
         paragraphs: [
-          "Questa parte deve far sentire libertà e separazione insieme.",
-          "Non è una corsa frenetica. È una fuga lenta, silenziosa, quasi sospesa. Il punto importante non è solo che Olivo scappa: è che sceglie di non andare con gli altri.",
+          "L'indagine arriva alla sua conclusione: i rapimenti erano una messinscena, i soldi servivano alla fuga e le salamandre avevano preparato un percorso nei sotterranei. La bomba sotto il covo era il loro ultimo gesto: dimostrare di poter colpire senza farlo davvero.",
+          "Il finale però non risolve tutto in modo semplice. Olivo scopre che sua madre è viva e capisce che il suo obiettivo non è solo chiudere il caso, ma decidere cosa fare della propria vita.",
+        ],
+      },
+      {
+        title: "Personaggi",
+        paragraphs: [
+          "Olivo è davanti a una scelta: seguire il gruppo o tornare alla propria storia personale. Mungiu lo aiuta ad arrivare alle salamandre e mostra un cambiamento enorme rispetto all'inizio: si sacrifica per coprirlo con la polizia. Per Olivo è il primo vero amico. Serafine propone a Olivo di unirsi a loro ed è sincera: gli lascia anche i soldi. Sonia collega il caso alla madre di Olivo, e proprio la madre diventa il motivo per cui lui sceglie di separarsi.",
         ],
       },
       {
         title: "Perché la canzone funziona",
         paragraphs: [
-          "“Wait” funziona perché ha un’atmosfera lenta, ampia, malinconica. Non rende il finale un inseguimento, ma un momento di passaggio. Va bene per la barca nel tunnel, per l’alba sul Po e per il distacco finale.",
-          "La canzone rappresenta bene l’idea che Olivo sia libero, ma non completamente felice. Ha trovato le salamandre, ha trovato un possibile gruppo, ma sceglie una strada più solitaria. Il video ufficiale di “Wait” viene presentato come il capitolo finale di una trilogia visiva di M83, quindi è già legato a un’idea di chiusura e trasformazione.",
+          "Wait è adatta perché non ha l'energia di una fuga d'azione. Ha un tono lento, sospeso e malinconico, più vicino all'arrivo sul Po all'alba e al momento in cui Olivo deve decidere.",
+          "La canzone accompagna bene il contrasto del finale: Olivo è libero, ma non completamente felice. Ha trovato un gruppo, però sceglie di non restare perché vuole cercare sua madre.",
         ],
       },
       {
-        title: "Motivazione pronta per l’elaborato",
+        title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto “Wait” per i capitoli 31-41 perché il finale del romanzo non è solo una fuga, ma una scelta. Olivo attraversa i sotterranei con Mungiu, trova la grotta delle salamandre, sale sulla barca e arriva sul Po all’alba. A quel punto potrebbe restare con il gruppo, ma decide di scendere e continuare da solo verso sua madre. La canzone è adatta perché ha un’atmosfera lenta e malinconica: accompagna bene la libertà della fuga, ma anche la solitudine del distacco finale.",
+          "Ho scelto Wait per i capitoli 31-41 perché Olivo chiude l'indagine sulle salamandre: attraversa i sotterranei con Mungiu, trova la bomba-bluff, raggiunge la grotta e fugge in barca fino al Po. Ma la cosa più importante diventa personale: scopre che sua madre è viva e decide di cercarla da solo, lasciando Serafine e gli altri. La canzone è adatta perché è lenta e malinconica: non racconta solo la fuga, ma anche la separazione e la scelta di Olivo.",
         ],
       },
     ],
     situations: [
-      "mappe sotterranee",
+      "mappe sotterranee in biblioteca",
       "alleanza con Mungiu",
-      "finta bomba",
-      "villa e stagno",
-      "cascata e grotta",
-      "salamandre pronte a fuggire",
-      "barca sul Po",
-      "Olivo che sceglie di andare da solo",
+      "bomba sotto il covo dei neonazisti",
+      "tredici minuti al timer",
+      "bomba-bluff e messaggio di Serafine",
+      "Sonia che rivela che la madre è viva",
+      "villa, stagno e cascata",
+      "la grotta con le salamandre e il fuoco",
+      "Mungiu che si sacrifica per coprire Olivo",
+      "Serafine che propone a Olivo di unirsi a loro",
+      "barca sul Po all'alba",
+      "Olivo che sceglie di scendere",
+      "la confessione sulla madre",
+      "i cinquemila euro in tasca",
+      "Olivo che cammina nella direzione opposta",
     ],
     imagePrompt:
       "A slow cinematic finale at dawn. Ancient underground maps fade into wet stone tunnels under Turin. A teenage boy and a rough teenage silhouette move with a flashlight through dark passages, then reach a villa garden, a pond and a hidden waterfall. Behind the waterfall there is a cave where teenage silhouettes prepare a narrow boat. The boat glides through a black tunnel and emerges onto the Po river at sunrise. One lonely boy steps off onto the riverbank while the others continue into the mist. Inspired by the song Wait by M83: suspended freedom, melancholy, separation, transformation. Wide cinematic composition, soft dawn light, water reflections, mist, no clear faces, no logos, no readable text, no blood, no explicit violence.",

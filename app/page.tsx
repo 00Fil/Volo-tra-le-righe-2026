@@ -160,6 +160,7 @@ export default function Home() {
         <SongSection
           key={track.id}
           track={track}
+          nextTrack={tracks[index + 1]}
           index={index}
           total={tracks.length}
         />
@@ -182,26 +183,74 @@ export default function Home() {
 
 function CuteWatermark() {
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="fixed right-[calc(env(safe-area-inset-right)+1rem)] top-[calc(env(safe-area-inset-top)+1rem)] z-[70] flex items-center justify-end gap-2 text-white">
+    <div className="fixed right-[calc(env(safe-area-inset-right)+1rem)] top-[calc(env(safe-area-inset-top)+1rem)] z-[70] flex items-center justify-end gap-2.5 text-white">
+      {/* Tooltip bubble */}
       <div
-        className={`pointer-events-none rounded-full border border-white/12 bg-black/35 px-3 py-2 text-xs font-medium shadow-[0_18px_52px_rgba(0,0,0,.36)] backdrop-blur-2xl transition duration-300 ${
+        className={`pointer-events-none rounded-2xl border border-white/10 bg-gradient-to-br from-pink-500/20 via-purple-500/15 to-indigo-500/20 px-4 py-2.5 text-xs font-medium shadow-[0_20px_60px_rgba(236,72,153,.15),0_8px_24px_rgba(0,0,0,.25)] backdrop-blur-2xl transition-all duration-500 ease-out ${
           open
-            ? "translate-x-0 opacity-100 blur-0"
-            : "translate-x-3 opacity-0 blur-sm"
+            ? "translate-x-0 scale-100 opacity-100 blur-0"
+            : "translate-x-4 scale-90 opacity-0 blur-sm"
         }`}
       >
-        Developed by FC :)
+        <span className="bg-gradient-to-r from-pink-200 via-white to-purple-200 bg-clip-text text-transparent">
+          Developed with 💖 by FC
+        </span>
+        {/* Little tail/arrow */}
+        <div className="absolute -right-1 top-1/2 h-2.5 w-2.5 -translate-y-1/2 rotate-45 rounded-sm border-r border-t border-white/10 bg-purple-500/15 backdrop-blur-2xl" />
       </div>
+
+      {/* Main button */}
       <button
         type="button"
         aria-label="Mostra watermark"
         aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
-        className="group grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-white/10 text-sm font-semibold shadow-[0_18px_52px_rgba(0,0,0,.36),inset_0_1px_0_rgba(255,255,255,.16)] backdrop-blur-2xl transition hover:scale-105 hover:bg-white/16 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
+        onClick={() => setOpen((v) => !v)}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className={`group relative grid h-12 w-12 place-items-center rounded-2xl border text-sm font-semibold shadow-[0_20px_60px_rgba(236,72,153,.12),0_8px_24px_rgba(0,0,0,.2),inset_0_1px_0_rgba(255,255,255,.2)] backdrop-blur-2xl transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pink-300/70 ${
+          open
+            ? "border-pink-300/25 bg-gradient-to-br from-pink-500/25 to-purple-500/20 hover:from-pink-500/30 hover:to-purple-500/25"
+            : "border-white/15 bg-white/10 hover:border-pink-300/20 hover:bg-white/15"
+        } ${hovered ? "scale-105" : "scale-100"}`}
       >
-        <span className="transition group-hover:scale-110">:3</span>
+        {/* Glow ring on hover */}
+        <div
+          className={`absolute inset-0 rounded-2xl transition-opacity duration-500 ${
+            hovered ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            background:
+              "radial-gradient(circle at center, rgba(236,72,153,.15) 0%, transparent 70%)",
+          }}
+        />
+
+        {/* Sparkle dots */}
+        <div
+          className={`absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full bg-pink-300 transition-all duration-500 ${
+            open
+              ? "scale-100 opacity-80"
+              : "scale-0 opacity-0"
+          }`}
+        />
+        <div
+          className={`absolute -bottom-0.5 -left-0.5 h-1 w-1 rounded-full bg-purple-300 transition-all delay-100 duration-500 ${
+            open
+              ? "scale-100 opacity-60"
+              : "scale-0 opacity-0"
+          }`}
+        />
+
+        {/* Face */}
+        <span
+          className={`relative z-10 select-none transition-all duration-300 ${
+            hovered ? "scale-125" : "scale-100"
+          } ${open ? "rotate-12" : "rotate-0"}`}
+        >
+          {open ? "✿" : ":3"}
+        </span>
       </button>
     </div>
   );
