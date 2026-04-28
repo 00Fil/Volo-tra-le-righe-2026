@@ -14,14 +14,16 @@ import type { Track } from "@/data/tracks";
 
 type SongSectionProps = {
   track: Track;
+  nextTrack?: Track;
   index: number;
   total: number;
 };
 
-export function SongSection({ track, index, total }: SongSectionProps) {
+export function SongSection({ track, nextTrack, index, total }: SongSectionProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const imageLayerRef = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
+  const nextImageRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const detailRefs = useRef<HTMLDivElement[]>([]);
   const [imageMissing, setImageMissing] = useState(false);
@@ -36,8 +38,12 @@ export function SongSection({ track, index, total }: SongSectionProps) {
         "--glass-border": track.palette.ambient3,
         "--section-glow": track.palette.ambient2,
         "--scene-accent": track.palette.ambient3,
+        "--next-ambient-1": nextTrack?.palette.ambient1 ?? track.palette.ambient1,
+        "--next-ambient-2": nextTrack?.palette.ambient2 ?? track.palette.ambient2,
+        "--next-ambient-3": nextTrack?.palette.ambient3 ?? track.palette.ambient3,
+        "--next-ambient-dark": nextTrack?.palette.dark ?? track.palette.dark,
       }) as CSSProperties,
-    [track],
+    [track, nextTrack],
   );
 
   const storyBeats = useMemo(() => getStoryBeats(track), [track]);
@@ -52,6 +58,7 @@ export function SongSection({ track, index, total }: SongSectionProps) {
     const section = sectionRef.current;
     const imageLayer = imageLayerRef.current;
     const image = imageRef.current;
+    const nextImage = nextImageRef.current;
     const pinnedScene = section?.querySelector(".story-pin");
 
     if (!section) {
@@ -104,15 +111,38 @@ export function SongSection({ track, index, total }: SongSectionProps) {
         );
 
         gsap.to(imageLayer, {
-          autoAlpha: 0.32,
+          autoAlpha: nextImage ? 0.18 : 0.32,
           ease: "none",
           scrollTrigger: {
             trigger: section,
-            start: "bottom 62%",
-            end: "bottom 20%",
+            start: "bottom 82%",
+            end: "bottom 26%",
             scrub: 0.7,
           },
         });
+      }
+
+      if (nextImage) {
+        gsap.fromTo(
+          nextImage,
+          {
+            autoAlpha: 0,
+            scale: 1.09,
+            filter: "blur(16px) saturate(0.9) brightness(0.72)",
+          },
+          {
+            autoAlpha: 0.72,
+            scale: 1.025,
+            filter: "blur(2px) saturate(1.08) brightness(0.9)",
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "bottom 92%",
+              end: "bottom 18%",
+              scrub: 0.9,
+            },
+          },
+        );
       }
 
       gsap.set(panels, { autoAlpha: 0, y: 42, filter: "blur(10px)" });
@@ -161,7 +191,7 @@ export function SongSection({ track, index, total }: SongSectionProps) {
     }, section);
 
     return () => context.revert();
-  }, [index]);
+  }, [index, nextTrack]);
 
   return (
     <section
@@ -193,9 +223,27 @@ export function SongSection({ track, index, total }: SongSectionProps) {
         </div>
 
         <div className="absolute inset-0 bg-black/25" />
+        {nextTrack ? (
+          <div ref={nextImageRef} className="scene-next-preview absolute inset-0 opacity-0">
+            <picture className="absolute inset-0 h-full w-full">
+              <source
+                media="(max-width: 767px)"
+                srcSet={nextTrack.mobileImageSrc}
+              />
+              <img
+                src={nextTrack.imageSrc}
+                alt=""
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </picture>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_20%,var(--next-ambient-1),transparent_32%),radial-gradient(circle_at_75%_76%,var(--next-ambient-2),transparent_34%),linear-gradient(180deg,transparent_10%,var(--next-ambient-dark)_100%)] opacity-50 mix-blend-screen" />
+          </div>
+        ) : null}
         <div className={`scene-atmosphere scene-atmosphere-${track.id}`} />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_18%,var(--ambient-1),transparent_34%),radial-gradient(circle_at_76%_80%,var(--ambient-2),transparent_35%),radial-gradient(circle_at_50%_55%,var(--ambient-3),transparent_50%)] opacity-45 mix-blend-screen" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.38),transparent_26%,rgba(0,0,0,.70)),linear-gradient(90deg,rgba(0,0,0,.54),transparent_38%,rgba(0,0,0,.36))]" />
+        <div className="scene-flow-shadow absolute inset-x-0 bottom-0 h-[36svh]" />
         <div className="pointer-events-none absolute inset-0 bg-noise opacity-[0.07]" />
 
         <div className="pointer-events-none absolute inset-0 z-10 mx-auto w-full max-w-6xl px-6 md:px-10">
@@ -284,151 +332,151 @@ function getStoryBeats(track: Track) {
     heathens: [
       {
         eyebrow: "Perché questa canzone",
-        text: "Heathens apre la playlist perché Olivo vive in un luogo che dovrebbe proteggerlo, ma che invece gli insegna a diffidare di tutti. Ogni parola può diventare una prova, ogni debolezza un bersaglio.",
+        text: "Heathens apre la playlist perché Olivo parte da un luogo insicuro: teme Mungiu, ma proprio da lì Sonia lo porta verso il caso dei ragazzi scomparsi.",
         primary: true,
       },
       {
         eyebrow: "Asa e il refettorio",
-        text: "Asa lo provoca e lo spinge a uscire dalla stanza. Nel refettorio Olivo osserva i gruppi, classifica le persone, misura il pericolo: per lui mangiare significa esporsi.",
+        text: "Asa lo provoca e lo porta fuori dalla stanza. Nel refettorio Olivo incontra gli altri ragazzi e prova a evitare situazioni che possano metterlo in pericolo.",
         align: "right",
       },
       {
         eyebrow: "Mungiu",
-        text: "Mungiu crede che Olivo lo abbia denunciato per il nascondiglio della droga. Anche quando sembra ignorarlo, basta uno sguardo per riaccendere l'ansia.",
+        text: "Mungiu pensa che Olivo abbia denunciato il nascondiglio della droga. Da qui nasce la paura di Olivo: sa che Mungiu potrebbe vendicarsi.",
       },
       {
         eyebrow: "Il terrazzo",
-        text: "Di notte il gruppo lo prende, gli mette un sacchetto in testa e lo porta sul terrazzo. Olivo si salva solo leggendo i dettagli: capisce che Jessica ha tradito Mungiu e usa quella verità per sopravvivere.",
+        text: "La minaccia diventa reale quando Mungiu e il suo gruppo portano Olivo sul terrazzo. Olivo si salva usando un'informazione su Jessica.",
         align: "right",
       },
       {
         eyebrow: "Partire",
-        text: "Dopo quella scena, restare in comunità non è più una possibilità. Sonia Sperlari diventa l'uscita da un luogo che non è mai stato davvero sicuro.",
+        text: "Sonia gli presenta il caso di quattro adolescenti spariti a Torino. Dopo il terrazzo, Olivo accetta di partire: la fuga dalla comunità diventa l'inizio dell'indagine.",
       },
     ],
     creep: [
       {
         eyebrow: "Perché questa canzone",
-        text: "Creep accompagna l'arrivo a Torino perché Olivo entra in una vita più normale, ma la guarda come se appartenesse a qualcun altro.",
+        text: "Creep accompagna l'arrivo a Torino: Olivo entra in casa di Sonia e in una nuova scuola, ma è lì anche per osservare il caso dall'interno.",
         primary: true,
       },
       {
         eyebrow: "Casa di Sonia",
-        text: "A casa di Sonia conosce Manon e prova a stare dentro una quotidianità nuova. Ma la calma degli altri non coincide con quello che lui sente dentro.",
+        text: "Sonia ospita Olivo e gli offre un ambiente più stabile. In casa conosce Manon, ma non riesce subito a vivere tutto con naturalezza.",
         align: "right",
       },
       {
         eyebrow: "La scuola",
-        text: "Con una falsa identità entra in una classe nuova. Serafine, Matilda e Francesco iniziano ad accoglierlo, ma Olivo resta impacciato, lucido, sempre un passo fuori.",
+        text: "A scuola Olivo usa una falsa identità. Serafine, Matilda e Francesco lo avvicinano: sembrano compagni, ma sono anche il primo collegamento con il mistero.",
       },
       {
         eyebrow: "Il lago",
-        text: "La sua diversità non è solo carattere: dietro c'è il trauma del bagagliaio, dell'auto finita nel lago, di un passato che lo separa dagli altri anche quando gli altri lo invitano a entrare.",
+        text: "La sua distanza dagli altri non è solo timidezza: dipende anche dal trauma dell'auto finita nel lago e del bagagliaio.",
         align: "right",
       },
       {
         eyebrow: "Fuori posto",
-        text: "La canzone non racconta la scuola: racconta Olivo mentre osserva una normalità che desidera, ma che non sa abitare.",
+        text: "La canzone si collega a questo doppio ruolo: Olivo prova a inserirsi, ma resta fuori posto perché sta anche indagando.",
       },
     ],
     "way-down-we-go": [
       {
         eyebrow: "Perché questa canzone",
-        text: "Way Down We Go è la discesa lenta dentro la trappola. Il pericolo non esplode subito: si stringe intorno a Olivo un passo alla volta.",
+        text: "Way Down We Go è adatta perché l'indagine comincia a scendere nel pericolo: Olivo nasconde indizi, segue mappe e perde controllo.",
         primary: true,
       },
       {
         eyebrow: "Pedinamento",
-        text: "La Golf grigia lo segue. Olivo potrebbe avvisare subito Sonia, invece decide di muoversi da solo: vuole capire, e questa scelta lo avvicina al buio.",
+        text: "Olivo nota una Golf grigia che lo segue. Per lui sembra un segnale del rapitore, anche se la verità sarà più complicata.",
         align: "right",
       },
       {
         eyebrow: "Biblioteca",
-        text: "In biblioteca studia mappe, vie di fuga e passaggi. Il romanzo trasforma la città in un labirinto: ogni linea sulla carta sembra portare più giù.",
+        text: "In biblioteca studia mappe e vie di fuga. Usa la sua capacità di osservazione, ma il rischio cresce invece di diminuire.",
       },
       {
-        eyebrow: "Il rapimento",
-        text: "Alla fine la trappola si chiude: cappuccio, legacci, furgone, freddo. La discesa diventa fisica quando Olivo si ritrova in uno spazio metallico, buio, simile a una cisterna.",
+        eyebrow: "Gustavo",
+        text: "Gustavo e il suo gruppo diventano una pista minacciosa. Olivo pensa di avvicinarsi alla verità, ma rischia di diventare solo un'esca.",
         align: "right",
       },
       {
-        eyebrow: "Verso il basso",
-        text: "La canzone funziona perché il ritmo pesa come un corpo che scende: dalla superficie della strada al cuore sotterraneo del mistero.",
+        eyebrow: "Collegamento",
+        text: "Il ritmo lento e pesante accompagna il passaggio dal controllo apparente alla confusione: Olivo non sa più di chi fidarsi.",
       },
     ],
     coraline: [
       {
         eyebrow: "Perché questa canzone",
-        text: "CORALINE entra quando il romanzo cambia centro: prima sembra una scena di minaccia, poi diventa il racconto di una ferita che torna fuori.",
+        text: "CORALINE entra quando Gustavo non basta più a spiegare il caso e la storia si sposta anche sul trauma di Olivo.",
         primary: true,
       },
       {
         eyebrow: "Falsa pista",
-        text: "Gustavo e il suo gruppo fanno paura. Parlano di violenza, dominano la scena, sembrano i colpevoli perfetti. Ma Olivo capisce che quella minaccia non è il cuore del caso.",
+        text: "Gustavo sembra una risposta possibile, ma non chiude l'indagine. Sonia stessa ha usato Olivo per arrivare a lui.",
         align: "right",
       },
       {
         eyebrow: "Manon",
-        text: "Quando Manon si avvicina, non emerge una risposta investigativa ma un ricordo: il bagagliaio, l'acqua, il soffocamento. Il corpo di Olivo ricorda prima della mente.",
+        text: "Con Manon riemerge il ricordo dell'auto nel lago: il bagagliaio, l'acqua e la paura di soffocare.",
       },
       {
         eyebrow: "Crollo",
-        text: "Olivo urla, si chiude in bagno e si rifugia nella vasca. La canzone cresce come quel dolore: prima nascosto e intimo, poi impossibile da trattenere.",
+        text: "Olivo non riesce a controllare la reazione: si chiude in bagno e si rifugia nella vasca. Il trauma diventa evidente.",
         align: "right",
       },
       {
-        eyebrow: "Il vero mostro",
-        text: "Il punto non è Gustavo. Il vero mostro è il trauma che Olivo porta dentro e che il caso costringe finalmente a guardare.",
+        eyebrow: "Collegamento",
+        text: "La canzone cresce come questa parte: prima la falsa pista, poi la crisi personale, infine la richiesta di riscatto che riapre il caso.",
       },
     ],
     uprising: [
       {
         eyebrow: "Perché questa canzone",
-        text: "Uprising accompagna il ribaltamento: i ragazzi scomparsi non sono più soltanto persone da salvare, ma un gruppo che ha ripreso il controllo.",
+        text: "Uprising accompagna il ribaltamento: il rapitore non è quello che sembra e i ragazzi scomparsi hanno costruito una messinscena.",
         primary: true,
       },
       {
         eyebrow: "Riscatto",
-        text: "La polizia prepara lo scambio nel canale sotterraneo. Sembra che gli adulti controllino tutto, ma il borsone sparisce sott'acqua e la scena cambia padrone.",
+        text: "La polizia organizza lo scambio del riscatto nel canale sotterraneo. Sembra una normale operazione, ma qualcosa non torna.",
         align: "right",
       },
       {
         eyebrow: "Pinna nera",
-        text: "Olivo vede una pinna nera. È un dettaglio minimo, ma basta a mostrare che qualcuno nel buio sa muoversi meglio degli adulti.",
+        text: "Il borsone sparisce sott'acqua e Olivo vede una pinna nera. Il canale rivela che il piano è stato preparato da chi conosce i sotterranei.",
       },
       {
         eyebrow: "Salamandre",
-        text: "Parlando con Serafine, Olivo capisce la verità: non esiste un rapitore unico. Le salamandre hanno finto i rapimenti, usato le debolezze delle famiglie e preparato la fuga.",
+        text: "Serafine spiega che Ryan, Elena, Federico e Maria hanno simulato i rapimenti. Il riscatto serve alla fuga delle salamandre.",
         align: "right",
       },
       {
-        eyebrow: "Ribellione",
-        text: "La canzone ha un passo da marcia: non racconta paura, ma resistenza. I ragazzi non scappano soltanto: reagiscono a famiglie ipocrite, adulti corrotti e bulli.",
+        eyebrow: "Collegamento",
+        text: "La canzone funziona perché parla di ribellione: i ragazzi reagiscono insieme alle famiglie e agli adulti.",
       },
     ],
     wait: [
       {
         eyebrow: "Perché questa canzone",
-        text: "Wait chiude la playlist perché il finale non è una corsa frenetica, ma una fuga sospesa: lenta, luminosa, malinconica.",
+        text: "Wait chiude la playlist perché l'indagine finisce nei sotterranei, ma la scelta finale riguarda Olivo e sua madre.",
         primary: true,
       },
       {
         eyebrow: "Sottosuolo",
-        text: "Olivo studia le mappe e chiede aiuto proprio a Mungiu. Insieme attraversano i cunicoli, trovano la finta bomba e arrivano alla villa.",
+        text: "Olivo studia le mappe e chiede aiuto a Mungiu. Il vecchio nemico diventa l'alleato che gli permette di muoversi sottoterra.",
         align: "right",
       },
       {
         eyebrow: "La grotta",
-        text: "Nel giardino trovano lo stagno e passano dietro la cascata. Lì si apre la grotta delle salamandre: non un nascondiglio qualsiasi, ma una soglia verso un'altra vita.",
+        text: "Dietro la cascata trovano la grotta delle salamandre. Lì il piano è chiaro: i ragazzi non aspettano soccorso, vogliono partire.",
       },
       {
         eyebrow: "La barca",
-        text: "Olivo sale con loro. La barca attraversa il tunnel buio e sbuca nel Po all'alba: per un attimo sembra che abbia trovato finalmente un gruppo.",
+        text: "Olivo sale sulla barca con Serafine e gli altri. Attraversano il tunnel e arrivano sul Po all'alba.",
         align: "right",
       },
       {
         eyebrow: "La scelta",
-        text: "Poi scende. Non resta con Serafine e gli altri: sceglie una strada più solitaria, verso sua madre. La libertà arriva insieme alla separazione.",
+        text: "Sonia gli ha rivelato che sua madre è viva. Per questo Olivo scende dalla barca: chiude il caso, ma apre la propria ricerca.",
       },
     ],
   };

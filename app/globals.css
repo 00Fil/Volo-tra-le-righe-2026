@@ -178,6 +178,33 @@ select {
   opacity: 0.36;
 }
 
+.scene-next-preview {
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 80%, var(--next-ambient-2), transparent 38%),
+    linear-gradient(180deg, transparent, var(--next-ambient-dark));
+}
+
+.scene-next-preview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.36), transparent 28%, rgba(0, 0, 0, 0.42)),
+    radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--next-ambient-3) 34%, transparent), transparent 48%);
+}
+
+.scene-flow-shadow {
+  pointer-events: none;
+  z-index: 3;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.28) 42%, color-mix(in srgb, var(--next-ambient-dark) 72%, #000) 100%),
+    radial-gradient(ellipse at 50% 100%, color-mix(in srgb, var(--next-ambient-2) 22%, transparent), transparent 62%);
+}
+
 .scene-atmosphere-heathens {
   background:
     linear-gradient(90deg, transparent 0 9%, rgba(255, 255, 255, 0.09) 9.4% 9.8%, transparent 10.2% 20%),
