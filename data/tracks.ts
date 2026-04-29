@@ -48,7 +48,7 @@ export const tracks: Track[] = [
       dark: "#050608",
     },
     explanation:
-      "Ho scelto Heathens per i capitoli 1-6 perché questa parte mostra da dove parte Olivo: una comunità in cui dovrebbe essere protetto, ma dove vive con paura e diffidenza. Il problema principale è Mungiu, che è convinto che sia stato Olivo a rivelare il nascondiglio della droga agli educatori. In parallelo entra in scena Sonia Sperlari, che lo vuole coinvolgere nel caso dei ragazzi scomparsi a Torino. La canzone si collega bene a questo inizio perché parla di un ambiente chiuso, teso, in cui bisogna stare attenti alle persone intorno.",
+      "Ho scelto Heathens per i capitoli 1-6 perché Olivo vive in una comunità dove non si sente al sicuro. Mungiu è convinto che sia stato lui a fare la spia e arriva a minacciarlo sul terrazzo. In questi capitoli Sonia Sperlari gli presenta anche il caso dei quattro ragazzi scomparsi a Torino. La canzone dà proprio l'idea di un posto dove non ci si può fidare di nessuno.",
     explanationSections: [
       {
         title: "Cosa succede",
@@ -82,7 +82,7 @@ export const tracks: Track[] = [
       {
         title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto Heathens per i capitoli 1-6 perché Olivo vive in una comunità dove non si sente al sicuro. Mungiu è convinto che sia stato lui a fare la spia e arriva a minacciarlo sul terrazzo. In questi capitoli Sonia Sperlari gli presenta anche il caso dei quattro ragazzi scomparsi a Torino. La canzone rende bene il clima di diffidenza e pericolo da cui Olivo parte prima di entrare nell'indagine.",
+          "Ho scelto Heathens per i capitoli 1-6 perché Olivo vive in una comunità dove non si sente al sicuro. Mungiu è convinto che sia stato lui a fare la spia e arriva a minacciarlo sul terrazzo. In questi capitoli Sonia Sperlari gli presenta anche il caso dei quattro ragazzi scomparsi a Torino. La canzone dà proprio l'idea di un posto dove non ci si può fidare di nessuno.",
         ],
       },
     ],
@@ -119,7 +119,7 @@ export const tracks: Track[] = [
       dark: "#0B1020",
     },
     explanation:
-      "Ho scelto Creep per i capitoli 7-12 perché Olivo lascia la comunità e arriva a Torino, ma non riesce subito a sentirsi normale. Sonia lo ospita e lo manda a scuola con una falsa identità per avvicinarsi all'ambiente dei ragazzi scomparsi. Lì conosce Serafine, Matilda e Francesco. La canzone funziona perché Olivo è dentro una vita nuova e dentro l'indagine, ma continua a sentirsi diverso e fuori posto.",
+      "Ho scelto Creep per i capitoli 7-12 perché Olivo arriva a Torino e sembra avere una possibilità di vita normale: Sonia lo ospita, conosce Manon e a scuola incontra Serafine, Matilda e Francesco. In realtà è lì anche per capire cosa sia successo ai ragazzi scomparsi. Fa capire bene come Olivo si sente diverso e fuori posto anche quando è in mezzo agli altri.",
     explanationSections: [
       {
         title: "Cosa succede",
@@ -152,7 +152,7 @@ export const tracks: Track[] = [
       {
         title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto Creep per i capitoli 7-12 perché Olivo arriva a Torino e sembra avere una possibilità di vita normale: Sonia lo ospita, conosce Manon e a scuola incontra Serafine, Matilda e Francesco. In realtà è lì anche per capire cosa sia successo ai ragazzi scomparsi. La canzone rende bene la sua condizione: viene avvicinato dagli altri, ma il trauma e il suo ruolo nell'indagine lo fanno sentire fuori posto.",
+          "Ho scelto Creep per i capitoli 7-12 perché Olivo arriva a Torino e sembra avere una possibilità di vita normale: Sonia lo ospita, conosce Manon e a scuola incontra Serafine, Matilda e Francesco. In realtà è lì anche per capire cosa sia successo ai ragazzi scomparsi. Fa capire bene come Olivo si sente diverso e fuori posto anche quando è in mezzo agli altri.",
         ],
       },
     ],
@@ -188,7 +188,7 @@ export const tracks: Track[] = [
       dark: "#030712",
     },
     explanation:
-      "Ho scelto Way Down We Go per i capitoli 13-18 perché in questa parte l'indagine diventa più rischiosa. Olivo sospetta di essere seguito da una Golf grigia, non racconta tutto a Sonia e prova a muoversi da solo tra scuola, biblioteca e mappe. A scuola si scontra con Gustavo e si espone sempre di più. La canzone si collega a questa discesa progressiva: Olivo pensa di controllare la situazione, ma ogni scelta lo porta più vicino alla trappola.",
+      "Ho scelto Way Down We Go per i capitoli 13-18 perché Olivo viene seguito dalla Golf grigia, si scontra con Gustavo, nasconde informazioni a Sonia e prova a risolvere da solo il caso. Alla fine viene rapito fuori dalla biblioteca. La musica ti fa sentire che qualcosa sta andando sempre peggio.",
     explanationSections: [
       {
         title: "Cosa succede",
@@ -222,7 +222,7 @@ export const tracks: Track[] = [
       {
         title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto Way Down We Go per i capitoli 13-18 perché Olivo viene seguito dalla Golf grigia, si scontra con Gustavo, nasconde informazioni a Sonia e prova a risolvere da solo il caso. Alla fine viene rapito fuori dalla biblioteca. La canzone, con il suo ritmo lento e pesante, rende bene la sensazione di una trappola che si chiude poco alla volta.",
+          "Ho scelto Way Down We Go per i capitoli 13-18 perché Olivo viene seguito dalla Golf grigia, si scontra con Gustavo, nasconde informazioni a Sonia e prova a risolvere da solo il caso. Alla fine viene rapito fuori dalla biblioteca. La musica ti fa sentire che qualcosa sta andando sempre peggio.",
         ],
       },
     ],
@@ -258,7 +258,7 @@ export const tracks: Track[] = [
       dark: "#08060A",
     },
     explanation:
-      "Ho scelto CORALINE per i capitoli 19-24 perché in questa parte crolla tutto quello che sembrava sicuro. Olivo si trova davanti a Gustavo e al suo gruppo, che sembrano i colpevoli ma non lo sono davvero. Poi scopre che Sonia lo ha usato come esca fin dall'inizio. Infine il momento con Manon fa riemergere il trauma del bagagliaio. Tutto crolla insieme: l'indagine, la fiducia in Sonia, la tenuta psicologica di Olivo. La canzone è adatta perché cresce lentamente e poi diventa intensa, come la crisi del protagonista.",
+      "Ho scelto Coraline per i capitoli 19-24 perché tutto crolla: Gustavo sembra il colpevole ma non lo è, Sonia ammette di aver usato Olivo come esca e il trauma del bagagliaio torna fuori con Manon. Alla fine arriva anche la richiesta di riscatto, che rimette in moto l'indagine. Parte calma ma poi diventa più forte, proprio come quello che succede a Olivo.",
     explanationSections: [
       {
         title: "Cosa succede",
@@ -292,7 +292,7 @@ export const tracks: Track[] = [
       {
         title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto CORALINE per i capitoli 19-24 perché tutto crolla: Gustavo sembra il colpevole ma non lo è, Sonia ammette di aver usato Olivo come esca e il trauma del bagagliaio torna fuori con Manon. Alla fine arriva anche la richiesta di riscatto, che rimette in moto l'indagine. La canzone è adatta perché cresce lentamente e poi diventa intensa, come la crisi del protagonista.",
+          "Ho scelto Coraline per i capitoli 19-24 perché tutto crolla: Gustavo sembra il colpevole ma non lo è, Sonia ammette di aver usato Olivo come esca e il trauma del bagagliaio torna fuori con Manon. Alla fine arriva anche la richiesta di riscatto, che rimette in moto l'indagine. Parte calma ma poi diventa più forte, proprio come quello che succede a Olivo.",
         ],
       },
     ],
@@ -331,7 +331,7 @@ export const tracks: Track[] = [
       dark: "#020617",
     },
     explanation:
-      "Ho scelto Uprising per i capitoli 25-30 perché qui cambia il senso dell'indagine. Olivo indaga sulle famiglie dei ragazzi e scopre segreti pesanti. Intanto il rapitore alza la posta mandando quattro dita mozzate. La polizia organizza lo scambio nel canale sotterraneo, ma il borsone sparisce sott'acqua e Olivo vede una pinna nera. Poi chiama Serafine e scopre la verità: non esiste un rapitore, i ragazzi scomparsi hanno costruito una messinscena. La canzone si collega alla ribellione di un gruppo che non vuole più subire gli adulti.",
+      "Ho scelto Uprising per i capitoli 25-30 perché Olivo scopre che i ragazzi scomparsi non sono solo vittime: hanno organizzato un piano. Indaga sulle famiglie, trova i soldi per il riscatto, vede il borsone sparire sott'acqua e poi chiama Serafine che gli rivela la verità. Trasmette energia e voglia di ribellarsi insieme agli altri.",
     explanationSections: [
       {
         title: "Cosa succede",
@@ -365,7 +365,7 @@ export const tracks: Track[] = [
       {
         title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto Uprising per i capitoli 25-30 perché Olivo scopre che i ragazzi scomparsi non sono solo vittime: hanno organizzato un piano. Indaga sulle famiglie, trova i soldi per il riscatto, vede il borsone sparire sott'acqua e poi chiama Serafine che gli rivela la verità. La canzone è adatta perché trasmette energia, ribellione e forza di gruppo.",
+          "Ho scelto Uprising per i capitoli 25-30 perché Olivo scopre che i ragazzi scomparsi non sono solo vittime: hanno organizzato un piano. Indaga sulle famiglie, trova i soldi per il riscatto, vede il borsone sparire sott'acqua e poi chiama Serafine che gli rivela la verità. Trasmette energia e voglia di ribellarsi insieme agli altri.",
         ],
       },
     ],
@@ -404,7 +404,7 @@ export const tracks: Track[] = [
       dark: "#040713",
     },
     explanation:
-      "Ho scelto Wait per i capitoli 31-41 perché il finale chiude sia l'indagine sia il percorso personale di Olivo. Dopo aver capito il piano delle salamandre, studia le mappe dei sotterranei, chiede aiuto a Mungiu e insieme trovano una bomba sotto il covo dei neonazisti. Poi Sonia gli rivela che sua madre è viva. Olivo trova le salamandre nella grotta, sale sulla barca e sbuca nel Po all'alba. Potrebbe restare con Serafine e gli altri, ma decide di scendere e cercare sua madre da solo. La canzone è lenta e malinconica, adatta a una libertà che comporta anche separazione.",
+      "Ho scelto Wait per i capitoli 31-41 perché Olivo chiude l'indagine sulle salamandre: attraversa i sotterranei con Mungiu, trova la bomba-bluff, raggiunge la grotta e fugge in barca fino al Po. Ma la cosa più importante diventa personale: scopre che sua madre è viva e decide di cercarla da solo, lasciando Serafine e gli altri. È lenta e un po' triste, perfetta per il finale e per la separazione.",
     explanationSections: [
       {
         title: "Cosa succede",
@@ -439,7 +439,7 @@ export const tracks: Track[] = [
       {
         title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto Wait per i capitoli 31-41 perché Olivo chiude l'indagine sulle salamandre: attraversa i sotterranei con Mungiu, trova la bomba-bluff, raggiunge la grotta e fugge in barca fino al Po. Ma la cosa più importante diventa personale: scopre che sua madre è viva e decide di cercarla da solo, lasciando Serafine e gli altri. La canzone è adatta perché è lenta e malinconica: non racconta solo la fuga, ma anche la separazione e la scelta di Olivo.",
+          "Ho scelto Wait per i capitoli 31-41 perché Olivo chiude l'indagine sulle salamandre: attraversa i sotterranei con Mungiu, trova la bomba-bluff, raggiunge la grotta e fugge in barca fino al Po. Ma la cosa più importante diventa personale: scopre che sua madre è viva e decide di cercarla da solo, lasciando Serafine e gli altri. È lenta e un po' triste, perfetta per il finale e per la separazione.",
         ],
       },
     ],
