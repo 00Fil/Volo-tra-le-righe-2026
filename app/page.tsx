@@ -216,8 +216,7 @@ function PresentationSection() {
 
         <div className="glass-panel border border-white/10 p-6 md:p-8">
           <p className="text-base leading-relaxed text-white/82 md:text-lg">
-L'elaborato è una playlist di canzoni ispirata al libro "Il gioco della salamandra" di Davide Longo. 
-Ogni canzone è la colonna sonora di una parte del romanzo e aiuta a seguirne il filo narrativo: la paura iniziale di Olivo, l'aiuto nell'indagine sui ragazzi scomparsi, la scoperta del gruppo delle "salamandre" e il l'addio finale sul Po. Noi crediamo che le canzoni scelte permettano di far provare sensazioni nuove ma coerenti alla storia e che permettano una "immersione" più facile del lettore nella storia.
+L'elaborato è una playlist ispirata al libro "Il gioco della salamandra" di Davide Longo. Ogni canzone è la colonna sonora di una parte del romanzo: la paura e l'isolamento iniziale di Olivo (Heathens – Twenty One Pilots), il senso di disagio e diversità (Creep – Radiohead), l'inizio dell'indagine sui ragazzi scomparsi (Way Down We Go – KALEO), le vite complicate e la ribellione dei protagonisti (Coraline – Maneskin), il forte legame del gruppo (Uprising – Muse) e l'addio finale sul Po (Wait – M83).
           </p>
         </div>
       </div>
