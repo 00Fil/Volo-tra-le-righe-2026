@@ -82,7 +82,7 @@ export const tracks: Track[] = [
       {
         title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto Heathens per i capitoli 1-6 perché Olivo vive in una comunità dove non si sente al sicuro. Mungiu è convinto che sia stato lui a fare la spia e arriva a minacciarlo sul terrazzo. In questi capitoli Sonia Sperlari gli presenta anche il caso dei quattro ragazzi scomparsi a Torino. La canzone dà proprio l'idea di un posto dove non ci si può fidare di nessuno.",
+          "Abbiamo scelto Heathens per questa prima sezione perché Olivo vive in una comunità dove non si sente al sicuro. Mungiu è convinto che sia stato lui a fare la spia e arriva a minacciarlo sul terrazzo. In questi capitoli Sonia Sperlari gli presenta anche il caso dei quattro ragazzi scomparsi a Torino. La canzone, a nostro parere, suggerisce proprio l'idea di un posto dove non ci si può fidare di nessuno.",
         ],
       },
     ],
@@ -152,7 +152,7 @@ export const tracks: Track[] = [
       {
         title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto Creep per i capitoli 7-12 perché Olivo arriva a Torino e sembra avere una possibilità di vita normale: Sonia lo ospita, conosce Manon e a scuola incontra Serafine, Matilda e Francesco. In realtà è lì anche per capire cosa sia successo ai ragazzi scomparsi. Fa capire bene come Olivo si sente diverso e fuori posto anche quando è in mezzo agli altri.",
+          "Per quanto riguarda invece i capitoli 7-12 abbiamo scelto \"Creep\" perché Olivo arriva a Torino e sembra avere una possibilità di vita normale: Sonia lo ospita, conosce Manon e a scuola incontra Serafine, Matilda e Francesco. In realtà è lì anche per capire cosa sia successo ai ragazzi scomparsi. Nel pezzo sentiamo in qualche modo espresso lo stato d'animo di Olivo, che si sente diverso e fuori posto anche quando è in mezzo agli altri.",
         ],
       },
     ],
@@ -222,7 +222,7 @@ export const tracks: Track[] = [
       {
         title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto Way Down We Go per i capitoli 13-18 perché Olivo viene seguito dalla Golf grigia, si scontra con Gustavo, nasconde informazioni a Sonia e prova a risolvere da solo il caso. Alla fine viene rapito fuori dalla biblioteca. La musica ti fa sentire che qualcosa sta andando sempre peggio.",
+          "\"Way Down We Go\" ci pare una scelta adeguata perché Olivo viene seguito dalla Golf grigia, si scontra con Gustavo, nasconde informazioni a Sonia e prova a risolvere da solo il caso. Alla fine viene rapito fuori dalla biblioteca. La musica fa avvertire che qualcosa sta andando irrimediabilmente sempre peggio.",
         ],
       },
     ],
@@ -292,7 +292,7 @@ export const tracks: Track[] = [
       {
         title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto Coraline per i capitoli 19-24 perché tutto crolla: Gustavo sembra il colpevole ma non lo è, Sonia ammette di aver usato Olivo come esca e il trauma del bagagliaio torna fuori con Manon. Alla fine arriva anche la richiesta di riscatto, che rimette in moto l'indagine. Parte calma ma poi diventa più forte, proprio come quello che succede a Olivo.",
+          "Abbiamo scelto Coraline per i capitoli 19-24 perché tutto crolla: Gustavo sembra il colpevole ma non lo è, Sonia ammette di aver usato Olivo come esca e il trauma del bagagliaio riaffora con Manon. Alla fine arriva anche la richiesta di riscatto, che rimette in moto l'indagine. Infatti la canzone ha un avvio lento ma poi il ritmo si fa più incalzante: situazione analoga a quella in cui si è ritrovato il protagonista.",
         ],
       },
     ],
@@ -365,7 +365,7 @@ export const tracks: Track[] = [
       {
         title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto Uprising per i capitoli 25-30 perché Olivo scopre che i ragazzi scomparsi non sono solo vittime: hanno organizzato un piano. Indaga sulle famiglie, trova i soldi per il riscatto, vede il borsone sparire sott'acqua e poi chiama Serafine che gli rivela la verità. Trasmette energia e voglia di ribellarsi insieme agli altri.",
+          "Per i capitoli seguenti invece abbiamo scelto \"Uprising\" perché Olivo scopre che i ragazzi scomparsi non sono solo vittime: hanno organizzato un piano. Indaga sulle famiglie, trova i soldi per il riscatto, vede il borsone sparire sott'acqua e poi chiama Serafine che gli rivela la verità. La canzone trasmette energia e curiosità proprio come questa sezione della storia.",
         ],
       },
     ],
@@ -439,7 +439,7 @@ export const tracks: Track[] = [
       {
         title: "Motivazione pronta per l'elaborato",
         paragraphs: [
-          "Ho scelto Wait per i capitoli 31-41 perché Olivo chiude l'indagine sulle salamandre: attraversa i sotterranei con Mungiu, trova la bomba-bluff, raggiunge la grotta e fugge in barca fino al Po. Ma la cosa più importante diventa personale: scopre che sua madre è viva e decide di cercarla da solo, lasciando Serafine e gli altri. È lenta e un po' triste, perfetta per il finale e per la separazione.",
+          "Per l'ultima parte, ci siamo affidati alla canzone \"Wait\" perché Olivo chiude l'indagine sulle salamandre: attraversa i sotterranei con Mungiu, trova la bomba, raggiunge la grotta e fugge in barca fino al Po. Ma la novità più importante è di natura personale: scopre che sua madre è viva e decide di cercarla da solo, lasciando Serafine e gli altri. La canzone è lenta e un po' triste, perfetta per il finale e per la separazione.",
         ],
       },
     ],
