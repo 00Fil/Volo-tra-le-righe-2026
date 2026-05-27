@@ -18,6 +18,12 @@ import { HomeAudio } from "@/components/HomeAudio"
 import { SectionDots } from "@/components/SectionDots";
 import { SongSection } from "@/components/SongSection";
 import { tracks } from "@/data/tracks";
+import { useState } from "react";
+import { motion, AnimatePresence, MotionConfig } from "motion/react";
+import { PlusIcon } from "lucide-react";
+import { FaCode, FaPenNib } from "react-icons/fa6";
+import useMeasure from "react-use-measure";
+
 
 const identityMatrix =
   "1, 0, 0, 0, " +
@@ -225,264 +231,111 @@ L'elaborato è una playlist ispirata al libro "Il gioco della salamandra" di Dav
 }
 
 function CreditsBadge() {
-  const ref = useRef<HTMLButtonElement>(null);
-  const [firstOverlayPosition, setFirstOverlayPosition] = useState(0);
-  const [matrix, setMatrix] = useState(identityMatrix);
-  const [currentMatrix, setCurrentMatrix] = useState(identityMatrix);
-  const [disableInOutOverlayAnimation, setDisableInOutOverlayAnimation] =
-    useState(true);
-  const [disableOverlayAnimation, setDisableOverlayAnimation] =
-    useState(false);
-  const [isTimeoutFinished, setIsTimeoutFinished] = useState(false);
-  const [isPinnedOpen, setIsPinnedOpen] = useState(false);
-  const [isHoverOpen, setIsHoverOpen] = useState(false);
-  const enterTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const leaveTimeout1 = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const leaveTimeout2 = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const leaveTimeout3 = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isHover, setIsHover] = useState(false);
+  const [ref, bounds] = useMeasure({ offsetSize: true });
 
-  const isExpanded = isPinnedOpen || isHoverOpen;
+  const isExpanded = isOpen || isHover;
 
-  const getDimensions = () => {
-    const rect = ref.current?.getBoundingClientRect();
-    return {
-      left: rect?.left ?? 0,
-      right: rect?.right ?? 1,
-      top: rect?.top ?? 0,
-      bottom: rect?.bottom ?? 1,
-    };
-  };
-
-  const getMatrix = (clientX: number, clientY: number) => {
-    const { left, right, top, bottom } = getDimensions();
-    const width = Math.max(right - left, 1);
-    const height = Math.max(bottom - top, 1);
-    const xCenter = left + width / 2;
-    const yCenter = top + height / 2;
-    const x = (clientX - xCenter) / (width / 2);
-    const y = (clientY - yCenter) / (height / 2);
-    const distance = Math.min(Math.sqrt(x * x + y * y), 1);
-    const scale = maxScale - (maxScale - minScale) * distance;
-    const rotateX = -y * maxRotate;
-    const rotateY = x * maxRotate;
-    const rotateZ = x * 0.06;
-    return `${scale}, 0, ${-rotateY}, 0, ${rotateX}, ${scale}, ${rotateZ}, 0, ${rotateY}, ${-rotateX}, ${scale}, 0, 0, 0, 0, 1`;
-  };
-
-  const getOppositeMatrix = (sourceMatrix: string, weakening: number) =>
-    sourceMatrix
-      .split(", ")
-      .map((item, index) => {
-        if (index === 2 || index === 4 || index === 6 || index === 8 || index === 9) {
-          return `${-parseFloat(item) / weakening}`;
-        }
-        if (index === 0 || index === 5 || index === 10 || index === 15) {
-          return "1";
-        }
-        return item;
-      })
-      .join(", ");
-
-  const clearHoverTimeouts = () => {
-    [enterTimeout, leaveTimeout1, leaveTimeout2, leaveTimeout3].forEach(
-      (timeout) => {
-        if (timeout.current) clearTimeout(timeout.current);
-      },
-    );
-  };
-
-  const onMouseEnter = (event: MouseEvent<HTMLButtonElement>) => {
-    clearHoverTimeouts();
-    setIsHoverOpen(true);
-    setDisableOverlayAnimation(true);
-    setDisableInOutOverlayAnimation(false);
-    enterTimeout.current = setTimeout(
-      () => setDisableInOutOverlayAnimation(true),
-      350,
-    );
-    const { left, right, top, bottom } = getDimensions();
-    const xCenter = (left + right) / 2;
-    const yCenter = (top + bottom) / 2;
-    const nextMatrix = getMatrix(event.clientX, event.clientY);
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setFirstOverlayPosition(
-          (Math.abs(xCenter - event.clientX) +
-            Math.abs(yCenter - event.clientY)) /
-            1.5,
-        );
-      });
-    });
-    setMatrix(getOppositeMatrix(nextMatrix, -0.7));
-    setIsTimeoutFinished(false);
-    setTimeout(() => setIsTimeoutFinished(true), 200);
-  };
-
-  const onMouseMove = (event: MouseEvent<HTMLButtonElement>) => {
-    const { left, right, top, bottom } = getDimensions();
-    const xCenter = (left + right) / 2;
-    const yCenter = (top + bottom) / 2;
-    setTimeout(
-      () =>
-        setFirstOverlayPosition(
-          (Math.abs(xCenter - event.clientX) +
-            Math.abs(yCenter - event.clientY)) /
-            1.5,
-        ),
-      150,
-    );
-    if (isTimeoutFinished) {
-      setCurrentMatrix(getMatrix(event.clientX, event.clientY));
-    }
-  };
-
-  const onMouseLeave = () => {
-    clearHoverTimeouts();
-    setIsHoverOpen(false);
-    setCurrentMatrix(getOppositeMatrix(matrix, 4));
-    setTimeout(() => setCurrentMatrix(identityMatrix), 200);
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        setDisableInOutOverlayAnimation(false);
-        leaveTimeout1.current = setTimeout(
-          () => setFirstOverlayPosition(-firstOverlayPosition / 4),
-          150,
-        );
-        leaveTimeout2.current = setTimeout(
-          () => setFirstOverlayPosition(0),
-          300,
-        );
-        leaveTimeout3.current = setTimeout(() => {
-          setDisableOverlayAnimation(false);
-          setDisableInOutOverlayAnimation(true);
-        }, 500);
-      });
-    });
-  };
-
-  useEffect(() => {
-    if (isTimeoutFinished) setMatrix(currentMatrix);
-  }, [currentMatrix, isTimeoutFinished]);
-
-  useEffect(() => clearHoverTimeouts, []);
-
-  const overlayAnimations = [...Array(6).keys()]
-    .map(
-      (index) => `
-        @keyframes creditsOverlayAnimation${index + 1} {
-          0% { transform: rotate(${index * 14}deg); }
-          50% { transform: rotate(${(index + 1) * 14}deg); }
-          100% { transform: rotate(${index * 14}deg); }
-        }
-      `,
-    )
-    .join(" ");
+  const credits = [
+    { role: "Developed by", name: "Filippo Corsini", icon: FaCode },
+    { role: "Written by", name: "Davide De Lellis", icon: FaPenNib },
+    { role: "Written by", name: "Filippo Corsini", icon: FaPenNib },
+    { role: "Written by", name: "Adam Ezauiui", icon: FaPenNib },
+    { role: "Written by", name: "Stefano Borghi", icon: FaPenNib },
+  ];
 
   return (
-    <button
-      ref={ref}
-      type="button"
-      aria-label={isExpanded ? "Nascondi crediti" : "Mostra crediti"}
-      aria-expanded={isExpanded}
-      onClick={() => setIsPinnedOpen((open) => !open)}
-      onMouseEnter={onMouseEnter}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-      className={`block h-14 overflow-hidden rounded-xl text-left shadow-[0_18px_60px_rgba(0,0,0,.5)] transition-[width,filter] duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/30 ${
-        isExpanded
-          ? "w-[min(22rem,calc(100vw-2.5rem))]"
-          : "w-14 hover:w-[min(22rem,calc(100vw-2.5rem))]"
-      }`}
-    >
-      <style>{overlayAnimations}</style>
-      <div
-        style={{
-          transform: `perspective(700px) matrix3d(${matrix})`,
-          transformOrigin: "center center",
-          transition: "transform 200ms ease-out",
-        }}
+    <MotionConfig transition={ { type: "spring", stiffness: 280, damping: 30 } }>
+      <motion.div
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
+        animate={ {
+          width: bounds.width > 0 ? bounds.width : "auto",
+          height: bounds.height > 0 ? bounds.height : "auto",
+        } }
+        className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0a0a0a] text-white shadow-[0_18px_60px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.06)]"
       >
-        {/* ── Sfondo black minimal opaco ── */}
-        <div className="relative h-14 overflow-hidden rounded-xl border border-white/[0.07] bg-[#0a0a0a] text-white shadow-[inset_0_1px_0_rgba(255,255,255,.06)]">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 260 54"
-            preserveAspectRatio="none"
-            className="absolute inset-0 h-full w-full"
-            aria-hidden="true"
-          >
-            <defs>
-              <filter id="creditsBlur">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
-              </filter>
-              <mask id="creditsBadgeMask">
-                <rect width="260" height="54" fill="white" rx="10" />
-              </mask>
-            </defs>
-            {/* Base nera opaca */}
-            <rect width="260" height="54" rx="10" fill="#0a0a0a" />
-            {/* Overlay sottilissimo per texture minima */}
-            <g
-              style={{ mixBlendMode: "overlay", opacity: 0.08 }}
-              mask="url(#creditsBadgeMask)"
-            >
-              {[
-                "hsl(0, 0%, 100%)",
-                "hsl(0, 0%, 80%)",
-                "hsl(0, 0%, 60%)",
-                "hsl(0, 0%, 40%)",
-                "hsl(0, 0%, 20%)",
-                "white",
-              ].map((color, index) => (
-                <g
-                  key={color}
-                  style={{
-                    transform: `rotate(${firstOverlayPosition + index * 16}deg)`,
-                    transformOrigin: "center center",
-                    transition: !disableInOutOverlayAnimation
-                      ? "transform 200ms ease-out"
-                      : "none",
-                    animation: disableOverlayAnimation
-                      ? "none"
-                      : `creditsOverlayAnimation${index + 1} 5s infinite`,
-                    willChange: "transform",
-                  }}
-                >
-                  <polygon
-                    points="0,0 260,54 260,0 0,54"
-                    fill={color}
-                    filter="url(#creditsBlur)"
-                    opacity="0.3"
-                  />
-                </g>
-              ))}
-            </g>
-          </svg>
+        <div ref={ref}>
+          <AnimatePresence mode="popLayout" initial={false}>
+            {!isExpanded ? (
+              <motion.button
+                key="closed"
+                type="button"
+                aria-label="Mostra crediti"
+                aria-expanded={false}
+                onClick={() => setIsOpen(true)}
+                className="flex h-14 w-14 shrink-0 cursor-pointer items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/30"
+                initial={ { opacity: 0, filter: "blur(4px)" } }
+                animate={ { opacity: 1, filter: "blur(0px)" } }
+                exit={ { opacity: 0, filter: "blur(4px)" } }
+                transition={ { duration: 0.2, ease: "easeOut" } }
+              >
+                <span className="font-display text-3xl leading-none text-white/90">
+                  <i>D</i>
+                </span>
+              </motion.button>
+            ) : (
+              <motion.div
+                key="open"
+                className="flex w-[min(22rem,calc(100vw-2.5rem))] shrink-0 flex-col gap-1 p-2"
+              >
+                <div className="flex items-center justify-between px-2 pt-1 pb-2">
+                  <span className="text-[10px] font-bold tracking-[0.18em] text-white/40 uppercase">
+                    Credits
+                  </span>
+                  <button
+                    type="button"
+                    aria-label="Nascondi crediti"
+                    aria-expanded
+                    onClick={() => {
+                      setIsOpen(false);
+                      setIsHover(false);
+                    }}
+                    className="grid h-6 w-6 cursor-pointer place-items-center rounded-md text-white/50 transition-colors hover:bg-white/5 hover:text-white/80"
+                  >
+                    <PlusIcon className="h-4 w-4 rotate-45 transition-transform duration-300" />
+                  </button>
+                </div>
 
-          <div className="relative z-10 flex h-full items-center">
-            {/* ── Icona: D corsiva al posto di FC ── */}
-            <span className="grid h-14 w-14 shrink-0 place-items-center border-r border-white/[0.08] bg-white/[0.04] font-display text-3xl leading-none text-white/90">
-              <i>D</i>
-            </span>
+                {credits.map((item, index) => (
+                  <motion.div
+                    key={`${item.role}-${item.name}-${index}`}
+                    className="flex shrink-0 items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/[0.04]"
+                    initial={ { opacity: 0, filter: "blur(4px)", y: 12 } }
+                    animate={ { opacity: 1, filter: "blur(0px)", y: 0 } }
+                    exit={ {
+                      opacity: 0,
+                      filter: "blur(4px)",
+                      transition: { duration: 0.15, ease: "easeOut" },
+                    } }
+                    transition={ {
+                      delay: 0.06 + index * 0.04,
+                      type: "spring",
+                      stiffness: 220,
+                      damping: 22,
+                    } }
+                  >
+                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/[0.06] bg-white/[0.04]">
+                      <item.icon className="h-4 w-4 text-white/80" />
+                    </div>
 
-            <span
-              className={`min-w-0 px-3 transition duration-300 ${
-                isExpanded
-                  ? "translate-x-0 opacity-100"
-                  : "-translate-x-2 opacity-0"
-              }`}
-            >
-              <span className="block whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.16em] text-white/90">
-                Developed by Filippo Corsini
-              </span>
-              <span className="mt-0.5 block truncate text-[11px] font-semibold normal-case tracking-[-0.01em] text-white/40">
-                written by Davide De Lellis, Filippo Corsini, Adam Ezauiui, Stefano Borghi
-              </span>
-            </span>
-          </div>
+                    <div className="flex min-w-0 flex-col leading-tight">
+                      <span className="text-[10px] font-bold tracking-[0.16em] text-white/40 uppercase">
+                        {item.role}
+                      </span>
+                      <span className="truncate text-sm font-semibold text-white/90">
+                        {item.name}
+                      </span>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-      </div>
-    </button>
+      </motion.div>
+    </MotionConfig>
   );
 }
 
