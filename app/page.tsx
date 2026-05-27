@@ -20,6 +20,7 @@ import { SongSection } from "@/components/SongSection";
 import { tracks } from "@/data/tracks";
 import { PlusIcon, Code2, PenTool } from "lucide-react";
 import { motion, AnimatePresence, MotionConfig } from "motion/react";
+import { Intro } from "@/components/Intro";
 
 
 const identityMatrix =
@@ -33,31 +34,40 @@ const maxScale = 1;
 const minScale = 0.985;
 
 export default function Home() {
-  const [showIntro, setShowIntro] = useState(true);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [hasEntered, setHasEntered] = useState(false);
-  const [showPlayer, setShowPlayer] = useState(false);
-  const [musicPlaying, setMusicPlaying] = useState(false);
-  const [palette, setPalette] = useState(tracks[0].palette);
-  const activeTrack = tracks[activeIndex];
+	const [showIntro, setShowIntro] = useState(true);
+	const [activeIndex, setActiveIndex] = useState(0);
+	const [hasEntered, setHasEntered] = useState(false);
+	const [showPlayer, setShowPlayer] = useState(false);
+	const [musicPlaying, setMusicPlaying] = useState(false);
+	const [palette, setPalette] = useState(tracks[0].palette);
+	const activeTrack = tracks[activeIndex];
 
-  const setPhase = useCallback((index: number) => {
-    setActiveIndex(index);
-    setPalette(tracks[index].palette);
-  }, []);
+	const setPhase = useCallback((index: number) => {
+		setActiveIndex(index);
+		setPalette(tracks[index].palette);
+	}, []);
 
-  const ambientStyle = useMemo(
-    () =>
-      ({
-        "--ambient-1": palette.ambient1,
-        "--ambient-2": palette.ambient2,
-        "--ambient-3": palette.ambient3,
-        "--ambient-dark": palette.dark,
-        "--glass-border": palette.ambient3,
-        "--section-glow": palette.ambient2,
-      }) as CSSProperties,
-    [palette],
-  );
+	const ambientStyle = useMemo(
+		() =>
+			({
+				"--ambient-1": palette.ambient1,
+				"--ambient-2": palette.ambient2,
+				"--ambient-3": palette.ambient3,
+				"--ambient-dark": palette.dark,
+				"--glass-border": palette.ambient3,
+				"--section-glow": palette.ambient2,
+			}) as CSSProperties,
+		[palette],
+	);
+
+	// Blocca lo scroll mentre l'intro è visibile
+	useEffect(() => {
+		const previousOverflow = document.body.style.overflow;
+		document.body.style.overflow = showIntro ? "hidden" : "";
+		return () => {
+			document.body.style.overflow = previousOverflow;
+		};
+	}, [showIntro]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setShowIntro(false), 4400);
@@ -150,51 +160,55 @@ export default function Home() {
     };
   }, [setPhase]);
 
-  function enterStory() {
-    setHasEntered(true);
-    setShowPlayer(true);
-    setPhase(0);
-    document
-      .getElementById("scheda-presentazione")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+	function enterStory() {
+		setHasEntered(true);
+		setShowPlayer(true);
+		setPhase(0);
+		document
+			.getElementById("scheda-presentazione")
+			?.scrollIntoView({ behavior: "smooth", block: "start" });
+	}
 
-  return (
-    <main
-      className="relative min-h-screen overflow-x-hidden bg-black pb-36 text-white"
-      data-playing={musicPlaying ? "true" : "false"}
-    >
-      <AmbientShell style={ambientStyle} playing={musicPlaying} />
-      <Hero
-        onEnter={enterStory}
-        showHomeAudio={!showPlayer}
-        onHomePlayingChange={setMusicPlaying}
-      />
+	return (
+		<>
+			{showIntro && <Intro onFinish={() => setShowIntro(false)} />}
 
-      <PresentationSection />
+			<main
+				className="relative min-h-screen overflow-x-hidden bg-black pb-36 text-white"
+				data-playing={musicPlaying ? "true" : "false"}
+			>
+				<AmbientShell style={ambientStyle} playing={musicPlaying} />
+				<Hero
+					onEnter={enterStory}
+					showHomeAudio={!showPlayer}
+					onHomePlayingChange={setMusicPlaying}
+				/>
 
-      {tracks.map((track, index) => (
-        <SongSection
-          key={track.id}
-          track={track}
-          nextTrack={tracks[index + 1]}
-          index={index}
-          total={tracks.length}
-        />
-      ))}
+				<PresentationSection />
 
-      <FinalSection />
-      <SectionDots tracks={tracks} activeIndex={activeIndex} />
-      <GlassPlayer
-        activeTrack={activeTrack}
-        activeIndex={activeIndex}
-        total={tracks.length}
-        enabled={hasEntered || showPlayer}
-        visible={showPlayer}
-        onPlayingChange={setMusicPlaying}
-      />
-    </main>
-  );
+				{tracks.map((track, index) => (
+					<SongSection
+						key={track.id}
+						track={track}
+						nextTrack={tracks[index + 1]}
+						index={index}
+						total={tracks.length}
+					/>
+				))}
+
+				<FinalSection />
+				<SectionDots tracks={tracks} activeIndex={activeIndex} />
+				<GlassPlayer
+					activeTrack={activeTrack}
+					activeIndex={activeIndex}
+					total={tracks.length}
+					enabled={hasEntered || showPlayer}
+					visible={showPlayer}
+					onPlayingChange={setMusicPlaying}
+				/>
+			</main>
+		</>
+	);
 }
 
 function PresentationSection() {
