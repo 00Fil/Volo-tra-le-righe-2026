@@ -11,7 +11,7 @@ export function Intro({ onFinish }: IntroProps) {
 	const brandRef = useRef<HTMLDivElement>(null);
 	const denuvoRef = useRef<SVGSVGElement>(null);
 	const studioRef = useRef<HTMLSpanElement>(null);
-	const [phase, setPhase] = useState<"loading" | "docking" | "done">("loading");
+	const [phase, setPhase] = useState<"loading" | "docking" | "docked">("loading");
 
 	useEffect(() => {
 		let cancelled = false;
@@ -67,7 +67,7 @@ export function Intro({ onFinish }: IntroProps) {
 
 			finishTimeout = window.setTimeout(() => {
 				if (cancelled) return;
-				setPhase("done");
+				setPhase("docked");
 				onFinish();
 			}, 1500);
 		};
@@ -81,12 +81,16 @@ export function Intro({ onFinish }: IntroProps) {
 		};
 	}, [onFinish]);
 
-	if (phase === "done") return null;
-
 	return (
 		<div
-			className={`intro-root ${phase === "docking" ? "is-docking" : "is-loading"}`}
-			aria-hidden={phase === "docking"}
+			className={`intro-root ${
+				phase === "docking" 
+					? "is-docking" 
+					: phase === "docked"
+					? "is-docked"
+					: "is-loading"
+			}`}
+			aria-hidden={phase !== "loading"}
 		>
 			<div className="stage" ref={stageRef}>
 				<div className="brand" ref={brandRef}>
