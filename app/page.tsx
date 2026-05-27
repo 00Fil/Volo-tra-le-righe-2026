@@ -18,11 +18,8 @@ import { HomeAudio } from "@/components/HomeAudio"
 import { SectionDots } from "@/components/SectionDots";
 import { SongSection } from "@/components/SongSection";
 import { tracks } from "@/data/tracks";
-import { useState } from "react";
+import { PlusIcon, Code2, PenTool } from "lucide-react";
 import { motion, AnimatePresence, MotionConfig } from "motion/react";
-import { PlusIcon } from "lucide-react";
-import { FaCode, FaPenNib } from "react-icons/fa6";
-import useMeasure from "react-use-measure";
 
 
 const identityMatrix =
@@ -233,107 +230,103 @@ L'elaborato è una playlist ispirata al libro "Il gioco della salamandra" di Dav
 function CreditsBadge() {
   const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
-  const [ref, bounds] = useMeasure({ offsetSize: true });
 
   const isExpanded = isOpen || isHover;
 
   const credits = [
-    { role: "Developed by", name: "Filippo Corsini", icon: FaCode },
-    { role: "Written by", name: "Davide De Lellis", icon: FaPenNib },
-    { role: "Written by", name: "Filippo Corsini", icon: FaPenNib },
-    { role: "Written by", name: "Adam Ezauiui", icon: FaPenNib },
-    { role: "Written by", name: "Stefano Borghi", icon: FaPenNib },
+    { role: "Developed by", name: "Filippo Corsini", icon: Code2 },
+    { role: "Written by", name: "Davide De Lellis", icon: PenTool },
+    { role: "Written by", name: "Filippo Corsini", icon: PenTool },
+    { role: "Written by", name: "Adam Ezauiui", icon: PenTool },
+    { role: "Written by", name: "Stefano Borghi", icon: PenTool },
   ];
 
   return (
     <MotionConfig transition={ { type: "spring", stiffness: 280, damping: 30 } }>
       <motion.div
+        layout
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
-        animate={ {
-          width: bounds.width > 0 ? bounds.width : "auto",
-          height: bounds.height > 0 ? bounds.height : "auto",
-        } }
         className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0a0a0a] text-white shadow-[0_18px_60px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.06)]"
       >
-        <div ref={ref}>
-          <AnimatePresence mode="popLayout" initial={false}>
-            {!isExpanded ? (
-              <motion.button
-                key="closed"
-                type="button"
-                aria-label="Mostra crediti"
-                aria-expanded={false}
-                onClick={() => setIsOpen(true)}
-                className="flex h-14 w-14 shrink-0 cursor-pointer items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/30"
-                initial={ { opacity: 0, filter: "blur(4px)" } }
-                animate={ { opacity: 1, filter: "blur(0px)" } }
-                exit={ { opacity: 0, filter: "blur(4px)" } }
-                transition={ { duration: 0.2, ease: "easeOut" } }
-              >
-                <span className="font-display text-3xl leading-none text-white/90">
-                  <i>D</i>
+        <AnimatePresence mode="popLayout" initial={false}>
+          {!isExpanded ? (
+            <motion.button
+              layout
+              key="closed"
+              type="button"
+              aria-label="Mostra crediti"
+              aria-expanded={false}
+              onClick={() => setIsOpen(true)}
+              className="flex h-14 w-14 shrink-0 cursor-pointer items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/30"
+              initial={ { opacity: 0, filter: "blur(4px)" } }
+              animate={ { opacity: 1, filter: "blur(0px)" } }
+              exit={ { opacity: 0, filter: "blur(4px)" } }
+              transition={ { duration: 0.2, ease: "easeOut" } }
+            >
+              <span className="font-display text-3xl leading-none text-white/90">
+                <i>D</i>
+              </span>
+            </motion.button>
+          ) : (
+            <motion.div
+              layout
+              key="open"
+              className="flex w-[min(22rem,calc(100vw-2.5rem))] shrink-0 flex-col gap-1 p-2"
+            >
+              <div className="flex items-center justify-between px-2 pt-1 pb-2">
+                <span className="text-[10px] font-bold tracking-[0.18em] text-white/40 uppercase">
+                  Credits
                 </span>
-              </motion.button>
-            ) : (
-              <motion.div
-                key="open"
-                className="flex w-[min(22rem,calc(100vw-2.5rem))] shrink-0 flex-col gap-1 p-2"
-              >
-                <div className="flex items-center justify-between px-2 pt-1 pb-2">
-                  <span className="text-[10px] font-bold tracking-[0.18em] text-white/40 uppercase">
-                    Credits
-                  </span>
-                  <button
-                    type="button"
-                    aria-label="Nascondi crediti"
-                    aria-expanded
-                    onClick={() => {
-                      setIsOpen(false);
-                      setIsHover(false);
-                    }}
-                    className="grid h-6 w-6 cursor-pointer place-items-center rounded-md text-white/50 transition-colors hover:bg-white/5 hover:text-white/80"
-                  >
-                    <PlusIcon className="h-4 w-4 rotate-45 transition-transform duration-300" />
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  aria-label="Nascondi crediti"
+                  aria-expanded
+                  onClick={() => {
+                    setIsOpen(false);
+                    setIsHover(false);
+                  }}
+                  className="grid h-6 w-6 cursor-pointer place-items-center rounded-md text-white/50 transition-colors hover:bg-white/5 hover:text-white/80"
+                >
+                  <PlusIcon className="h-4 w-4 rotate-45 transition-transform duration-300" />
+                </button>
+              </div>
 
-                {credits.map((item, index) => (
-                  <motion.div
-                    key={`${item.role}-${item.name}-${index}`}
-                    className="flex shrink-0 items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/[0.04]"
-                    initial={ { opacity: 0, filter: "blur(4px)", y: 12 } }
-                    animate={ { opacity: 1, filter: "blur(0px)", y: 0 } }
-                    exit={ {
-                      opacity: 0,
-                      filter: "blur(4px)",
-                      transition: { duration: 0.15, ease: "easeOut" },
-                    } }
-                    transition={ {
-                      delay: 0.06 + index * 0.04,
-                      type: "spring",
-                      stiffness: 220,
-                      damping: 22,
-                    } }
-                  >
-                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/[0.06] bg-white/[0.04]">
-                      <item.icon className="h-4 w-4 text-white/80" />
-                    </div>
+              {credits.map((item, index) => (
+                <motion.div
+                  key={`${item.role}-${item.name}-${index}`}
+                  className="flex shrink-0 items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/[0.04]"
+                  initial={ { opacity: 0, filter: "blur(4px)", y: 12 } }
+                  animate={ { opacity: 1, filter: "blur(0px)", y: 0 } }
+                  exit={ {
+                    opacity: 0,
+                    filter: "blur(4px)",
+                    transition: { duration: 0.15, ease: "easeOut" },
+                  } }
+                  transition={ {
+                    delay: 0.06 + index * 0.04,
+                    type: "spring",
+                    stiffness: 220,
+                    damping: 22,
+                  } }
+                >
+                  <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/[0.06] bg-white/[0.04]">
+                    <item.icon className="h-4 w-4 text-white/80" />
+                  </div>
 
-                    <div className="flex min-w-0 flex-col leading-tight">
-                      <span className="text-[10px] font-bold tracking-[0.16em] text-white/40 uppercase">
-                        {item.role}
-                      </span>
-                      <span className="truncate text-sm font-semibold text-white/90">
-                        {item.name}
-                      </span>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+                  <div className="flex min-w-0 flex-col leading-tight">
+                    <span className="text-[10px] font-bold tracking-[0.16em] text-white/40 uppercase">
+                      {item.role}
+                    </span>
+                    <span className="truncate text-sm font-semibold text-white/90">
+                      {item.name}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </MotionConfig>
   );
