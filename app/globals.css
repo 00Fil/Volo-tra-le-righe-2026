@@ -38,6 +38,19 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: geometricPrecision;
+	transition: inset 700ms cubic-bezier(0.22, 0.61, 0.36, 1), z-index 0ms 700ms;
+}
+
+/* Quando è docked: collassa il container solo intorno al logo */
+.intro-root.is-docked {
+	inset: auto;
+	top: var(--dock-pad, 28px);
+	left: var(--dock-pad, 28px);
+	width: auto;
+	height: auto;
+	background: transparent;
+	pointer-events: none;
+	z-index: 60;
 }
 
 .intro-root .stage {
@@ -52,6 +65,16 @@
 	transition: transform 1100ms cubic-bezier(0.65, 0, 0.35, 1);
 	will-change: transform;
 }
+
+/* Quando è docked, il stage ritorna a position relative al suo container */
+.intro-root.is-docked .stage {
+	position: relative;
+	inset: auto;
+	transform: none;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
 .intro-root .brand {
 	display: inline-flex;
 	align-items: center;
@@ -166,6 +189,7 @@
 .intro-root.is-docked .line-loader {
 	opacity: 0;
 	transition: opacity 500ms cubic-bezier(0.22, 0.61, 0.36, 1) 700ms;
+	display: none;
 }
 
 .intro-root .footnote {
@@ -184,6 +208,7 @@
 .intro-root.is-docked .footnote {
 	opacity: 0;
 	pointer-events: none;
+	display: none;
 }
 
 .intro-root.is-docking,
@@ -191,11 +216,6 @@
 	background: transparent;
 	transition: background 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
 	pointer-events: none;
-}
-
-/* Stato finale: il logo resta ancorato in alto a sinistra */
-.intro-root.is-docked {
-	z-index: 60;
 }
 
 @media (prefers-reduced-motion: reduce) {
