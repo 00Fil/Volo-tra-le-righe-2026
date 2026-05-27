@@ -476,8 +476,7 @@ function CreditsBadge() {
                 Developed by Filippo Corsini
               </span>
               <span className="mt-0.5 block truncate text-[11px] font-semibold normal-case tracking-[-0.01em] text-white/40">
-                written by Davide De Lellis, Filippo Corsini, Adam Ezauiui,
-                Stefano Borghi
+                written by Davide De Lellis, Filippo Corsini, Adam Ezauiui, Stefano Borghi
               </span>
             </span>
           </div>
